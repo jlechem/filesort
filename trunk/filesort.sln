@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "filesort", "filesort\filesort.vcproj", "{CEC42345-8B65-4D70-B96C-39271A3A19BE}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FileSortSetup", "FileSortSetup\FileSortSetup.vdproj", "{2F807F47-6CE3-4998-9EB1-09FB8D77D141}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Debug|Win32.Build.0 = Debug|Win32
+		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Release|Win32.ActiveCfg = Release|Win32
+		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Release|Win32.Build.0 = Release|Win32
+		{2F807F47-6CE3-4998-9EB1-09FB8D77D141}.Debug|Win32.ActiveCfg = Debug
+		{2F807F47-6CE3-4998-9EB1-09FB8D77D141}.Release|Win32.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

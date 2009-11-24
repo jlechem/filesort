@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D6A8BBDF-34CB-43CA-95E7-3C7C8BC02C40}"
 	ProjectSection(SolutionItems) = preProject
 		filesort\Docs\GPL v3.txt = filesort\Docs\GPL v3.txt
+		filesort\Docs\license.rtf = filesort\Docs\license.rtf
+		filesort\Docs\readme.rtf = filesort\Docs\readme.rtf
 	EndProjectSection
 EndProject
 Global

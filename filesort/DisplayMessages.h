@@ -37,4 +37,5 @@ public:
 	static void printInvalidOutputFile( string fileName );
 	static void printInvalidInputFile( string fileName );
 	static void printHelp();
+	static void printVersion();
 };

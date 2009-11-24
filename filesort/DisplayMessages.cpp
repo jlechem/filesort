@@ -40,6 +40,11 @@ void DisplayMessages::printInvalidUsage(void)
 	cout << endl << "Invalid usage, please see help options (/?) for more details." << endl;
 }
 
+void DisplayMessages::printVersion()
+{
+	cout << endl << "Current FileSort version is 1.2" << endl << endl;
+}
+
 void DisplayMessages::printHelp(void)
 {
 	cout << endl << "Sorts a file into ascending or descending order." << endl

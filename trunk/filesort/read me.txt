@@ -1,0 +1,26 @@
+filesort is Copyright 2008 Justin LeCheminant
+
+Welcome to the filesort utility version 1.2
+
+This is an upgrade to the existing filesort utility 1.0.  This is a basic sorting utility that takes a file and sorts its contents in ascending or descending order.  Whitespace or a set read length can be used to read each line of text to be sorted.
+
+ Usage is as follows:
+
+filesort source_file [new_file] [/d] [/cX]
+
+[new_file] This is the name of the file you want the sorted text to be written to.
+[/d] This switch indicates you want the file sorted in descending order.
+[/cX] This switch indicates you want to read X number of characters instead of using whitespace.
+
+The [new_file] parameter if being used must be the 2nd parameter sent the program.  The [/d] and [/c] parameters can be used in any order after the filenames.
+
+  i.e. filesort source.text /d - Would sort the contents of source.text in descending order and then put those results back into the source.text file.
+       
+       filesort source.text output.txt /d /c5 would read the 5 characters at a time from source.text and sort them in descending order and put the results in output.txt.
+
+
+This utility is copyrighted under the GPL.  A copy of the GPL license has been included for you to read.  This fotware is 100% free and costs nothing to use.  If you like email me jlechem@gmail.com or visit my website at http://www.jrl-software.com.
+
+Thanks,
+
+Justin LeCheminant

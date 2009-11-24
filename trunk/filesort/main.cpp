@@ -33,8 +33,9 @@
 		Created by - Justin LeCheminant 9-1-2007
 		Modified by - Justin LeCheminant 5-16-2008
 		Modified by - Justin LeCheminant 6-5-2008
+		Modified by - Justin LeCheminant 11-24-2009
 
-		Current Version 1.2
+		Current Version 1.2.1
 
 */
 
@@ -70,7 +71,11 @@ int main( int argc, char* argv[] )
 		else if( argc == 2 && ( strcmp(argv[1],"/?" ) == 0 ) )
 		{
 			DisplayMessages::printHelp();
-		}//end if
+		}//end else if
+		else if( argc == 2 && ( strcmp( argv[1],"/v" ) == 0 ) )
+		{
+			DisplayMessages::printVersion();
+		}//end else if
 		else
 		{
 			// use the class factory to create a filesort object

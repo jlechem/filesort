@@ -42,7 +42,7 @@ void DisplayMessages::printInvalidUsage(void)
 
 void DisplayMessages::printVersion()
 {
-	cout << endl << "Current FileSort version is 1.2" << endl << endl;
+	cout << endl << "Current FileSort version is 1.2.1" << endl << endl;
 }
 
 void DisplayMessages::printHelp(void)

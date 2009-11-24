@@ -3,6 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "filesort", "filesort\filesort.vcproj", "{CEC42345-8B65-4D70-B96C-39271A3A19BE}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FileSortInstaller", "FileSortInstaller\FileSortInstaller.vdproj", "{6A439090-EE4B-4CF4-8F91-ACDF7F433DCB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D6A8BBDF-34CB-43CA-95E7-3C7C8BC02C40}"
+	ProjectSection(SolutionItems) = preProject
+		filesort\Docs\GPL v3.txt = filesort\Docs\GPL v3.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +20,8 @@ Global
 		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Debug|Win32.Build.0 = Debug|Win32
 		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Release|Win32.ActiveCfg = Release|Win32
 		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Release|Win32.Build.0 = Release|Win32
+		{6A439090-EE4B-4CF4-8F91-ACDF7F433DCB}.Debug|Win32.ActiveCfg = Debug
+		{6A439090-EE4B-4CF4-8F91-ACDF7F433DCB}.Release|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

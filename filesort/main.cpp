@@ -1,5 +1,5 @@
 /*
-	Copyright 2008 Justin LeCheminant
+	Copyright 2009 Justin LeCheminant
 */
 
 /*

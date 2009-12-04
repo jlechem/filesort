@@ -39,3 +39,4 @@ public:
 	static void printHelp();
 	static void printVersion();
 };
+

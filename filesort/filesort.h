@@ -62,3 +62,4 @@ private:
 	string CleanString(string value);
 	void ClearWhitespace(void);
 };
+

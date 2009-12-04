@@ -50,3 +50,4 @@ private:
 	char getSwitchValue(string value);
 
 };
+

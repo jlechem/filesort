@@ -26,24 +26,159 @@
 
 using namespace std;
 
+/*
+	Class: ObjectCreator
+	A class that creates an instance of the FileSort class.
+
+	See Also:
+		<FileSort>
+
+*/
 class ObjectCreator
 {
 public:
+	/*
+		Constructor: ObjectCreator
+	
+		Initializes the object.
+	*/
 	ObjectCreator(void);
+
+	/*
+		Destructor: ~ObjectCreator
+	
+		Destroys the object.
+
+	*/
 	~ObjectCreator(void);
 
-	FileSort* createFileSort( char* [], int );
+	/*
+		Function: CreateFileSort
+	
+		Creates an instance of the FileSort class.
+
+		Parameters:
+
+		params - The command line parameters passed to the application.
+		length - The number of command line parameters passed to the appliation.
+
+		Returns:
+
+		A pointer to a FileSort object.
+
+		See Also:
+
+		<FileSort>
+
+	*/
+	FileSort* CreateFileSort( char* params[], int length );
 
 private:
-	bool validateFileExists( string fileName );
-	bool validateOutputFile( string fileName );
-	bool validateSwitch( string value );
-	bool validateDescendingSwitch( string value );
-	bool validateLengthSwitch( string value );
+	/*
+		Function: ValidateFileExists
 	
-	int getReadLength(string value);
+		Validates that the specified file exists and can be opened.
+
+		Parameters:
+
+		fileName - The name of the file to validte.
+
+		Returns:
+
+		True if the file exists and could be opened, false if not.
+	*/
+	bool ValidateFileExists( string fileName );
 	
-	char getSwitchValue(string value);
+	/*
+		Function: ValidateOutputFile
+	
+		Validates that the specified output file exists or can be created.
+
+		Parameters:
+
+		fileName - The name of the output file to validte.
+
+		Returns:
+
+		True if the file was found or could be created, false if not.
+	*/
+	bool ValidateOutputFile( string fileName );
+	
+	/*
+		Function: ValidateSwitch
+	
+		Validates the command line argument value passed to it is valid.
+
+		Parameters:
+
+		value - The command line argument to be validated.
+
+		Returns:
+
+		True if the switch is valid, false if not.
+	*/
+	bool ValidateSwitch( string value );
+	
+	/*
+		Function: ValidateDescendingSwitch
+	
+		Validates the descending switch command line argument is valid.
+
+		Parameters:
+
+		value - The descending switch command line argument passed to the application.
+
+		Returns:
+
+		True if the switch is valid, false if not.
+	*/
+	bool ValidateDescendingSwitch( string value );
+	
+	/*
+		Function: ValidateLengthSwitch
+	
+		Validates the read length command line argument is greater than 0.
+
+		Parameters:
+
+		value - The read length command line argument passed to the application.
+
+		Returns:
+
+		True if the length is greater than 0, false if not.
+	*/
+	bool ValidateLengthSwitch( string value );
+	
+	/*
+		Function: GetReadLength
+	
+		Gets the read length specified by the command line argument.
+
+		Parameters:
+
+		value - The read length command line argument passed to the application.
+
+		Returns:
+
+		The integer value of the read length.
+	*/
+	int GetReadLength(string value);
+	
+	/*
+		Function: GetSwitchValue
+	
+		Converts the string from the command line arguments to the appropriate character based switch code.
+
+		Parameters:
+
+		value - The string value to convert to a character.
+
+		Returns:
+
+		The character value of the switch command.
+		
+	*/
+	char GetSwitchValue(string value);
 
 };
 

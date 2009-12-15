@@ -26,7 +26,7 @@ ObjectCreator::~ObjectCreator(void)
 }
 
 
-FileSort* ObjectCreator::createFileSort( char* params[], int length)
+FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 {
 	string sourceFile;
 	string param1;
@@ -43,7 +43,7 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 		// make sure we have a valid count
 		if( length < 2 || length > 5 )
 		{
-			DisplayMessages::printInvalidUsage();
+			DisplayMessages::PrintInvalidUsage();
 			return NULL;
 		}//end if
 
@@ -51,9 +51,9 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 		sourceFile = params[1];
 
 		// validate the filename
-		if( !this->validateFileExists( sourceFile ) )
+		if( !this->ValidateFileExists( sourceFile ) )
 		{
-			DisplayMessages::printInvalidFileName( sourceFile );
+			DisplayMessages::PrintInvalidFileName( sourceFile );
 			return NULL;
 		}//end if
 
@@ -73,10 +73,10 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 				param2 = params[2];
 
 				// if we have a valid switch do the switch
-				if( this->validateSwitch( param2 ) )
+				if( this->ValidateSwitch( param2 ) )
 				{
 					// determine the switch used based on the char
-					switch( this->getSwitchValue( param2 ) )
+					switch( this->GetSwitchValue( param2 ) )
 					{
 						case 'd':
 							
@@ -86,21 +86,21 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 
 						case 'c':
 							// ascending length sort into same file
-							return new FileSort( sourceFile, sourceFile, true, this->getReadLength( param2 ) );
+							return new FileSort( sourceFile, sourceFile, true, this->GetReadLength( param2 ) );
 							break;
 					}//end switch
 				}//end if
 				else
 				{
 					// otherwise we're trying to do an output file
-					if( this->validateOutputFile( param2 ) )
+					if( this->ValidateOutputFile( param2 ) )
 					{
 						// ascending no length sort into a new file
 						return new FileSort( sourceFile, param2, true, 0 );
 					}//end if
 					else
 					{
-						DisplayMessages::printInvalidOutputFile( param2 );
+						DisplayMessages::PrintInvalidOutputFile( param2 );
 						return NULL;
 					}//end else
 				}//end else
@@ -116,18 +116,18 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 				param2 = params[3];
 
 				// check if we have two valid switches
-				if( this->validateSwitch( param1 ) && this->validateSwitch( param2 ) )
+				if( this->ValidateSwitch( param1 ) && this->ValidateSwitch( param2 ) )
 				{
 					int readVal = 0;
 
 					// get the read lenth from the right param
-					if( this->getSwitchValue( param1 ) == 'c' )
+					if( this->GetSwitchValue( param1 ) == 'c' )
 					{
-						readVal = this->getReadLength( param1 );
+						readVal = this->GetReadLength( param1 );
 					}//end if
-					else if( this->getSwitchValue( param2 ) == 'c' )
+					else if( this->GetSwitchValue( param2 ) == 'c' )
 					{
-						readVal = this->getReadLength( param2 );
+						readVal = this->GetReadLength( param2 );
 					}//end else if
 
 					// two valid switches means descending, specified length, same file sort
@@ -137,18 +137,18 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 				else
 				{
 					// both aren't switched, we're trying to do a destfile then switch
-					if( this->validateOutputFile( param1 ) )
+					if( this->ValidateOutputFile( param1 ) )
 					{
 						// validate they used a good switch
-						if( this->validateSwitch( param2 ) )
+						if( this->ValidateSwitch( param2 ) )
 						{
 							// get the read lenth from the right param
-							if( this->getSwitchValue( param2 ) == 'c' )
+							if( this->GetSwitchValue( param2 ) == 'c' )
 							{
 								// ascending length sort into new file
-								return new FileSort( sourceFile, param1, true, this->getReadLength( param2 ) );
+								return new FileSort( sourceFile, param1, true, this->GetReadLength( param2 ) );
 							}//end if
-							else if( this->getSwitchValue( param2 ) == 'd' )
+							else if( this->GetSwitchValue( param2 ) == 'd' )
 							{
 								// descending no length sort into new file
 								return new FileSort( sourceFile, param1, false, 0 );
@@ -156,13 +156,13 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 						}//end if
 						else
 						{
-							DisplayMessages::printInvalidUsage();
+							DisplayMessages::PrintInvalidUsage();
 							return NULL;
 						}//end else
 					}//end if
 					else
 					{
-						DisplayMessages::printInvalidOutputFile( param2 );
+						DisplayMessages::PrintInvalidOutputFile( param2 );
 						return NULL;
 					}//end if
 				}//end else
@@ -176,22 +176,22 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 				param3 = params[4];
 
 				// validate the output file
-				if( this->validateOutputFile( param1 ) )
+				if( this->ValidateOutputFile( param1 ) )
 				{
 					// validate we have two correct switches
-					if( this->validateSwitch( param2 ) && this->validateSwitch( param3 )  )
+					if( this->ValidateSwitch( param2 ) && this->ValidateSwitch( param3 )  )
 					{
 						// get the right value from the b switch
 						long readVal = 0;
 
 						// get the read lenth from the right param
-						if( this->getSwitchValue( param2 ) == 'c' )
+						if( this->GetSwitchValue( param2 ) == 'c' )
 						{
-							readVal = this->getReadLength( param2 );
+							readVal = this->GetReadLength( param2 );
 						}//end if
-						else if( this->getSwitchValue( param3 ) == 'c' )
+						else if( this->GetSwitchValue( param3 ) == 'c' )
 						{
-							readVal = this->getReadLength( param3 );
+							readVal = this->GetReadLength( param3 );
 						}//end else if
 
 						// descending length based sort into new file
@@ -199,13 +199,13 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 					}//end if
 					else
 					{
-						DisplayMessages::printInvalidUsage();
+						DisplayMessages::PrintInvalidUsage();
 						return NULL;
 					}//end else
 				}//end if
 				else
 				{
-					DisplayMessages::printInvalidOutputFile( param1 );
+					DisplayMessages::PrintInvalidOutputFile( param1 );
 					return NULL;
 				}//end else
 				
@@ -213,7 +213,7 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 
 			// some kind of weird fucked up param pass-in
 			default:
-				DisplayMessages::printInvalidUsage();
+				DisplayMessages::PrintInvalidUsage();
 				return NULL;	
 
 		}//end switch
@@ -222,9 +222,13 @@ FileSort* ObjectCreator::createFileSort( char* params[], int length)
 	{
 		return NULL;
 	}
+
+	// somehow if we get here we're fucked so drop back a NULL
+	return NULL;
+
 }
 
-bool ObjectCreator::validateFileExists(string fileName)
+bool ObjectCreator::ValidateFileExists(string fileName)
 {
 	fstream file;
 
@@ -250,12 +254,12 @@ bool ObjectCreator::validateFileExists(string fileName)
 	}
 }
 
-bool ObjectCreator::validateSwitch( string value )
+bool ObjectCreator::ValidateSwitch( string value )
 {
-	return ( this->validateDescendingSwitch( value ) || this->validateLengthSwitch( value ) );
+	return ( this->ValidateDescendingSwitch( value ) || this->ValidateLengthSwitch( value ) );
 }
 
-bool ObjectCreator::validateDescendingSwitch( string value )
+bool ObjectCreator::ValidateDescendingSwitch( string value )
 {
 	try
 	{
@@ -274,7 +278,7 @@ bool ObjectCreator::validateDescendingSwitch( string value )
 	}//end catch
 }
 
-bool ObjectCreator::validateLengthSwitch( string value )
+bool ObjectCreator::ValidateLengthSwitch( string value )
 {
 	try
 	{
@@ -296,7 +300,7 @@ bool ObjectCreator::validateLengthSwitch( string value )
 	}//end catch
 }
 
-int ObjectCreator::getReadLength(string value)
+int ObjectCreator::GetReadLength(string value)
 {
 	try
 	{
@@ -311,7 +315,7 @@ int ObjectCreator::getReadLength(string value)
 	}//end catch
 }
 
-char ObjectCreator::getSwitchValue(string value)
+char ObjectCreator::GetSwitchValue(string value)
 {
 	try
 	{
@@ -352,7 +356,7 @@ bool validateOutputfile( string fileName )
 	}//end catch
 }//end function
 
-bool ObjectCreator::validateOutputFile( string fileName )
+bool ObjectCreator::ValidateOutputFile( string fileName )
 {
 	try
 	{

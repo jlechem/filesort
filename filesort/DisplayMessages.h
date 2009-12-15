@@ -22,17 +22,77 @@
 
 using namespace std;
 
+/*
+	Class: DisplayMessages
+	A class that displays messages to the user via the standard output.
+*/
 class DisplayMessages
 {
 public:
+	/*
+		Constructor: DisplayMessages
+		Initializes the object.
+    */
 	DisplayMessages(void);
+
+	/*
+		Destructor: ~DisplayMessages
+		Destroys the object.
+    */
 	~DisplayMessages(void);
 	
-	static void printInvalidFileName( string );
-	static void printInvalidUsage(void);
-	static void printInvalidOutputFile( string fileName );
-	static void printInvalidInputFile( string fileName );
-	static void printHelp();
-	static void printVersion();
+	/*
+		Function: PrintInvalidFileName
+	
+		Prints an error if the specified filename cannot be found or opened.
+
+		Parameters:
+
+		filename - The name of the file.
+	*/
+	static void PrintInvalidFileName( string filename );
+
+	/*
+		Function: PrintInvalidUsage
+	
+		Prints the standard usage options if inavalid command line parameters are passed to the applicaiton.
+	*/
+	static void PrintInvalidUsage(void);
+
+	/*
+		Function: PrintInvalidOutputFile
+	
+		Prints an error if the specified output file cannot be found or created.
+
+		Parameters:
+
+		filename - The name of the file.
+	*/
+	static void PrintInvalidOutputFile( string fileName );
+	
+	/*
+		Function: PrintInvalidInputFile
+	
+		Prints an error if the specified input file cannot be found or opened.
+
+		Parameters:
+
+		filename - The name of the file.
+	*/
+	static void PrintInvalidInputFile( string fileName );
+	
+	/*
+		Function: PrintHelp
+	
+		Prints the stanard help output on how to use the application.
+	*/
+	static void PrintHelp();
+	
+	/*
+		Function: PrintVersion
+	
+		Prints the current version of the application.
+	*/
+	static void PrintVersion();
 };
 

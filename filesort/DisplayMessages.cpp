@@ -25,23 +25,23 @@ DisplayMessages::~DisplayMessages(void)
 {
 }
 
-void DisplayMessages::printInvalidFileName( string fileName )
+void DisplayMessages::PrintInvalidFileName( string fileName )
 {
 	cout << endl << "Unable to open file: " << fileName << " for sorting." << endl
 		 << "Please check the file exists and try again." << endl;
 }
 
-void DisplayMessages::printInvalidUsage(void)
+void DisplayMessages::PrintInvalidUsage(void)
 {
 	cout << endl << "Invalid usage, please see help options (/?) for more details." << endl;
 }
 
-void DisplayMessages::printVersion()
+void DisplayMessages::PrintVersion()
 {
 	cout << endl << "Current FileSort version is 1.2.1" << endl << endl;
 }
 
-void DisplayMessages::printHelp(void)
+void DisplayMessages::PrintHelp(void)
 {
 	cout << endl << "Sorts a file into ascending or descending order." << endl
 		 << "Items are sorted using white space and ascending order by default." << endl
@@ -51,12 +51,12 @@ void DisplayMessages::printHelp(void)
 		 << "[/cX]\tSpecifies X number of characters to be read instead of whitespace." << endl << endl;
 }
 
-void DisplayMessages::printInvalidInputFile( string fileName )
+void DisplayMessages::PrintInvalidInputFile( string fileName )
 {
 	cout << endl << "An error occurred with the input file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
 }//end function
 
-void DisplayMessages::printInvalidOutputFile( string fileName )
+void DisplayMessages::PrintInvalidOutputFile( string fileName )
 {
 	cout << endl << "An error occurred with the output file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
 }//end function

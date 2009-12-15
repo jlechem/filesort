@@ -47,6 +47,22 @@
 
 using namespace std;
 
+/*
+
+Function: main 
+
+The main entry point of the filesort program
+
+Parameters:
+
+argc - The number of command line arguments passed to the application.
+argv - The command line arguments passed to the application.
+
+Returns:
+
+An integer represeting a pass/fail to the Operating System.
+
+*/
 int main( int argc, char* argv[] )
 {
 	string param1, param2, param3;
@@ -57,25 +73,25 @@ int main( int argc, char* argv[] )
 	try
 	{
 		// set the window title
-		//system("title filesort (c)Justin LeCheminant 2009");
+		system("title filesort (c)Justin LeCheminant 2009");
 
 		// check for a valid number of parameters first
 		if( argc < 2 && argc > 5 )
 		{
-			DisplayMessages::printInvalidUsage();
+			DisplayMessages::PrintInvalidUsage();
 		}//end if
 		else if( argc == 2 && ( strcmp(argv[1],"/?" ) == 0 ) )
 		{
-			DisplayMessages::printHelp();
+			DisplayMessages::PrintHelp();
 		}//end else if
 		else if( argc == 2 && ( strcmp( argv[1],"/v" ) == 0 ) )
 		{
-			DisplayMessages::printVersion();
+			DisplayMessages::PrintVersion();
 		}//end else if
 		else
 		{
 			// use the class factory to create a filesort object
-			fileSort = creator.createFileSort( argv, argc );
+			fileSort = creator.CreateFileSort( argv, argc );
 
 			// check if that object is null
 			// null means some bad juju happened
@@ -89,6 +105,7 @@ int main( int argc, char* argv[] )
 				cout << "\tSort Ended\tSaving File" << endl;
 
 				delete fileSort;
+
 			}//end if
 		}//end else
 

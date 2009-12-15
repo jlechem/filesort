@@ -24,14 +24,54 @@
 
 using namespace std;
 
+/*
+	Class: FileSort
+	A class that sorts a file into ascending or descending order.
+*/
 class FileSort
 {
 public:
+
+	/*
+		Constructor: FileSort
+	
+		Initializes the object.
+
+		Parameters:
+
+		oldFileName - The name of the file to read data from.
+		newFilename - The name of the file to write output to.
+		ascending - True for sorting in ascending order, otherwise false for descending order.
+		readLength - The length (in bytes) of data to read at a time.
+	*/
 	FileSort( string oldFileName, string newFilename, bool ascending, long readLength );
+
+	/*
+		Constructor: FileSort
+	
+		Initializes the object.
+
+		Parameters:
+
+		oldFilename - The name of the file to read data from.
+		ascending - True for sorting in ascending order, otherwise false for descending order.
+	*/
 	FileSort( string oldFilename, bool ascending );
+
+	/*
+		Destructor: ~FileSort
+	
+		Destroys the object.
+
+	*/
 	~FileSort(void);
 
-	// sorts the array list in ascending/descending order
+	/*
+		Function: Sort
+	
+		Sorts the data into ascending or descending order.
+
+	*/
 	void Sort(void);
 
 private:
@@ -48,14 +88,44 @@ private:
 
 	list<string> items;
 
-	// loads the data from the file into the array list
+	/*
+		Function: Load
+	
+		Loads the data from the file into the array list.
+
+	*/
 	void Load( void );
 	
-	// saves the array list to the file
+	/*
+		Function: Save
+	
+		Saves the sorted data to the output file.
+
+	*/
 	void Save( void );
 	
-	// cleans the string passed into the function of any whitespace
+	/*
+		Function: CleanString
+	
+		Cleans the string passed into the function of any whitespace.
+
+		Parameters:
+
+		value - The string to be cleaned.
+		
+		Returns:
+		
+		A string that has been cleaned of all whitespace.
+
+	*/
 	string CleanString(string value);
+
+	/*
+		Function: ClearWhitespace
+	
+		Clears whitespace from the beginning of a file.
+	*/
 	void ClearWhitespace(void);
+
 };
 

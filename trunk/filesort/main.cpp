@@ -1,4 +1,6 @@
 /*
+	Copyright 2010 Justin LeCheminant
+
 	This file is part of filesort.
 
     filesort is free software: you can redistribute it and/or modify
@@ -13,6 +15,8 @@
 
     You should have received a copy of the GNU General Public License
     along with filesort.  If not, see <http://www.gnu.org/licenses/>.
+
+
 */
 
 

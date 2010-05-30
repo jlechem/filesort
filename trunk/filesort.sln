@@ -1,14 +1,14 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "filesort", "filesort\filesort.vcproj", "{CEC42345-8B65-4D70-B96C-39271A3A19BE}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D6A8BBDF-34CB-43CA-95E7-3C7C8BC02C40}"
 	ProjectSection(SolutionItems) = preProject
 		filesort\Docs\GPL v3.txt = filesort\Docs\GPL v3.txt
 		filesort\Docs\license.rtf = filesort\Docs\license.rtf
 		filesort\Docs\readme.rtf = filesort\Docs\readme.rtf
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "filesort", "filesort\filesort.vcxproj", "{CEC42345-8B65-4D70-B96C-39271A3A19BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,16 +10,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D6A8BBDF-3
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "filesort", "filesort\filesort.vcxproj", "{CEC42345-8B65-4D70-B96C-39271A3A19BE}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "filesort_installer", "filesort_installer\filesort_installer.vdproj", "{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
 		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Debug|Win32.ActiveCfg = Debug|Win32
 		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Debug|Win32.Build.0 = Debug|Win32
+		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Debug|x64.ActiveCfg = Debug|x64
+		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Debug|x64.Build.0 = Debug|x64
 		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Release|Win32.ActiveCfg = Release|Win32
 		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Release|Win32.Build.0 = Release|Win32
+		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Release|x64.ActiveCfg = Release|x64
+		{CEC42345-8B65-4D70-B96C-39271A3A19BE}.Release|x64.Build.0 = Release|x64
+		{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}.Debug|Win32.ActiveCfg = Debug
+		{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}.Debug|x64.ActiveCfg = Debug
+		{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}.Release|Win32.ActiveCfg = Release
+		{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

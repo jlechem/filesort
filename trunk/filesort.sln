@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "filesort", "filesort\fileso
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "filesort_installer", "filesort_installer\filesort_installer.vdproj", "{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "filesort_installer_64", "filesort_installer_64\filesort_installer_64.vdproj", "{70C6EC7D-6A39-4EA5-8576-996B16619D9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -32,6 +34,10 @@ Global
 		{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}.Debug|x64.ActiveCfg = Debug
 		{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}.Release|Win32.ActiveCfg = Release
 		{5A993B6F-6C51-4B36-89A5-B9EFB1F485AF}.Release|x64.ActiveCfg = Release
+		{70C6EC7D-6A39-4EA5-8576-996B16619D9E}.Debug|Win32.ActiveCfg = Debug
+		{70C6EC7D-6A39-4EA5-8576-996B16619D9E}.Debug|x64.ActiveCfg = Debug
+		{70C6EC7D-6A39-4EA5-8576-996B16619D9E}.Release|Win32.ActiveCfg = Release
+		{70C6EC7D-6A39-4EA5-8576-996B16619D9E}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

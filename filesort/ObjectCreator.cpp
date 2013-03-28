@@ -28,13 +28,13 @@ ObjectCreator::~ObjectCreator(void)
 }
 
 
-FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
+FileSort* ObjectCreator::CreateFileSort( wstring params[], int length)
 {
-	string sourceFile;
-	string param1;
-	string param2;
-	string param3;
-	string param4;
+	wstring sourceFile;
+	wstring param1;
+	wstring param2;
+	wstring param3;
+	wstring param4;
 
 	long readLength = 0;
 
@@ -47,7 +47,7 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 		{
 			DisplayMessages::PrintInvalidUsage();
 			return NULL;
-		}//end if
+		}
 
 		// get the passed in filename
 		sourceFile = params[1];
@@ -57,7 +57,7 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 		{
 			DisplayMessages::PrintInvalidFileName( sourceFile );
 			return NULL;
-		}//end if
+		}
 
 		// based on the number we get setup the filesort object
 		switch( length )
@@ -90,8 +90,8 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 							// ascending length sort into same file
 							return new FileSort( sourceFile, sourceFile, true, this->GetReadLength( param2 ) );
 							break;
-					}//end switch
-				}//end if
+					}
+				}
 				else
 				{
 					// otherwise we're trying to do an output file
@@ -99,13 +99,13 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 					{
 						// ascending no length sort into a new file
 						return new FileSort( sourceFile, param2, true, 0 );
-					}//end if
+					}
 					else
 					{
 						DisplayMessages::PrintInvalidOutputFile( param2 );
 						return NULL;
-					}//end else
-				}//end else
+					}
+				}
 
 				break;
 			
@@ -126,16 +126,16 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 					if( this->GetSwitchValue( param1 ) == 'c' )
 					{
 						readVal = this->GetReadLength( param1 );
-					}//end if
+					}
 					else if( this->GetSwitchValue( param2 ) == 'c' )
 					{
 						readVal = this->GetReadLength( param2 );
-					}//end else if
+					}
 
 					// two valid switches means descending, specified length, same file sort
 					return new FileSort( sourceFile, sourceFile, false, readVal );
 
-				}//end if
+				}
 				else
 				{
 					// both aren't switched, we're trying to do a destfile then switch
@@ -149,25 +149,25 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 							{
 								// ascending length sort into new file
 								return new FileSort( sourceFile, param1, true, this->GetReadLength( param2 ) );
-							}//end if
+							}
 							else if( this->GetSwitchValue( param2 ) == 'd' )
 							{
 								// descending no length sort into new file
 								return new FileSort( sourceFile, param1, false, 0 );
-							}//end else if
-						}//end if
+							}
+						}
 						else
 						{
 							DisplayMessages::PrintInvalidUsage();
 							return NULL;
-						}//end else
-					}//end if
+						}
+					}
 					else
 					{
 						DisplayMessages::PrintInvalidOutputFile( param2 );
 						return NULL;
-					}//end if
-				}//end else
+					}
+				}
 
 				break;
 
@@ -190,26 +190,26 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 						if( this->GetSwitchValue( param2 ) == 'c' )
 						{
 							readVal = this->GetReadLength( param2 );
-						}//end if
+						}
 						else if( this->GetSwitchValue( param3 ) == 'c' )
 						{
 							readVal = this->GetReadLength( param3 );
-						}//end else if
+						}
 
 						// descending length based sort into new file
 						return new FileSort( sourceFile, param1, false, readVal );
-					}//end if
+					}
 					else
 					{
 						DisplayMessages::PrintInvalidUsage();
 						return NULL;
-					}//end else
-				}//end if
+					}
+				}
 				else
 				{
 					DisplayMessages::PrintInvalidOutputFile( param1 );
 					return NULL;
-				}//end else
+				}
 				
 				break;
 
@@ -218,8 +218,8 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 				DisplayMessages::PrintInvalidUsage();
 				return NULL;	
 
-		}//end switch
-	}//end try
+		}
+	}
 	catch( ... )
 	{
 		return NULL;
@@ -230,7 +230,7 @@ FileSort* ObjectCreator::CreateFileSort( char* params[], int length)
 
 }
 
-bool ObjectCreator::ValidateFileExists(string fileName)
+bool ObjectCreator::ValidateFileExists(wstring fileName)
 {
 	fstream file;
 
@@ -244,92 +244,93 @@ bool ObjectCreator::ValidateFileExists(string fileName)
 		{
 			file.close();
 			return true;
-		}//end if
+		}
 		else
 		{
 			return false;
-		}//end else
-	}//end try
+		}
+	}
 	catch( ... )
 	{
 		return false;
 	}
 }
 
-bool ObjectCreator::ValidateSwitch( string value )
+bool ObjectCreator::ValidateSwitch( wstring value )
 {
 	return ( this->ValidateDescendingSwitch( value ) || this->ValidateLengthSwitch( value ) );
 }
 
-bool ObjectCreator::ValidateDescendingSwitch( string value )
+bool ObjectCreator::ValidateDescendingSwitch( wstring value )
 {
 	try
 	{
-		if( value == "/d" )
+		if( value == L"/d" )
 		{
 			return true;
-		}//end if
+		}
 		else
 		{
 			return false;
-		}//end else
-	}//end try
+		}
+	}
 	catch( ... )
 	{
 		return false;
-	}//end catch
+	}
 }
 
-bool ObjectCreator::ValidateLengthSwitch( string value )
+
+bool ObjectCreator::ValidateLengthSwitch( wstring value )
 {
 	try
 	{
-		// get the first 2 chars from the string
-		string switchValue( value, 0, 2 );
+		// get the first 2 chars from the wstring
+		wstring switchValue( value, 0, 2 );
 
-		if( switchValue == "/c" )
+		if( switchValue == L"/c" )
 		{
 			return true;
-		}//end if
+		}
 		else
 		{
 			return false;
-		}//end else
-	}//end try
+		}
+	}
 	catch( ... )
 	{
 		return false;
-	}//end catch
+	}
 }
 
-int ObjectCreator::GetReadLength(string value)
+int ObjectCreator::GetReadLength(wstring value)
 {
 	try
 	{
-		// get the first 2 chars from the string
-		string switchValue( value, 2, value.length() );
+		// get the first 2 chars from the wstring
+		wstring switchValue( value, 2, value.length() );
 
-		return atoi( switchValue.c_str() );
-	}//end try
+		return _wtoi( switchValue.c_str() );
+	}
 	catch( ... )
 	{
 		return 0;
-	}//end catch
+	}
 }
 
-char ObjectCreator::GetSwitchValue(string value)
+char ObjectCreator::GetSwitchValue(wstring value)
 {
 	try
 	{
 		return value[1];
-	}//end try
+	}
 	catch( ... )
 	{
 		return '~';
-	}//end catch
+	}
 }
 
-bool validateOutputfile( string fileName )
+bool validateOutputfile( wstring fileName )
 {
 	fstream fout;
 
@@ -344,21 +345,22 @@ bool validateOutputfile( string fileName )
 		if( fout.is_open() )
 		{
 			flag=true;
-		}//end if
+		}
 			
 		// always close the file
 		fout.close();
 
 		// return our flag
 		return flag;
-	}//end try
+
+	}
 	catch( ... )
 	{
 		return false;
-	}//end catch
-}//end function
+	}
+}
 
-bool ObjectCreator::ValidateOutputFile( string fileName )
+bool ObjectCreator::ValidateOutputFile( wstring fileName )
 {
 	try
 	{
@@ -369,15 +371,15 @@ bool ObjectCreator::ValidateOutputFile( string fileName )
 		if( !file )
 		{
 			return false;
-		}//end if
+		}
 		else
 		{
 			file.close();
 			return true;
-		}//end else
-	}//end try
+		}
+	}
 	catch( ... )
 	{
 		return false;
-	}//end catch
-}//end function
+	}
+}

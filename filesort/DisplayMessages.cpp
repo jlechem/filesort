@@ -27,25 +27,25 @@ DisplayMessages::~DisplayMessages(void)
 {
 }
 
-void DisplayMessages::PrintInvalidFileName( string fileName )
+void DisplayMessages::PrintInvalidFileName( wstring fileName )
 {
-	cout << endl << "Unable to open file: " << fileName << " for sorting." << endl
+	wcout << endl << "Unable to open file: '" << fileName << "' for sorting." << endl
 		 << "Please check the file exists and try again." << endl;
 }
 
 void DisplayMessages::PrintInvalidUsage(void)
 {
-	cout << endl << "Invalid usage, please see help options (/?) for more details." << endl;
+	wcout << endl << "Invalid usage, please use help switch <filesort /?> for more details." << endl;
 }
 
 void DisplayMessages::PrintVersion()
 {
-	cout << endl << "Current FileSort version is 1.2.1" << endl << endl;
+	wcout << endl << "Current FileSort version is 2.0.0" << endl << endl;
 }
 
 void DisplayMessages::PrintHelp(void)
 {
-	cout << endl << "Sorts a file into ascending or descending order." << endl
+	wcout << endl << "Sorts a file into ascending or descending order." << endl
 		 << "Items are sorted using white space and ascending order by default." << endl
 		 << "White space and sort order can be overriden using the appropriate switches." << endl << endl
 		 << "FILESORT [source file][output file][/d][/cX]" << endl
@@ -53,12 +53,12 @@ void DisplayMessages::PrintHelp(void)
 		 << "[/cX]\tSpecifies X number of characters to be read instead of whitespace." << endl << endl;
 }
 
-void DisplayMessages::PrintInvalidInputFile( string fileName )
+void DisplayMessages::PrintInvalidInputFile( wstring fileName )
 {
-	cout << endl << "An error occurred with the input file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
+	wcout << endl << "An error occurred with the input file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
 }//end function
 
-void DisplayMessages::PrintInvalidOutputFile( string fileName )
+void DisplayMessages::PrintInvalidOutputFile( wstring fileName )
 {
-	cout << endl << "An error occurred with the output file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
+	wcout << endl << "An error occurred with the output file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
 }//end function

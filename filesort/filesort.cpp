@@ -19,7 +19,7 @@
 
 #include "FileSort.h"
 
-FileSort::FileSort( string oldFilename, string newFilename, bool ascending, long readLength )
+FileSort::FileSort( wstring oldFilename, wstring newFilename, bool ascending, long readLength )
 {
 	// set the internal data members
 	this->isAscending = ascending;
@@ -30,7 +30,7 @@ FileSort::FileSort( string oldFilename, string newFilename, bool ascending, long
 
 }
 
-FileSort::FileSort( string oldFilename, bool ascending )
+FileSort::FileSort( wstring oldFilename, bool ascending )
 {
 	this->isAscending = ascending;
 	this->isNewFile = false;
@@ -48,7 +48,7 @@ FileSort::~FileSort(void)
 // saves the array list to the file
 void FileSort::Save(void)
 {
-	string item;
+	wstring item;
 
 	// open the file in output mode
 	file.open( this->newFilename.c_str(), ios::out | ios::trunc );
@@ -73,7 +73,7 @@ void FileSort::Save(void)
 
 					// remove the front item
 					this->items.pop_front();
-				}//end if
+				}
 				else
 				{
 					// get the back item
@@ -85,8 +85,8 @@ void FileSort::Save(void)
 
 					// remove the back item
 					this->items.pop_back();
-				}//end else
-			}//end while
+				}
+			}
 
 			// get the last front item
 			item = this->items.front();
@@ -95,17 +95,17 @@ void FileSort::Save(void)
 			file.clear();
 			file << item;
 	
-		}//end if
+		}
 
 		// close the file
 		file.close();
-	}//end if
-}//end function
+	}
+}
 
 // loads the data from the file into the array list
 void FileSort::Load(void)
 {
-	string item;
+	wstring item;
 
 	// clear the items
 	this->items.clear();
@@ -125,32 +125,32 @@ void FileSort::Load(void)
 
 				// create a new buffer
 				// read the value from the file
-				// then null term the string
-				char* buffer = new char[this->readLength ];
+				// then null term the wstring
+				wchar_t* buffer = new wchar_t[ this->readLength ];
 				file.read( buffer, this->readLength );
 				buffer[this->readLength] = '\0';
 
-				// clean our string
-				string newString( this->CleanString( buffer ) );
+				// clean our wstring
+				wstring newString( this->CleanString( buffer ) );
 
 				// don't let blank values in
-				if( newString != "" )
+				if( newString != L"" )
 				{
 					this->items.push_back( newString );
-				}//end if
+				}
 
 				this->ClearWhitespace();
 				
-			}//end while
-		}//end if
+			}
+		}
 		else
 		{
 			while( ( file >> item ) != NULL )
 			{
 				this->items.push_back( item );
 			}
-		}//end else
-	}//end if
+		}
+	}
 
 	// close the file
 	file.close();
@@ -169,21 +169,21 @@ void FileSort::Sort(void)
 	// save the data
 	this->Save();
 
-}//end function FileSort::Sort
+}
 
-string FileSort::CleanString( string value )
+wstring FileSort::CleanString( wstring value )
 {
 	int index = 0;
 
-	while( (index = value.find('\n') ) > 0 )
+	while( (index = value.find(L'\n') ) > 0 )
 	{
 		value[index] = ' ';
-	}//end while
+	}
 
-	while( (index = value.find('\t') ) > 0 )
+	while( (index = value.find(L'\t') ) > 0 )
 	{
 		value[index] = ' ';
-	}//end while
+	}
 
 	return value;
 
@@ -192,11 +192,11 @@ string FileSort::CleanString( string value )
 void FileSort::ClearWhitespace(void)
 {
 	// make sure we don't run into any newlines, spaces, or tabs
-	while(	file.peek() == '\n' || 
-			file.peek() == ' '  ||
-			file.peek() == '\t' )
+	while(	file.peek() == L'\n' || 
+			file.peek() == L' '  ||
+			file.peek() == L'\t' )
 	{
-		char c[1];
-		file.read(c,1);
-	}//end while
+		wchar_t c[1];
+		file.read( c, 1 );
+	}
 }

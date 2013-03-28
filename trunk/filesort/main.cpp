@@ -49,6 +49,9 @@
 #include "FileSort.h"
 #include "DisplayMessages.h"
 
+
+wstring ctow( const char* src );
+
 using namespace std;
 
 /*
@@ -69,7 +72,7 @@ An integer represeting a pass/fail to the Operating System.
 */
 int main( int argc, char* argv[] )
 {
-	string param1, param2, param3;
+	wstring param1, param2, param3;
 
 	FileSort* fileSort;
 	ObjectCreator creator;
@@ -77,49 +80,74 @@ int main( int argc, char* argv[] )
 	try
 	{
 		// set the window title
-		system("title filesort (c)Justin LeCheminant 2009");
+		system("title filesort (c)Justin LeCheminant 2013");
+
+		wstring param;
 
 		// check for a valid number of parameters first
-		if( argc < 2 && argc > 5 )
+		if( argc == 1 )
 		{
 			DisplayMessages::PrintInvalidUsage();
-		}//end if
-		else if( argc == 2 && ( strcmp(argv[1],"/?" ) == 0 ) )
-		{
-			DisplayMessages::PrintHelp();
-		}//end else if
-		else if( argc == 2 && ( strcmp( argv[1],"/v" ) == 0 ) )
-		{
-			DisplayMessages::PrintVersion();
-		}//end else if
+		}
 		else
 		{
-			// use the class factory to create a filesort object
-			fileSort = creator.CreateFileSort( argv, argc );
-
-			// check if that object is null
-			// null means some bad juju happened
-			if( fileSort != NULL )
+			param = ctow( argv[1] );
+		
+			if( argc < 2 && argc > 5 )
 			{
-				cout << endl << "Beginning Sort";
+				DisplayMessages::PrintInvalidUsage();
+			}
+			else if( argc == 2 && param == L"/?" )
+			{
+				DisplayMessages::PrintHelp();
+			}
+			else if( argc == 2 && param == L"/v" )
+			{
+				DisplayMessages::PrintVersion();
+			}
+			else
+			{
+				// convert char* to wstring
+				wstring* params = new wstring[argc];
 
-				// sort then save the data
-				fileSort->Sort();
+				for( int i = 0; i < argc; i++ )
+				{
+					params[i] = ctow( argv[i] );
+				}
+			
+				// use the class factory to create a filesort object
+				fileSort = creator.CreateFileSort( params,  argc );
 
-				cout << "\tSort Ended\tSaving File" << endl;
+				// check if that object is null
+				// null means some bad juju happened
+				if( fileSort != NULL )
+				{
+					wcout << endl << "Beginning Sort";
 
-				delete fileSort;
+					// sort then save the data
+					fileSort->Sort();
 
-			}//end if
-		}//end else
+					wcout << "\tSort Ended\tSaving File" << endl;
+
+					delete fileSort;
+
+				}
+			}
+		}
 
 		// bail back to the OS
 		return 0;
 
-	}//end try
+	}
 	catch( ... )
 	{
-		cout << endl << "An error has occured in the application please try running it again." << endl;
+		wcout << endl << "An error has occured in the application please try running it again." << endl;
 		return 0;
-	}//end catch
-}//end function main
+	}
+}
+
+
+wstring ctow( const char* src )
+{
+    return std::wstring( src, src + strlen(src) );
+}

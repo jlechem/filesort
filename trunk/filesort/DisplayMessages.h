@@ -52,7 +52,7 @@ public:
 
 		filename - The name of the file.
 	*/
-	static void PrintInvalidFileName( string filename );
+	static void PrintInvalidFileName( wstring filename );
 
 	/*
 		Function: PrintInvalidUsage
@@ -70,7 +70,7 @@ public:
 
 		filename - The name of the file.
 	*/
-	static void PrintInvalidOutputFile( string fileName );
+	static void PrintInvalidOutputFile( wstring fileName );
 	
 	/*
 		Function: PrintInvalidInputFile
@@ -81,7 +81,7 @@ public:
 
 		filename - The name of the file.
 	*/
-	static void PrintInvalidInputFile( string fileName );
+	static void PrintInvalidInputFile( wstring fileName );
 	
 	/*
 		Function: PrintHelp

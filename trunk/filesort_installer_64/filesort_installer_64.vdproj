@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0BEAE613D59B4B15BF51B4C00E8BC769"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2CE10F83A9914FA6BD0885D225247B82"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2D41650E456242C695450A11B5B3026C"
-        "OwnerKey" = "8:_0BEAE613D59B4B15BF51B4C00E8BC769"
+        "MsmKey" = "8:_4429AF5952EB400BB649BDD635C226F8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B2C85C6F800A4AC09BD6144F268CCC39"
+        "OwnerKey" = "8:_4429AF5952EB400BB649BDD635C226F8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -41,6 +41,12 @@
         {
         "MsmKey" = "8:_DBEF4D15D7224D38A16B2EB8BF3F7FFA"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4429AF5952EB400BB649BDD635C226F8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -61,6 +67,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -115,6 +129,14 @@
         {
             "LaunchCondition"
             {
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_ECFFFBDE7A294F43B218533A3A739C6D"
+                {
+                "Name" = "8:.NET Framework"
+                "Message" = "8:[VSDNETMSG]"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=131000"
+                }
             }
         }
         "File"
@@ -235,24 +257,24 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:filesort"
-        "ProductCode" = "8:{F1B9B5F6-EDB8-47A0-936E-8798480CB0B7}"
-        "PackageCode" = "8:{143633FA-1E82-400A-B17F-3986E936BCC0}"
+        "ProductCode" = "8:{82C4D345-BCD8-445B-9608-10A29026C2CF}"
+        "PackageCode" = "8:{2390013A-0858-4580-A2B9-25BBE4947948}"
         "UpgradeCode" = "8:{D856AC74-EB0E-4CF7-923E-B479D84EABB8}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:JRL Software"
+        "ProductVersion" = "8:2.0.0"
+        "Manufacturer" = "8:Justin LeCheminant"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://sourceforge.net/projects/filesort/"
         "Title" = "8:filesort_installer_64"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:JRL Software"
+        "ARPCONTACT" = "8:Justin LeCheminant"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:"
+        "ARPCOMMENTS" = "8:File sorting utility"
+        "ARPURLINFOABOUT" = "8:https://sourceforge.net/projects/filesort/"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
@@ -752,11 +774,11 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_2D41650E456242C695450A11B5B3026C"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_B2C85C6F800A4AC09BD6144F268CCC39"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
-            "SourcePath" = "8:Microsoft_VC100_CRT_x86.msm"
+            "SourcePath" = "8:Microsoft_VC100_CRT_x64.msm"
                 "Properties"
                 {
                 }
@@ -769,9 +791,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0BEAE613D59B4B15BF51B4C00E8BC769"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4429AF5952EB400BB649BDD635C226F8"
             {
-            "SourcePath" = "8:..\\Release\\filesort.exe"
+            "SourcePath" = "8:..\\x64\\Release\\filesort.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_919E8CED8F624181BFFBD17555443321"
@@ -789,7 +811,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
+            "OutputConfiguration" = "8:Release|x64"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{CEC42345-8B65-4D70-B96C-39271A3A19BE}"
             "ShowKeyOutput" = "11:TRUE"

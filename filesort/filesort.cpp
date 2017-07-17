@@ -66,11 +66,7 @@ void FileSort::Save(void)
 				{
 					// get the front item
 					item = this->items.front();
-
-					// write item to file
-					file.clear();
-					file << item << endl;
-
+					
 					// remove the front item
 					this->items.pop_front();
 				}
@@ -79,13 +75,14 @@ void FileSort::Save(void)
 					// get the back item
 					item = this->items.back();
 
-					// write item to file
-					file.clear();
-					file << item << endl;
-
 					// remove the back item
 					this->items.pop_back();
 				}
+
+				// write item to file
+				file.clear();
+				file << item << endl;
+
 			}
 
 			// get the last front item

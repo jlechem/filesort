@@ -47,7 +47,7 @@ public:
 		ascending - True for sorting in ascending order, otherwise false for descending order.
 		readLength - The length (in bytes) of data to read at a time.
 	*/
-	FileSort( wstring oldFileName, wstring newFilename, bool ascending, long readLength );
+	FileSort( string oldFileName, string newFilename, bool ascending, long readLength );
 
 	/*
 		Constructor: FileSort
@@ -59,7 +59,7 @@ public:
 		oldFilename - The name of the file to read data from.
 		ascending - True for sorting in ascending order, otherwise false for descending order.
 	*/
-	FileSort( wstring oldFilename, bool ascending );
+	FileSort( string oldFilename, bool ascending );
 
 	/*
 		Destructor: ~FileSort
@@ -79,17 +79,17 @@ public:
 
 private:
 
-	wfstream file;
+	fstream file;
 
 	bool isNewFile;
 	bool isAscending;
 
 	int readLength;
 
-	wstring newFilename;
-	wstring oldFilename;
+	string newFilename;
+	string oldFilename;
 
-	list<wstring> items;
+	list<string> items;
 
 	/*
 		Function: Load
@@ -110,18 +110,18 @@ private:
 	/*
 		Function: CleanString
 	
-		Cleans the wstring passed into the function of any whitespace.
+		Cleans the string passed into the function of any whitespace.
 
 		Parameters:
 
-		value - The wstring to be cleaned.
+		value - The string to be cleaned.
 		
 		Returns:
 		
-		A wstring that has been cleaned of all whitespace.
+		A string that has been cleaned of all whitespace.
 
 	*/
-	wstring CleanString(wstring value);
+	string CleanString(string value);
 
 	/*
 		Function: ClearWhitespace

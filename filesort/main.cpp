@@ -50,7 +50,7 @@
 #include "DisplayMessages.h"
 
 
-wstring ctow( const char* src );
+string ctow( const char* src );
 
 using namespace std;
 
@@ -72,7 +72,7 @@ An integer represeting a pass/fail to the Operating System.
 */
 int main( int argc, char* argv[] )
 {
-	wstring param1, param2, param3;
+	string param1, param2, param3;
 
 	FileSort* fileSort;
 	ObjectCreator creator;
@@ -82,7 +82,7 @@ int main( int argc, char* argv[] )
 		// set the window title
 		system("title filesort (c)Justin LeCheminant 2013");
 
-		wstring param;
+		string param;
 
 		// check for a valid number of parameters first
 		if( argc == 1 )
@@ -97,18 +97,18 @@ int main( int argc, char* argv[] )
 			{
 				DisplayMessages::PrintInvalidUsage();
 			}
-			else if( argc == 2 && param == L"/?" )
+			else if( argc == 2 && param == "/?" )
 			{
 				DisplayMessages::PrintHelp();
 			}
-			else if( argc == 2 && param == L"/v" )
+			else if( argc == 2 && param == "/v" )
 			{
 				DisplayMessages::PrintVersion();
 			}
 			else
 			{
-				// convert char* to wstring
-				wstring* params = new wstring[argc];
+				// convert char* to string
+				string* params = new string[argc];
 
 				for( int i = 0; i < argc; i++ )
 				{
@@ -147,7 +147,7 @@ int main( int argc, char* argv[] )
 }
 
 
-wstring ctow( const char* src )
+string ctow( const char* src )
 {
-    return std::wstring( src, src + strlen(src) );
+    return std::string( src, src + strlen(src) );
 }

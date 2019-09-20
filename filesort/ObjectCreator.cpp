@@ -40,13 +40,13 @@ ObjectCreator::~ObjectCreator(void)
 /// <param name="params">The parameters.</param>
 /// <param name="length">The length.</param>
 /// <returns></returns>
-FileSort* ObjectCreator::CreateFileSort(wstring params[], int length)
+FileSort* ObjectCreator::CreateFileSort(string params[], int length)
 {
-	wstring sourceFile;
-	wstring param1;
-	wstring param2;
-	wstring param3;
-	wstring param4;
+	string sourceFile;
+	string param1;
+	string param2;
+	string param3;
+	string param4;
 
 	long readLength = 0;
 
@@ -247,7 +247,7 @@ FileSort* ObjectCreator::CreateFileSort(wstring params[], int length)
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
 /// <returns></returns>
-bool ObjectCreator::ValidateFileExists(wstring fileName)
+bool ObjectCreator::ValidateFileExists(string fileName)
 {
 	fstream file;
 
@@ -278,7 +278,7 @@ bool ObjectCreator::ValidateFileExists(wstring fileName)
 /// </summary>
 /// <param name="value">The value.</param>
 /// <returns></returns>
-bool ObjectCreator::ValidateSwitch(wstring value)
+bool ObjectCreator::ValidateSwitch(string value)
 {
 	return ( this->ValidateDescendingSwitch( value ) || this->ValidateLengthSwitch( value ) );
 }
@@ -288,11 +288,11 @@ bool ObjectCreator::ValidateSwitch(wstring value)
 /// </summary>
 /// <param name="value">The value.</param>
 /// <returns></returns>
-bool ObjectCreator::ValidateDescendingSwitch(wstring value)
+bool ObjectCreator::ValidateDescendingSwitch(string value)
 {
 	try
 	{
-		if( value == L"/d" )
+		if( value == "/d" )
 		{
 			return true;
 		}
@@ -313,14 +313,14 @@ bool ObjectCreator::ValidateDescendingSwitch(wstring value)
 /// </summary>
 /// <param name="value">The value.</param>
 /// <returns></returns>
-bool ObjectCreator::ValidateLengthSwitch(wstring value)
+bool ObjectCreator::ValidateLengthSwitch(string value)
 {
 	try
 	{
-		// get the first 2 chars from the wstring
-		wstring switchValue( value, 0, 2 );
+		// get the first 2 chars from the string
+		string switchValue( value, 0, 2 );
 
-		if( switchValue == L"/c" )
+		if( switchValue == "/c" )
 		{
 			return true;
 		}
@@ -340,14 +340,14 @@ bool ObjectCreator::ValidateLengthSwitch(wstring value)
 /// </summary>
 /// <param name="value">The value.</param>
 /// <returns></returns>
-int ObjectCreator::GetReadLength(wstring value)
+int ObjectCreator::GetReadLength(string value)
 {
 	try
 	{
-		// get the first 2 chars from the wstring
-		wstring switchValue( value, 2, value.length() );
+		// get the first 2 chars from the string
+		string switchValue( value, 2, value.length() );
 
-		return _wtoi( switchValue.c_str() );
+		return stoi( switchValue.c_str() );
 	}
 	catch( ... )
 	{
@@ -360,7 +360,7 @@ int ObjectCreator::GetReadLength(wstring value)
 /// </summary>
 /// <param name="value">The value.</param>
 /// <returns></returns>
-char ObjectCreator::GetSwitchValue(wstring value)
+char ObjectCreator::GetSwitchValue(string value)
 {
 	try
 	{
@@ -377,7 +377,7 @@ char ObjectCreator::GetSwitchValue(wstring value)
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
 /// <returns></returns>
-bool validateOutputfile(wstring fileName)
+bool validateOutputfile(string fileName)
 {
 	fstream fout;
 
@@ -412,7 +412,7 @@ bool validateOutputfile(wstring fileName)
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
 /// <returns></returns>
-bool ObjectCreator::ValidateOutputFile(wstring fileName)
+bool ObjectCreator::ValidateOutputFile(string fileName)
 {
 	try
 	{

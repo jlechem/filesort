@@ -73,7 +73,7 @@ public:
 		<FileSort>
 
 	*/
-	FileSort* CreateFileSort( wstring params[], int length );
+	FileSort* CreateFileSort( string params[], int length );
 
 private:
 	/*
@@ -89,7 +89,7 @@ private:
 
 		True if the file exists and could be opened, false if not.
 	*/
-	bool ValidateFileExists( wstring fileName );
+	bool ValidateFileExists( string fileName );
 	
 	/*
 		Function: ValidateOutputFile
@@ -104,7 +104,7 @@ private:
 
 		True if the file was found or could be created, false if not.
 	*/
-	bool ValidateOutputFile( wstring fileName );
+	bool ValidateOutputFile( string fileName );
 	
 	/*
 		Function: ValidateSwitch
@@ -119,7 +119,7 @@ private:
 
 		True if the switch is valid, false if not.
 	*/
-	bool ValidateSwitch( wstring value );
+	bool ValidateSwitch( string value );
 	
 	/*
 		Function: ValidateDescendingSwitch
@@ -134,7 +134,7 @@ private:
 
 		True if the switch is valid, false if not.
 	*/
-	bool ValidateDescendingSwitch( wstring value );
+	bool ValidateDescendingSwitch( string value );
 	
 	/*
 		Function: ValidateLengthSwitch
@@ -149,7 +149,7 @@ private:
 
 		True if the length is greater than 0, false if not.
 	*/
-	bool ValidateLengthSwitch( wstring value );
+	bool ValidateLengthSwitch( string value );
 	
 	/*
 		Function: GetReadLength
@@ -164,23 +164,23 @@ private:
 
 		The integer value of the read length.
 	*/
-	int GetReadLength(wstring value);
+	int GetReadLength(string value);
 	
 	/*
 		Function: GetSwitchValue
 	
-		Converts the wstring from the command line arguments to the appropriate character based switch code.
+		Converts the string from the command line arguments to the appropriate character based switch code.
 
 		Parameters:
 
-		value - The wstring value to convert to a character.
+		value - The string value to convert to a character.
 
 		Returns:
 
 		The character value of the switch command.
 		
 	*/
-	char GetSwitchValue(wstring value);
+	char GetSwitchValue(string value);
 
 };
 

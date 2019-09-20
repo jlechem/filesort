@@ -37,9 +37,9 @@ DisplayMessages::~DisplayMessages(void)
 /// Prints the name of the invalid file.
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
-void DisplayMessages::PrintInvalidFileName(wstring fileName)
+void DisplayMessages::PrintInvalidFileName(string fileName)
 {
-	wcout << endl << "Unable to open file: '" << fileName << "' for sorting." << endl
+	cout << endl << "Unable to open file: '" << fileName << "' for sorting." << endl
 		 << "Please check the file exists and try again." << endl;
 }
 
@@ -48,7 +48,7 @@ void DisplayMessages::PrintInvalidFileName(wstring fileName)
 /// </summary>
 void DisplayMessages::PrintInvalidUsage(void)
 {
-	wcout << endl << "Invalid usage, please use help switch <filesort /?> for more details." << endl;
+	cout << endl << "Invalid usage, please use help switch <filesort /?> for more details." << endl;
 }
 
 /// <summary>
@@ -56,7 +56,7 @@ void DisplayMessages::PrintInvalidUsage(void)
 /// </summary>
 void DisplayMessages::PrintVersion()
 {
-	wcout << endl << "Current FileSort version is 2.0.0" << endl << endl;
+	cout << endl << "Current FileSort version is 2.0.0" << endl << endl;
 }
 
 /// <summary>
@@ -64,7 +64,7 @@ void DisplayMessages::PrintVersion()
 /// </summary>
 void DisplayMessages::PrintHelp(void)
 {
-	wcout << endl << "Sorts a file into ascending or descending order." << endl
+	cout << endl << "Sorts a file into ascending or descending order." << endl
 		 << "Items are sorted using white space and ascending order by default." << endl
 		 << "White space and sort order can be overriden using the appropriate switches." << endl << endl
 		 << "FILESORT [source file][output file][/d][/cX]" << endl
@@ -76,16 +76,16 @@ void DisplayMessages::PrintHelp(void)
 /// Prints the invalid input file.
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
-void DisplayMessages::PrintInvalidInputFile(wstring fileName)
+void DisplayMessages::PrintInvalidInputFile(string fileName)
 {
-	wcout << endl << "An error occurred with the input file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
+	cout << endl << "An error occurred with the input file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
 }
 
 /// <summary>
 /// Prints the invalid output file.
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
-void DisplayMessages::PrintInvalidOutputFile(wstring fileName)
+void DisplayMessages::PrintInvalidOutputFile(string fileName)
 {
-	wcout << endl << "An error occurred with the output file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
+	cout << endl << "An error occurred with the output file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
 }

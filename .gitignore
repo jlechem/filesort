@@ -21,3 +21,4 @@ Debug/filesort.exe
 *.idb
 filesort/Debug/filesort.log
 filesort/Release/filesort.log
+*.ipch

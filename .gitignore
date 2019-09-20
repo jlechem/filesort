@@ -22,3 +22,4 @@ Debug/filesort.exe
 filesort/Debug/filesort.log
 filesort/Release/filesort.log
 *.ipch
+filesort/Release/filesort.Build.CppClean.log

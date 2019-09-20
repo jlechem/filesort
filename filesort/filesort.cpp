@@ -1,5 +1,5 @@
 /*
-	Copyright 2010 Justin LeCheminant
+	Copyright 2019 Justin LeCheminant
 
 	This file is part of filesort.
 
@@ -19,7 +19,14 @@
 
 #include "FileSort.h"
 
-FileSort::FileSort( wstring oldFilename, wstring newFilename, bool ascending, long readLength )
+/// <summary>
+/// Initializes a new instance of the <see cref="FileSort"/> class.
+/// </summary>
+/// <param name="oldFilename">The old filename.</param>
+/// <param name="newFilename">The new filename.</param>
+/// <param name="ascending">if set to <c>true</c> [ascending].</param>
+/// <param name="readLength">Length of the read.</param>
+FileSort::FileSort(wstring oldFilename, wstring newFilename, bool ascending, long readLength)
 {
 	// set the internal data members
 	this->isAscending = ascending;
@@ -30,7 +37,12 @@ FileSort::FileSort( wstring oldFilename, wstring newFilename, bool ascending, lo
 
 }
 
-FileSort::FileSort( wstring oldFilename, bool ascending )
+/// <summary>
+/// Initializes a new instance of the <see cref="FileSort"/> class.
+/// </summary>
+/// <param name="oldFilename">The old filename.</param>
+/// <param name="ascending">if set to <c>true</c> [ascending].</param>
+FileSort::FileSort(wstring oldFilename, bool ascending)
 {
 	this->isAscending = ascending;
 	this->isNewFile = false;
@@ -40,12 +52,16 @@ FileSort::FileSort( wstring oldFilename, bool ascending )
 
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="FileSort"/> class.
+/// </summary>
 FileSort::~FileSort(void)
 {
 }
 
-
-// saves the array list to the file
+/// <summary>
+/// saves the array list to the file
+/// </summary>
 void FileSort::Save(void)
 {
 	wstring item;
@@ -99,7 +115,9 @@ void FileSort::Save(void)
 	}
 }
 
-// loads the data from the file into the array list
+/// <summary>
+/// loads the data from the file into the array list
+/// </summary>
 void FileSort::Load(void)
 {
 	wstring item;
@@ -142,9 +160,9 @@ void FileSort::Load(void)
 		}
 		else
 		{
-			while( ( file >> item ) != NULL )
+			while (getline(file, item))
 			{
-				this->items.push_back( item );
+				this->items.push_back(item);
 			}
 		}
 	}
@@ -154,7 +172,9 @@ void FileSort::Load(void)
 
 }
 
-// sorts the array list in ascending/descending order
+/// <summary>
+/// sorts the array list in ascending/descending order
+/// </summary>
 void FileSort::Sort(void)
 {
 	// load the data
@@ -168,7 +188,12 @@ void FileSort::Sort(void)
 
 }
 
-wstring FileSort::CleanString( wstring value )
+/// <summary>
+/// Cleans the string.
+/// </summary>
+/// <param name="value">The value.</param>
+/// <returns></returns>
+wstring FileSort::CleanString(wstring value)
 {
 	int index = 0;
 
@@ -186,6 +211,9 @@ wstring FileSort::CleanString( wstring value )
 
 }
 
+/// <summary>
+/// Clears the whitespace.
+/// </summary>
 void FileSort::ClearWhitespace(void)
 {
 	// make sure we don't run into any newlines, spaces, or tabs

@@ -1,5 +1,5 @@
 /*
-	Copyright 2010 Justin LeCheminant
+	Copyright 2019 Justin LeCheminant
 
 	This file is part of filesort.
 
@@ -19,30 +19,49 @@
 
 #include "DisplayMessages.h"
 
+/// <summary>
+/// Initializes a new instance of the <see cref="DisplayMessages"/> class.
+/// </summary>
 DisplayMessages::DisplayMessages(void)
 {
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="DisplayMessages"/> class.
+/// </summary>
 DisplayMessages::~DisplayMessages(void)
 {
 }
 
-void DisplayMessages::PrintInvalidFileName( wstring fileName )
+/// <summary>
+/// Prints the name of the invalid file.
+/// </summary>
+/// <param name="fileName">Name of the file.</param>
+void DisplayMessages::PrintInvalidFileName(wstring fileName)
 {
 	wcout << endl << "Unable to open file: '" << fileName << "' for sorting." << endl
 		 << "Please check the file exists and try again." << endl;
 }
 
+/// <summary>
+/// Prints the invalid usage.
+/// </summary>
 void DisplayMessages::PrintInvalidUsage(void)
 {
 	wcout << endl << "Invalid usage, please use help switch <filesort /?> for more details." << endl;
 }
 
+/// <summary>
+/// Prints the version.
+/// </summary>
 void DisplayMessages::PrintVersion()
 {
 	wcout << endl << "Current FileSort version is 2.0.0" << endl << endl;
 }
 
+/// <summary>
+/// Prints the help.
+/// </summary>
 void DisplayMessages::PrintHelp(void)
 {
 	wcout << endl << "Sorts a file into ascending or descending order." << endl
@@ -53,12 +72,20 @@ void DisplayMessages::PrintHelp(void)
 		 << "[/cX]\tSpecifies X number of characters to be read instead of whitespace." << endl << endl;
 }
 
-void DisplayMessages::PrintInvalidInputFile( wstring fileName )
+/// <summary>
+/// Prints the invalid input file.
+/// </summary>
+/// <param name="fileName">Name of the file.</param>
+void DisplayMessages::PrintInvalidInputFile(wstring fileName)
 {
 	wcout << endl << "An error occurred with the input file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
-}//end function
+}
 
-void DisplayMessages::PrintInvalidOutputFile( wstring fileName )
+/// <summary>
+/// Prints the invalid output file.
+/// </summary>
+/// <param name="fileName">Name of the file.</param>
+void DisplayMessages::PrintInvalidOutputFile(wstring fileName)
 {
 	wcout << endl << "An error occurred with the output file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
-}//end function
+}

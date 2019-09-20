@@ -1,5 +1,5 @@
 /*
-	Copyright 2010 Justin LeCheminant
+	Copyright 2019 Justin LeCheminant
 
 	This file is part of filesort.
 
@@ -19,16 +19,28 @@
 
 #include "ObjectCreator.h"
 
+/// <summary>
+/// Initializes a new instance of the <see cref="ObjectCreator"/> class.
+/// </summary>
 ObjectCreator::ObjectCreator(void)
 {
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="ObjectCreator"/> class.
+/// </summary>
 ObjectCreator::~ObjectCreator(void)
 {
 }
 
 
-FileSort* ObjectCreator::CreateFileSort( wstring params[], int length)
+/// <summary>
+/// Creates the file sort.
+/// </summary>
+/// <param name="params">The parameters.</param>
+/// <param name="length">The length.</param>
+/// <returns></returns>
+FileSort* ObjectCreator::CreateFileSort(wstring params[], int length)
 {
 	wstring sourceFile;
 	wstring param1;
@@ -230,6 +242,11 @@ FileSort* ObjectCreator::CreateFileSort( wstring params[], int length)
 
 }
 
+/// <summary>
+/// Validates the file exists.
+/// </summary>
+/// <param name="fileName">Name of the file.</param>
+/// <returns></returns>
 bool ObjectCreator::ValidateFileExists(wstring fileName)
 {
 	fstream file;
@@ -256,12 +273,22 @@ bool ObjectCreator::ValidateFileExists(wstring fileName)
 	}
 }
 
-bool ObjectCreator::ValidateSwitch( wstring value )
+/// <summary>
+/// Validates the switch.
+/// </summary>
+/// <param name="value">The value.</param>
+/// <returns></returns>
+bool ObjectCreator::ValidateSwitch(wstring value)
 {
 	return ( this->ValidateDescendingSwitch( value ) || this->ValidateLengthSwitch( value ) );
 }
 
-bool ObjectCreator::ValidateDescendingSwitch( wstring value )
+/// <summary>
+/// Validates the descending switch.
+/// </summary>
+/// <param name="value">The value.</param>
+/// <returns></returns>
+bool ObjectCreator::ValidateDescendingSwitch(wstring value)
 {
 	try
 	{
@@ -281,7 +308,12 @@ bool ObjectCreator::ValidateDescendingSwitch( wstring value )
 }
 
 
-bool ObjectCreator::ValidateLengthSwitch( wstring value )
+/// <summary>
+/// Validates the length switch.
+/// </summary>
+/// <param name="value">The value.</param>
+/// <returns></returns>
+bool ObjectCreator::ValidateLengthSwitch(wstring value)
 {
 	try
 	{
@@ -303,6 +335,11 @@ bool ObjectCreator::ValidateLengthSwitch( wstring value )
 	}
 }
 
+/// <summary>
+/// Gets the length of the read.
+/// </summary>
+/// <param name="value">The value.</param>
+/// <returns></returns>
 int ObjectCreator::GetReadLength(wstring value)
 {
 	try
@@ -318,6 +355,11 @@ int ObjectCreator::GetReadLength(wstring value)
 	}
 }
 
+/// <summary>
+/// Gets the switch value.
+/// </summary>
+/// <param name="value">The value.</param>
+/// <returns></returns>
 char ObjectCreator::GetSwitchValue(wstring value)
 {
 	try
@@ -330,7 +372,12 @@ char ObjectCreator::GetSwitchValue(wstring value)
 	}
 }
 
-bool validateOutputfile( wstring fileName )
+/// <summary>
+/// Validates the outputfile.
+/// </summary>
+/// <param name="fileName">Name of the file.</param>
+/// <returns></returns>
+bool validateOutputfile(wstring fileName)
 {
 	fstream fout;
 
@@ -360,7 +407,12 @@ bool validateOutputfile( wstring fileName )
 	}
 }
 
-bool ObjectCreator::ValidateOutputFile( wstring fileName )
+/// <summary>
+/// Validates the output file.
+/// </summary>
+/// <param name="fileName">Name of the file.</param>
+/// <returns></returns>
+bool ObjectCreator::ValidateOutputFile(wstring fileName)
 {
 	try
 	{

@@ -23,3 +23,6 @@ filesort/Debug/filesort.log
 filesort/Release/filesort.log
 *.ipch
 filesort/Release/filesort.Build.CppClean.log
+x64/Release/filesort.exe
+filesort/x64/Release/filesort.log
+.vs/filesort/v15/.suo

@@ -1,6 +1,6 @@
 /*
 
-	Copyright 2019 Justin LeCheminant
+	Copyright 2021 Justin LeCheminant
 
 	This file is part of filesort.
 

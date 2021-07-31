@@ -1,5 +1,5 @@
 /*
-	Copyright 2019 Justin LeCheminant
+	Copyright 2021 Justin LeCheminant
 
 	This file is part of filesort.
 
@@ -80,7 +80,7 @@ int main( int argc, char* argv[] )
 	try
 	{
 		// set the window title
-		system("title filesort (c)Justin LeCheminant 2013");
+		system("title filesort (c)Justin LeCheminant 2021");
 
 		string param;
 

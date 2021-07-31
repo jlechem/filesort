@@ -26,3 +26,9 @@ filesort/Release/filesort.Build.CppClean.log
 x64/Release/filesort.exe
 filesort/x64/Release/filesort.log
 .vs/filesort/v15/.suo
+.vs/filesort/v16/Browse.VC.db
+.vs/filesort/v16/Browse.VC.db-shm
+.vs/filesort/v16/.suo
+.vs/filesort/v16/Browse.VC.db-wal
+.vs/filesort/v16/Browse.VC.opendb
+*.recipe

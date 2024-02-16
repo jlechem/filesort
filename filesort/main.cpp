@@ -43,6 +43,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 
 // custom headers
 #include "ObjectCreator.h"

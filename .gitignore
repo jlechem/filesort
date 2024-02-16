@@ -32,3 +32,6 @@ filesort/x64/Release/filesort.log
 .vs/filesort/v16/Browse.VC.db-wal
 .vs/filesort/v16/Browse.VC.opendb
 *.recipe
+*.gch
+.vscode/tasks.json
+filesort/a.exe

@@ -35,3 +35,4 @@ filesort/x64/Release/filesort.log
 *.gch
 .vscode/tasks.json
 filesort/a.exe
+.vscode/settings.json

@@ -18,7 +18,8 @@
     along with filesort.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#ifndef FILESORT_H
+#define FILESORT_H
 
 #include <iostream>
 #include <string>
@@ -132,3 +133,4 @@ private:
 
 };
 
+#endif

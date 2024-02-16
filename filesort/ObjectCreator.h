@@ -17,7 +17,8 @@
     along with filesort.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#ifndef OBJECTCREATOR_H
+#define OBJECTCREATOR_H
 
 #include <string>
 #include <fstream>
@@ -184,3 +185,4 @@ private:
 
 };
 
+#endif

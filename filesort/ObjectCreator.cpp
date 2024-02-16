@@ -48,10 +48,6 @@ FileSort* ObjectCreator::CreateFileSort(string params[], int length)
 	string param3;
 	string param4;
 
-	long readLength = 0;
-
-	bool isAscending = false;	
-
 	try
 	{
 		// make sure we have a valid count

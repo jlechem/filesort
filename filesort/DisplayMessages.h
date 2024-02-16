@@ -17,7 +17,8 @@
     along with filesort.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#ifndef DISPLAYMESSAGES_H
+#define DISPLAYMESSAGES_H
 
 #include <string>
 #include <iostream>
@@ -98,3 +99,4 @@ public:
 	static void PrintVersion();
 };
 
+#endif

@@ -36,3 +36,8 @@ filesort/x64/Release/filesort.log
 .vscode/tasks.json
 filesort/a.exe
 .vscode/settings.json
+filesort/DisplayMessages.o
+filesort/filesort.o
+filesort/main.o
+filesort/ObjectCreator.o
+filesort/filesort.exe

@@ -22,77 +22,23 @@
 
 #include <iostream>
 
-/*
-	Class: DisplayMessages
-	A class that displays messages to the user via the standard output.
-*/
 class DisplayMessages
 {
 public:
-	/*
-		Constructor: DisplayMessages
-		Initializes the object.
-    */
 	DisplayMessages(void);
 
-	/*
-		Destructor: ~DisplayMessages
-		Destroys the object.
-    */
 	~DisplayMessages(void);
 	
-	/*
-		Function: PrintInvalidFileName
-	
-		Prints an error if the specified filename cannot be found or opened.
-
-		Parameters:
-
-		filename - The name of the file.
-	*/
 	static void PrintInvalidFileName( const std::string filename );
 
-	/*
-		Function: PrintInvalidUsage
-	
-		Prints the standard usage options if inavalid command line parameters are passed to the applicaiton.
-	*/
 	static void PrintInvalidUsage(void);
 
-	/*
-		Function: PrintInvalidOutputFile
-	
-		Prints an error if the specified output file cannot be found or created.
-
-		Parameters:
-
-		filename - The name of the file.
-	*/
 	static void PrintInvalidOutputFile( const std::string fileName );
 	
-	/*
-		Function: PrintInvalidInputFile
-	
-		Prints an error if the specified input file cannot be found or opened.
-
-		Parameters:
-
-		filename - The name of the file.
-	*/
 	static void PrintInvalidInputFile( const std::string fileName );
-	
-	/*
-		Function: PrintHelp
-	
-		Prints the stanard help output on how to use the application.
-	*/
+
 	static void PrintHelp();
 	
-	/*
-		Function: PrintVersion
-	
-		Prints the current version of the application.
-	*/
 	static void PrintVersion();
 };
 

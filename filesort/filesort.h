@@ -26,107 +26,37 @@
 #include <fstream>
 #include <list>
 
-/*
-	Class: FileSort
-	A class that sorts a file into ascending or descending order.
-*/
 class FileSort
 {
 public:
+	FileSort( std::string oldFileName, std::string newFilename, bool ascending, long readLength );
 
-	/*
-		Constructor: FileSort
-	
-		Initializes the object.
+	FileSort( std::string oldFilename, bool ascending );
 
-		Parameters:
-
-		oldFileName - The name of the file to read data from.
-		newFilename - The name of the file to write output to.
-		ascending - True for sorting in ascending order, otherwise false for descending order.
-		readLength - The length (in bytes) of data to read at a time.
-	*/
-	FileSort( string oldFileName, string newFilename, bool ascending, long readLength );
-
-	/*
-		Constructor: FileSort
-	
-		Initializes the object.
-
-		Parameters:
-
-		oldFilename - The name of the file to read data from.
-		ascending - True for sorting in ascending order, otherwise false for descending order.
-	*/
-	FileSort( string oldFilename, bool ascending );
-
-	/*
-		Destructor: ~FileSort
-	
-		Destroys the object.
-
-	*/
 	~FileSort(void);
 
-	/*
-		Function: Sort
-	
-		Sorts the data into ascending or descending order.
-
-	*/
 	void Sort(void);
 
 private:
 
-	fstream file;
+	std::fstream file;
 
 	bool isNewFile;
 	bool isAscending;
 
 	int readLength;
 
-	string newFilename;
-	string oldFilename;
+	std::string newFilename;
+	std::string oldFilename;
 
-	list<string> items;
+	std::list<std::string> items;
 
-	/*
-		Function: Load
-	
-		Loads the data from the file into the array list.
-
-	*/
 	void Load( void );
 	
-	/*
-		Function: Save
-	
-		Saves the sorted data to the output file.
-
-	*/
 	void Save( void );
-	
-	/*
-		Function: CleanString
-	
-		Cleans the string passed into the function of any whitespace.
 
-		Parameters:
+	std::string CleanString(std::string value);
 
-		value - The string to be cleaned.
-		
-		Returns:
-		
-		A string that has been cleaned of all whitespace.
-
-	*/
-	string CleanString(string value);
-
-	/*
-		Function: ClearWhitespace
-	
-		Clears whitespace from the beginning of a file.
-	*/
 	void ClearWhitespace(void);
 
 };

@@ -77,9 +77,6 @@ int main( int argc, char* argv[] )
 
 	try
 	{
-		// set the window title
-		system("title filesort (c)Justin LeCheminant 2021");
-
 		string param;
 
 		// check for a valid number of parameters first

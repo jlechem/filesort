@@ -19,14 +19,7 @@
 
 #include "FileSort.h"
 
-/// <summary>
-/// Initializes a new instance of the <see cref="FileSort"/> class.
-/// </summary>
-/// <param name="oldFilename">The old filename.</param>
-/// <param name="newFilename">The new filename.</param>
-/// <param name="ascending">if set to <c>true</c> [ascending].</param>
-/// <param name="readLength">Length of the read.</param>
-FileSort::FileSort(string oldFilename, string newFilename, bool ascending, long readLength)
+FileSort::FileSort(std::string oldFilename, std::string newFilename, bool ascending, long readLength)
 {
 	// set the internal data members
 	this->isAscending = ascending;
@@ -37,12 +30,7 @@ FileSort::FileSort(string oldFilename, string newFilename, bool ascending, long 
 
 }
 
-/// <summary>
-/// Initializes a new instance of the <see cref="FileSort"/> class.
-/// </summary>
-/// <param name="oldFilename">The old filename.</param>
-/// <param name="ascending">if set to <c>true</c> [ascending].</param>
-FileSort::FileSort(string oldFilename, bool ascending)
+FileSort::FileSort(std::string oldFilename, bool ascending)
 {
 	this->isAscending = ascending;
 	this->isNewFile = false;
@@ -52,88 +40,63 @@ FileSort::FileSort(string oldFilename, bool ascending)
 
 }
 
-/// <summary>
-/// Finalizes an instance of the <see cref="FileSort"/> class.
-/// </summary>
 FileSort::~FileSort(void)
 {
 }
 
-/// <summary>
-/// saves the array list to the file
-/// </summary>
 void FileSort::Save(void)
 {
-	string item;
+	std::string item;
 
-	// open the file in output mode
-	file.open( this->newFilename.c_str(), ios::out | ios::trunc );
+	file.open( this->newFilename.c_str(), std::ios::out | std::ios::trunc );
 
-	// check if the file is open
 	if( file.is_open() )
 	{
 		if( this->items.size() > 0 )
 		{
-			// loop the items and write contents to file
 			while( this->items.size() > 1 )
 			{
-				// check if we're doing an ascending or descending sort
 				if( this->isAscending )
 				{
-					// get the front item
 					item = this->items.front();
 					
-					// remove the front item
 					this->items.pop_front();
 				}
 				else
 				{
-					// get the back item
 					item = this->items.back();
 
-					// remove the back item
 					this->items.pop_back();
 				}
 
-				// write item to file
 				file.clear();
-				file << item << endl;
+				file << item << std::endl;
 
 			}
 
-			// get the last front item
 			item = this->items.front();
 
-			// write item to file
 			file.clear();
 			file << item;
 	
 		}
 
-		// close the file
 		file.close();
 	}
 }
 
-/// <summary>
-/// loads the data from the file into the array list
-/// </summary>
 void FileSort::Load(void)
 {
-	string item;
+	std::string item;
 
-	// clear the items
 	this->items.clear();
 
-	// load the data from the file into the array list
-	file.open( this->oldFilename.c_str(), ios::in );
+	file.open( this->oldFilename.c_str(), std::ios::in );
 
-	// check if the file is open
 	if( file.is_open() )
 	{
 		if( this->readLength > 0 )
 		{
-			// loop the file and put it into the list
 			while( !file.eof() )
 			{
 				this->ClearWhitespace();
@@ -145,8 +108,7 @@ void FileSort::Load(void)
 				file.read( buffer, this->readLength );
 				buffer[this->readLength] = '\0';
 
-				// clean our string
-				string newString( this->CleanString( buffer ) );
+				std::string newString( this->CleanString( buffer ) );
 
 				this->ClearWhitespace();
 
@@ -159,9 +121,9 @@ void FileSort::Load(void)
 		}
 		else
 		{
-			while (getline(file, item))
+			while (std::getline(file, item))
 			{
-				string newString(this->CleanString(item));
+				std::string newString(this->CleanString(item));
 
 				// don't let blank values in
 				if (newString != "")
@@ -172,33 +134,21 @@ void FileSort::Load(void)
 		}
 	}
 
-	// close the file
 	file.close();
 
 }
 
-/// <summary>
-/// sorts the array list in ascending/descending order
-/// </summary>
 void FileSort::Sort(void)
 {
-	// load the data
 	this->Load();
 
-	// sort the list
 	this->items.sort();
 
-	// save the data
 	this->Save();
 
 }
 
-/// <summary>
-/// Cleans the string.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns></returns>
-string FileSort::CleanString(string value)
+std::string FileSort::CleanString(std::string value)
 {
 	int index = 0;
 
@@ -216,9 +166,6 @@ string FileSort::CleanString(string value)
 
 }
 
-/// <summary>
-/// Clears the whitespace.
-/// </summary>
 void FileSort::ClearWhitespace(void)
 {
 	// make sure we don't run into any newlines, spaces, or tabs

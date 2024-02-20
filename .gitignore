@@ -42,3 +42,5 @@ filesort/main.o
 filesort/ObjectCreator.o
 filesort/filesort.exe
 filesort/.vscode/settings.json
+filesort/.build/CMakeCache.txt
+filesort/.build/CMakeFiles/cmake.check_cache

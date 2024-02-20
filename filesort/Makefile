@@ -16,4 +16,8 @@ ObjectCreator.o: ObjectCreator.cpp ObjectCreator.h
 
 main.o: main.cpp 
 	$(CXX) -c main.cpp
+
+.PHONY : clean
+clean :
+	-rm *.o filesort
 	

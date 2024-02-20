@@ -20,10 +20,7 @@
 #ifndef DISPLAYMESSAGES_H
 #define DISPLAYMESSAGES_H
 
-#include <string>
 #include <iostream>
-
-using namespace std;
 
 /*
 	Class: DisplayMessages
@@ -53,7 +50,7 @@ public:
 
 		filename - The name of the file.
 	*/
-	static void PrintInvalidFileName( string filename );
+	static void PrintInvalidFileName( const std::string filename );
 
 	/*
 		Function: PrintInvalidUsage
@@ -71,7 +68,7 @@ public:
 
 		filename - The name of the file.
 	*/
-	static void PrintInvalidOutputFile( string fileName );
+	static void PrintInvalidOutputFile( const std::string fileName );
 	
 	/*
 		Function: PrintInvalidInputFile
@@ -82,7 +79,7 @@ public:
 
 		filename - The name of the file.
 	*/
-	static void PrintInvalidInputFile( string fileName );
+	static void PrintInvalidInputFile( const std::string fileName );
 	
 	/*
 		Function: PrintHelp

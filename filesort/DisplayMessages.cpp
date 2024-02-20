@@ -37,10 +37,10 @@ DisplayMessages::~DisplayMessages(void)
 /// Prints the name of the invalid file.
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
-void DisplayMessages::PrintInvalidFileName(string fileName)
+void DisplayMessages::PrintInvalidFileName(const std::string fileName)
 {
-	cout << endl << "Unable to open file: '" << fileName << "' for sorting." << endl
-		 << "Please check the file exists and try again." << endl;
+	std::cout << std::endl << "Unable to open file: '" << fileName << "' for sorting." << std::endl
+		 << "Please check the file exists and try again." << std::endl;
 }
 
 /// <summary>
@@ -48,7 +48,7 @@ void DisplayMessages::PrintInvalidFileName(string fileName)
 /// </summary>
 void DisplayMessages::PrintInvalidUsage(void)
 {
-	cout << endl << "Invalid usage, please use help switch <filesort /?> for more details." << endl;
+	std::cout << std::endl << "Invalid usage, please use help switch <filesort /?> for more details." << std::endl;
 }
 
 /// <summary>
@@ -56,7 +56,7 @@ void DisplayMessages::PrintInvalidUsage(void)
 /// </summary>
 void DisplayMessages::PrintVersion()
 {
-	cout << endl << "Current FileSort version is 2.0.0" << endl << endl;
+	std::cout << std::endl << "Current FileSort version is 2.0.0" << std::endl << std::endl;
 }
 
 /// <summary>
@@ -64,28 +64,28 @@ void DisplayMessages::PrintVersion()
 /// </summary>
 void DisplayMessages::PrintHelp(void)
 {
-	cout << endl << "Sorts a file into ascending or descending order." << endl
-		 << "Items are sorted using white space and ascending order by default." << endl
-		 << "White space and sort order can be overriden using the appropriate switches." << endl << endl
-		 << "FILESORT [source file][output file][/d][/cX]" << endl
-		 << "[/d]\tSpecifies descending sort order." << endl
-		 << "[/cX]\tSpecifies X number of characters to be read instead of whitespace." << endl << endl;
+	std::cout << std::endl << "Sorts a file into ascending or descending order." << std::endl
+		 << "Items are sorted using white space and ascending order by default." << std::endl
+		 << "White space and sort order can be overriden using the appropriate switches." << std::endl << std::endl
+		 << "FILESORT [source file][output file][/d][/cX]" << std::endl
+		 << "[/d]\tSpecifies descending sort order." << std::endl
+		 << "[/cX]\tSpecifies X number of characters to be read instead of whitespace." << std::endl << std::endl;
 }
 
 /// <summary>
 /// Prints the invalid input file.
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
-void DisplayMessages::PrintInvalidInputFile(string fileName)
+void DisplayMessages::PrintInvalidInputFile(const std::string fileName)
 {
-	cout << endl << "An error occurred with the input file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
+	std::cout << std::endl << "An error occurred with the input file: " << fileName << std::endl << "Please verify the filename and try running the application again." << std::endl;
 }
 
 /// <summary>
 /// Prints the invalid output file.
 /// </summary>
 /// <param name="fileName">Name of the file.</param>
-void DisplayMessages::PrintInvalidOutputFile(string fileName)
+void DisplayMessages::PrintInvalidOutputFile(const std::string fileName)
 {
-	cout << endl << "An error occurred with the output file: " << fileName << endl << "Please verify the filename and try running the application again." << endl;
+	std::cout << std::endl << "An error occurred with the output file: " << fileName << std::endl << "Please verify the filename and try running the application again." << std::endl;
 }

@@ -26,8 +26,6 @@
 #include <fstream>
 #include <list>
 
-using namespace std;
-
 /*
 	Class: FileSort
 	A class that sorts a file into ascending or descending order.

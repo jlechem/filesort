@@ -50,10 +50,7 @@
 #include "FileSort.h"
 #include "DisplayMessages.h"
 
-
 string ctow( const char* src );
-
-using namespace std;
 
 /*
 
@@ -123,12 +120,12 @@ int main( int argc, char* argv[] )
 				// null means some bad juju happened
 				if( fileSort != NULL )
 				{
-					wcout << endl << "Beginning Sort";
+					cout << endl << "Beginning Sort";
 
 					// sort then save the data
 					fileSort->Sort();
 
-					wcout << "\tSort Ended\tSaving File" << endl;
+					cout << "\tSort Ended\tSaving File" << endl;
 
 					delete fileSort;
 
@@ -142,7 +139,7 @@ int main( int argc, char* argv[] )
 	}
 	catch( ... )
 	{
-		wcout << endl << "An error has occured in the application please try running it again." << endl;
+		cout << endl << "An error has occured in the application please try running it again." << endl;
 		return 0;
 	}
 }

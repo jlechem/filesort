@@ -19,27 +19,14 @@
 
 #include "ObjectCreator.h"
 
-/// <summary>
-/// Initializes a new instance of the <see cref="ObjectCreator"/> class.
-/// </summary>
 ObjectCreator::ObjectCreator(void)
 {
 }
 
-/// <summary>
-/// Finalizes an instance of the <see cref="ObjectCreator"/> class.
-/// </summary>
 ObjectCreator::~ObjectCreator(void)
 {
 }
 
-
-/// <summary>
-/// Creates the file sort.
-/// </summary>
-/// <param name="params">The parameters.</param>
-/// <param name="length">The length.</param>
-/// <returns></returns>
 FileSort* ObjectCreator::CreateFileSort(string params[], int length)
 {
 	string sourceFile;
@@ -50,17 +37,14 @@ FileSort* ObjectCreator::CreateFileSort(string params[], int length)
 
 	try
 	{
-		// make sure we have a valid count
 		if( length < 2 || length > 5 )
 		{
 			DisplayMessages::PrintInvalidUsage();
 			return NULL;
 		}
 
-		// get the passed in filename
 		sourceFile = params[1];
 
-		// validate the filename
 		if( !this->ValidateFileExists( sourceFile ) )
 		{
 			DisplayMessages::PrintInvalidFileName( sourceFile );
@@ -233,26 +217,18 @@ FileSort* ObjectCreator::CreateFileSort(string params[], int length)
 		return NULL;
 	}
 
-	// somehow if we get here we're fucked so drop back a NULL
 	return NULL;
 
 }
 
-/// <summary>
-/// Validates the file exists.
-/// </summary>
-/// <param name="fileName">Name of the file.</param>
-/// <returns></returns>
 bool ObjectCreator::ValidateFileExists(string fileName)
 {
 	fstream file;
 
 	try
 	{
-		// try and open the file
 		file.open( fileName.c_str() );
 
-		// get the file and tyr to open it
 		if( file.is_open() )
 		{
 			file.close();
@@ -269,21 +245,11 @@ bool ObjectCreator::ValidateFileExists(string fileName)
 	}
 }
 
-/// <summary>
-/// Validates the switch.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns></returns>
 bool ObjectCreator::ValidateSwitch(string value)
 {
 	return ( this->ValidateDescendingSwitch( value ) || this->ValidateLengthSwitch( value ) );
 }
 
-/// <summary>
-/// Validates the descending switch.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns></returns>
 bool ObjectCreator::ValidateDescendingSwitch(string value)
 {
 	try
@@ -303,17 +269,10 @@ bool ObjectCreator::ValidateDescendingSwitch(string value)
 	}
 }
 
-
-/// <summary>
-/// Validates the length switch.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns></returns>
 bool ObjectCreator::ValidateLengthSwitch(string value)
 {
 	try
 	{
-		// get the first 2 chars from the string
 		string switchValue( value, 0, 2 );
 
 		if( switchValue == "/c" )
@@ -331,16 +290,10 @@ bool ObjectCreator::ValidateLengthSwitch(string value)
 	}
 }
 
-/// <summary>
-/// Gets the length of the read.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns></returns>
 int ObjectCreator::GetReadLength(string value)
 {
 	try
 	{
-		// get the first 2 chars from the string
 		string switchValue( value, 2, value.length() );
 
 		return stoi( switchValue.c_str() );
@@ -351,11 +304,6 @@ int ObjectCreator::GetReadLength(string value)
 	}
 }
 
-/// <summary>
-/// Gets the switch value.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns></returns>
 char ObjectCreator::GetSwitchValue(string value)
 {
 	try
@@ -368,11 +316,6 @@ char ObjectCreator::GetSwitchValue(string value)
 	}
 }
 
-/// <summary>
-/// Validates the outputfile.
-/// </summary>
-/// <param name="fileName">Name of the file.</param>
-/// <returns></returns>
 bool validateOutputfile(string fileName)
 {
 	fstream fout;
@@ -381,19 +324,15 @@ bool validateOutputfile(string fileName)
 
 	try
 	{
-		// try and open the file
 		fout.open( fileName.c_str(), ios::out );
 	
-		// if it's open we have a valid file
 		if( fout.is_open() )
 		{
 			flag=true;
 		}
 			
-		// always close the file
 		fout.close();
 
-		// return our flag
 		return flag;
 
 	}
@@ -403,19 +342,12 @@ bool validateOutputfile(string fileName)
 	}
 }
 
-/// <summary>
-/// Validates the output file.
-/// </summary>
-/// <param name="fileName">Name of the file.</param>
-/// <returns></returns>
 bool ObjectCreator::ValidateOutputFile(string fileName)
 {
 	try
 	{
-		// create the file
 		fstream file( fileName.c_str(), ios::out|ios::trunc );
 
-		// check if we opened it
 		if( !file )
 		{
 			return false;

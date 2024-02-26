@@ -76,10 +76,10 @@ void FileSort::Load(void)
 			{
 				this->ClearWhitespace();
 
-				std::string temp(this->readLength, ' ');
-				file.read(&temp[0], this->readLength);
+				std::string newString(this->readLength, ' ');
+				file.read(&newString[0], this->readLength);
 
-				std::string newString( this->CleanString( temp ) );
+				this->CleanString(newString );
 
 				if( newString != "" )
 				{
@@ -91,12 +91,12 @@ void FileSort::Load(void)
 		{
 			while (std::getline(file, item))
 			{
-				std::string newString(this->CleanString(item));
+				this->CleanString(item);
 
 				// don't let blank values in
-				if (newString != "")
+				if (item != "")
 				{
-					this->items.push_back(newString);
+					this->items.push_back(item);
 				}
 			}
 		}
@@ -116,14 +116,14 @@ void FileSort::Sort(void)
 	} 
 	else
 	{
-		std::reverse(this->items.begin(), this->items.end());
+		std::sort(this->items.rbegin(), this->items.rend());
 	}
 
 	this->Save();
 
 }
 
-std::string FileSort::CleanString( std::string value)
+void FileSort::CleanString( std::string& value)
 {
 	int index = 0;
 
@@ -136,9 +136,6 @@ std::string FileSort::CleanString( std::string value)
 	{
 		value[index] = ' ';
 	}
-
-	return value;
-
 }
 
 void FileSort::ClearWhitespace(void)

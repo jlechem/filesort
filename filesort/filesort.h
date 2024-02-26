@@ -34,9 +34,9 @@ public:
 
 	FileSort( std::string oldFilename, bool ascending );
 
-	~FileSort(void);
+	~FileSort( void );
 
-	void Sort(void);
+	void Sort( void );
 
 private:
 
@@ -56,9 +56,9 @@ private:
 	
 	void Save( void );
 
-	std::string CleanString(std::string value);
+	void CleanString( std::string& value );
 
-	void ClearWhitespace(void);
+	void ClearWhitespace( void );
 
 };
 

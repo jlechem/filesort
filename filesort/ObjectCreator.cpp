@@ -35,14 +35,12 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 	std::string param3;
 	std::string param4;
 
-	std::unique_ptr<FileSort> returnSorter = NULL;
-
 	try
 	{
 		if( length < 2 || length > 5 )
 		{
 			DisplayMessages::PrintInvalidUsage();
-			return returnSorter;
+			return std::move(std::unique_ptr<FileSort>(nullptr));
 		}
 
 		sourceFile = params[1];
@@ -50,7 +48,7 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 		if( !this->ValidateFileExists( sourceFile ) )
 		{
 			DisplayMessages::PrintInvalidFileName( sourceFile );
-			return returnSorter;
+			return std::move(std::unique_ptr<FileSort>(nullptr));
 		}
 
 		// based on the number we get setup the filesort object
@@ -58,8 +56,7 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 		{
 			// filesort filename
 			case 2:
-				returnSorter = std::unique_ptr<FileSort>(new FileSort(sourceFile, true));
-				return std::move(returnSorter);
+				return std::move(std::unique_ptr<FileSort>(new FileSort(sourceFile, true)));
 
 			// filesort srcFile destFile
 			// filesort srcFile /d
@@ -73,13 +70,11 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 					{
 						case 'd':
 							// descending no length sort into same file
-							returnSorter = std::unique_ptr<FileSort>( new FileSort(sourceFile, sourceFile, false, 0));
-							return std::move(returnSorter);
+							return std::move(std::unique_ptr<FileSort>(new FileSort(sourceFile, sourceFile, false, 0)));
 
 						case 'c':
 							// ascending length sort into same file
-							returnSorter = std::unique_ptr<FileSort>(new FileSort(sourceFile, sourceFile, true, this->GetReadLength(param2)));
-							return std::move(returnSorter);
+							return std::move(std::unique_ptr<FileSort>(new FileSort(sourceFile, sourceFile, true, this->GetReadLength(param2))));
 					}
 				}
 				else
@@ -88,13 +83,12 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 					if( this->ValidateOutputFile( param2 ) )
 					{
 						// ascending no length sort into a new file
-						returnSorter = std::unique_ptr<FileSort>(new FileSort(sourceFile, param2, true, 0));
-						return std::move(returnSorter);
+						return std::move(std::unique_ptr<FileSort>(new FileSort(sourceFile, param2, true, 0)));
 					}
 					else
 					{
 						DisplayMessages::PrintInvalidOutputFile( param2 );
-						return returnSorter;
+						return std::move(std::unique_ptr<FileSort>(nullptr));
 					}
 				}
 
@@ -124,8 +118,7 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 					}
 
 					// two valid switches means descending, specified length, same file sort
-					returnSorter = std::unique_ptr<FileSort>(new FileSort(sourceFile, sourceFile, false, readVal));
-					return std::move(returnSorter);
+					return std::move(std::unique_ptr<FileSort>(new FileSort(sourceFile, sourceFile, false, readVal)));
 				}
 				else
 				{
@@ -139,26 +132,24 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 							if( this->GetSwitchValue( param2 ) == 'c' )
 							{
 								// ascending length sort into new file
-								returnSorter = std::unique_ptr<FileSort>(new FileSort(sourceFile, param1, true, this->GetReadLength(param2)));
-								return std::move(returnSorter);
+								return std::move(std::unique_ptr<FileSort>(new FileSort(sourceFile, param1, true, this->GetReadLength(param2))));
 							}
 							else if( this->GetSwitchValue( param2 ) == 'd' )
 							{
 								// descending no length sort into new file
-								returnSorter = std::unique_ptr<FileSort>(new FileSort(sourceFile, param1, false, 0));
-								return std::move(returnSorter);
+								return std::move(std::unique_ptr<FileSort>(new FileSort(sourceFile, param1, false, 0)));
 							}
 						}
 						else
 						{
 							DisplayMessages::PrintInvalidUsage();
-							return returnSorter;
+							return std::move(std::unique_ptr<FileSort>(nullptr));
 						}
 					}
 					else
 					{
 						DisplayMessages::PrintInvalidOutputFile( param2 );
-						return returnSorter;
+						return std::move(std::unique_ptr<FileSort>(nullptr));;
 					}
 				}
 
@@ -190,19 +181,18 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 						}
 
 						// descending length based sort into new file
-						returnSorter = std::unique_ptr<FileSort>(new FileSort(sourceFile, param1, false, readVal));
-						return std::move(returnSorter);
+						return std::move(std::unique_ptr<FileSort>(new FileSort(sourceFile, param1, false, readVal)));
 					}
 					else
 					{
 						DisplayMessages::PrintInvalidUsage();
-						return returnSorter;
+						return std::move(std::unique_ptr<FileSort>(nullptr));
 					}
 				}
 				else
 				{
 					DisplayMessages::PrintInvalidOutputFile( param1 );
-					return returnSorter;
+					return std::move(std::unique_ptr<FileSort>(nullptr));
 				}
 				
 				break;
@@ -210,16 +200,16 @@ std::unique_ptr<FileSort> ObjectCreator::CreateFileSort(std::string params[], in
 			// some kind of weird fucked up param pass-in
 			default:
 				DisplayMessages::PrintInvalidUsage();
-				return returnSorter;
+				return std::move(std::unique_ptr<FileSort>(nullptr));
 
 		}
 	}
 	catch( ... )
 	{
-		return returnSorter;
+		return std::move(std::unique_ptr<FileSort>(nullptr));
 	}
 
-	return returnSorter;
+	return std::move(std::unique_ptr<FileSort>(nullptr));
 
 }
 

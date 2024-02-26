@@ -93,7 +93,6 @@ int main( int argc, char* argv[] )
 			}
 			else
 			{
-				// convert char* to string
 				std::string* params = new std::string[argc];
 
 				for( int i = 0; i < argc; i++ )
@@ -106,7 +105,7 @@ int main( int argc, char* argv[] )
 
 				// check if that object is null
 				// null means some bad juju happened
-				if( fileSort != NULL )
+				if( fileSort )
 				{
 					std::cout << std::endl << "Beginning Sort";
 

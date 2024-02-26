@@ -46,8 +46,6 @@ FileSort::~FileSort(void)
 
 void FileSort::Save(void)
 {
-	std::string item;
-
 	file.open( this->newFilename, std::ios::out | std::ios::trunc );
 
 	if( file.is_open() )
@@ -55,7 +53,7 @@ void FileSort::Save(void)
 		for (auto & element : this->items) 
   		{
     		file.clear();
-			file << item;
+			file << element << std::endl;
   		}
 		
 		file.close();

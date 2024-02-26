@@ -131,6 +131,7 @@
     <ClCompile Include="FileSort.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ObjectCreator.cpp" />
+    <Text Include="test.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DisplayMessages.h" />

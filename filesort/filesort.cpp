@@ -107,19 +107,28 @@ void FileSort::Load(void)
 
 void FileSort::Sort(void)
 {
+	std::cout << std::endl << "Loading file data";
+
 	this->Load();
+
+	std::cout << std::endl << "Done loading file data";
+	std::cout << std::endl << "Sorting data";
 
 	if (this->isAscending) 
 	{
-		std::sort(this->items.begin(), this->items.end());
+		std::sort(std::execution::par_unseq, this->items.begin(), this->items.end());
 	} 
 	else
 	{
-		std::sort(this->items.rbegin(), this->items.rend());
+		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend());
 	}
+
+	std::cout << std::endl << "Doen sorting data";
+	std::cout << std::endl << "Writing file data";
 
 	this->Save();
 
+	std::cout << std::endl << "Done Writing file data";
 }
 
 void FileSort::CleanString( std::string& value)

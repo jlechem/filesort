@@ -107,13 +107,7 @@ int main( int argc, char* argv[] )
 				// null means some bad juju happened
 				if( fileSort )
 				{
-					std::cout << std::endl << "Beginning Sort";
-
-					// sort then save the data
 					fileSort->Sort();
-
-					std::cout << "\tSort Ended\tSaving File" << std::endl;
-
 				}
 			}
 		}

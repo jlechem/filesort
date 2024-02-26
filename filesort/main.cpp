@@ -41,6 +41,7 @@
 #include <fstream>
 #include <string>
 #include <cstring>
+#include <memory>
 
 // custom headers
 #include "ObjectCreator.h"
@@ -69,7 +70,7 @@ int main( int argc, char* argv[] )
 {
 	std::string param1, param2, param3;
 
-	FileSort* fileSort;
+	std::unique_ptr<FileSort> fileSort;
 	ObjectCreator creator;
 
 	try
@@ -121,8 +122,6 @@ int main( int argc, char* argv[] )
 
 					std::cout << "\tSort Ended\tSaving File" << std::endl;
 
-					delete fileSort;
-
 				}
 			}
 		}
@@ -141,5 +140,5 @@ int main( int argc, char* argv[] )
 
 std::string ctow( const char* src )
 {
-    return std::string( src, src + strlen(src) );
+    return std::string( src );
 }

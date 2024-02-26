@@ -23,6 +23,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <memory>
 
 #include "FileSort.h"
 #include "DisplayMessages.h"
@@ -30,11 +31,11 @@
 class ObjectCreator
 {
 public:
-	ObjectCreator(void);
+	ObjectCreator( void );
 
-	~ObjectCreator(void);
+	~ObjectCreator( void );
 
-	FileSort* CreateFileSort( std::string params[], int length );
+	std::unique_ptr<FileSort> CreateFileSort( std::string params[], int length );
 
 private:
 	bool ValidateFileExists( std::string fileName );

@@ -47,3 +47,5 @@ filesort/.build/CMakeFiles/cmake.check_cache
 filesort/mzi4kitd.x45~
 filesort/x64/Debug/filesort.log
 x64/Debug/filesort.exe
+filesort/x64/Release/filesort.Build.CppClean.log
+filesort/x64/Release/filesort.vcxproj.FileListAbsolute.txt

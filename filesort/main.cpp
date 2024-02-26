@@ -23,13 +23,6 @@
 /*
 		filesearch - Takes a file and sorts it alphabetically in ascending or descending order
 		
-		usage:
-		filesearch /? - displays help
-		filesearch filename newfilename - sorts file in ascending order
-		filesearch /d filename newfilename - sorts the file in descending order
-		
-		the new filename param is optional if the user wishes to sort the file into a new filename
-		
 		Created by - Justin LeCheminant 9-1-2007
 
 		Current Version 3.0.0

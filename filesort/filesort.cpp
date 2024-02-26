@@ -116,7 +116,7 @@ void FileSort::Sort(void)
 	} 
 	else
 	{
-		std::sort(this->items.end(),this->items.begin());
+		std::reverse(this->items.begin(), this->items.end());
 	}
 
 	this->Save();

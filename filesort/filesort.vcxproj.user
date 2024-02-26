@@ -9,11 +9,11 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommandArguments>"C:\Users\ENSN\Documents\Visual Studio 2017\Projects\filesort\A.txt"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>test.txt</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LocalDebuggerCommandArguments>"C:\Users\ENSN\Documents\Visual Studio 2017\Projects\filesort\A.txt"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>$(RemoteDebuggerWorkingDirectory)\test.txt</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

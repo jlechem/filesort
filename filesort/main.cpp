@@ -31,11 +31,8 @@
 		the new filename param is optional if the user wishes to sort the file into a new filename
 		
 		Created by - Justin LeCheminant 9-1-2007
-		Modified by - Justin LeCheminant 5-16-2008
-		Modified by - Justin LeCheminant 6-5-2008
-		Modified by - Justin LeCheminant 02-15-2024
 
-		Current Version 1.2.1
+		Current Version 2.0.0
 
 */
 
@@ -50,7 +47,7 @@
 #include "FileSort.h"
 #include "DisplayMessages.h"
 
-string ctow( const char* src );
+std::string ctow( const char* src );
 
 /*
 
@@ -70,14 +67,14 @@ An integer represeting a pass/fail to the Operating System.
 */
 int main( int argc, char* argv[] )
 {
-	string param1, param2, param3;
+	std::string param1, param2, param3;
 
 	FileSort* fileSort;
 	ObjectCreator creator;
 
 	try
 	{
-		string param;
+		std::string param;
 
 		// check for a valid number of parameters first
 		if( argc == 1 )
@@ -103,7 +100,7 @@ int main( int argc, char* argv[] )
 			else
 			{
 				// convert char* to string
-				string* params = new string[argc];
+				std::string* params = new std::string[argc];
 
 				for( int i = 0; i < argc; i++ )
 				{
@@ -117,12 +114,12 @@ int main( int argc, char* argv[] )
 				// null means some bad juju happened
 				if( fileSort != NULL )
 				{
-					cout << endl << "Beginning Sort";
+					std::cout << std::endl << "Beginning Sort";
 
 					// sort then save the data
 					fileSort->Sort();
 
-					cout << "\tSort Ended\tSaving File" << endl;
+					std::cout << "\tSort Ended\tSaving File" << std::endl;
 
 					delete fileSort;
 
@@ -136,13 +133,13 @@ int main( int argc, char* argv[] )
 	}
 	catch( ... )
 	{
-		cout << endl << "An error has occured in the application please try running it again." << endl;
+		std::cout << std::endl << "An error has occured in the application please try running it again." << std::endl;
 		return 0;
 	}
 }
 
 
-string ctow( const char* src )
+std::string ctow( const char* src )
 {
     return std::string( src, src + strlen(src) );
 }

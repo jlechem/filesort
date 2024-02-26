@@ -27,13 +27,13 @@ ObjectCreator::~ObjectCreator(void)
 {
 }
 
-FileSort* ObjectCreator::CreateFileSort(string params[], int length)
+FileSort* ObjectCreator::CreateFileSort(std::string params[], int length)
 {
-	string sourceFile;
-	string param1;
-	string param2;
-	string param3;
-	string param4;
+	std::string sourceFile;
+	std::string param1;
+	std::string param2;
+	std::string param3;
+	std::string param4;
 
 	try
 	{
@@ -221,9 +221,9 @@ FileSort* ObjectCreator::CreateFileSort(string params[], int length)
 
 }
 
-bool ObjectCreator::ValidateFileExists(string fileName)
+bool ObjectCreator::ValidateFileExists(std::string fileName)
 {
-	fstream file;
+	std::fstream file;
 
 	try
 	{
@@ -245,12 +245,12 @@ bool ObjectCreator::ValidateFileExists(string fileName)
 	}
 }
 
-bool ObjectCreator::ValidateSwitch(string value)
+bool ObjectCreator::ValidateSwitch(std::string value)
 {
 	return ( this->ValidateDescendingSwitch( value ) || this->ValidateLengthSwitch( value ) );
 }
 
-bool ObjectCreator::ValidateDescendingSwitch(string value)
+bool ObjectCreator::ValidateDescendingSwitch(std::string value)
 {
 	try
 	{
@@ -269,11 +269,11 @@ bool ObjectCreator::ValidateDescendingSwitch(string value)
 	}
 }
 
-bool ObjectCreator::ValidateLengthSwitch(string value)
+bool ObjectCreator::ValidateLengthSwitch(std::string value)
 {
 	try
 	{
-		string switchValue( value, 0, 2 );
+		std::string switchValue( value, 0, 2 );
 
 		if( switchValue == "/c" )
 		{
@@ -290,13 +290,13 @@ bool ObjectCreator::ValidateLengthSwitch(string value)
 	}
 }
 
-int ObjectCreator::GetReadLength(string value)
+int ObjectCreator::GetReadLength(std::string value)
 {
 	try
 	{
-		string switchValue( value, 2, value.length() );
+		std::string switchValue( value, 2, value.length() );
 
-		return stoi( switchValue.c_str() );
+		return std::stoi( switchValue.c_str() );
 	}
 	catch( ... )
 	{
@@ -304,7 +304,7 @@ int ObjectCreator::GetReadLength(string value)
 	}
 }
 
-char ObjectCreator::GetSwitchValue(string value)
+char ObjectCreator::GetSwitchValue(std::string value)
 {
 	try
 	{
@@ -316,15 +316,15 @@ char ObjectCreator::GetSwitchValue(string value)
 	}
 }
 
-bool validateOutputfile(string fileName)
+bool validateOutputfile(std::string fileName)
 {
-	fstream fout;
+	std::fstream fout;
 
 	bool flag = false;
 
 	try
 	{
-		fout.open( fileName.c_str(), ios::out );
+		fout.open( fileName, std::ios::out );
 	
 		if( fout.is_open() )
 		{
@@ -342,11 +342,11 @@ bool validateOutputfile(string fileName)
 	}
 }
 
-bool ObjectCreator::ValidateOutputFile(string fileName)
+bool ObjectCreator::ValidateOutputFile(std::string fileName)
 {
 	try
 	{
-		fstream file( fileName.c_str(), ios::out|ios::trunc );
+		std::fstream file( fileName, std::ios::out| std::ios::trunc );
 
 		if( !file )
 		{

@@ -45,3 +45,5 @@ filesort/.vscode/settings.json
 filesort/.build/CMakeCache.txt
 filesort/.build/CMakeFiles/cmake.check_cache
 filesort/mzi4kitd.x45~
+filesort/x64/Debug/filesort.log
+x64/Debug/filesort.exe

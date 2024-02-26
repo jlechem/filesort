@@ -78,18 +78,11 @@ void FileSort::Load(void)
 			{
 				this->ClearWhitespace();
 
-				// create a new buffer
-				// read the value from the file
-				// then null term the string
-				char* buffer = new char[ this->readLength ];
-				file.read( buffer, this->readLength );
-				buffer[this->readLength] = '\0';
+				std::string temp(this->readLength, ' ');
+				file.read(&temp[0], this->readLength);
 
-				std::string newString( this->CleanString( buffer ) );
+				std::string newString( this->CleanString( temp ) );
 
-				this->ClearWhitespace();
-
-				// don't let blank values in
 				if( newString != "" )
 				{
 					this->items.push_back(newString);

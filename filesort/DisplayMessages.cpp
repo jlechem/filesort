@@ -40,7 +40,7 @@ void DisplayMessages::PrintInvalidUsage(void)
 
 void DisplayMessages::PrintVersion()
 {
-	std::cout << std::endl << "Current FileSort version is 2.0.0" << std::endl << std::endl;
+	std::cout << std::endl << "Current FileSort version is 3.0.0" << std::endl << std::endl;
 }
 
 void DisplayMessages::PrintHelp(void)

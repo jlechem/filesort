@@ -32,7 +32,7 @@
 		
 		Created by - Justin LeCheminant 9-1-2007
 
-		Current Version 2.0.0
+		Current Version 3.0.0
 
 */
 

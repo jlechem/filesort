@@ -123,7 +123,7 @@ void FileSort::Sort(void)
 		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend());
 	}
 
-	std::cout << std::endl << "Doen sorting data";
+	std::cout << std::endl << "Done sorting data";
 	std::cout << std::endl << "Writing file data";
 
 	this->Save();

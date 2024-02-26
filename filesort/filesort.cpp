@@ -52,35 +52,13 @@ void FileSort::Save(void)
 
 	if( file.is_open() )
 	{
-		if( this->items.size() > 0 )
-		{
-			while( this->items.size() > 1 )
-			{
-				if( this->isAscending )
-				{
-					item = this->items.front();
-					
-					this->items.pop_front();
-				}
-				else
-				{
-					item = this->items.back();
-
-					this->items.pop_back();
-				}
-
-				file.clear();
-				file << item << std::endl;
-
-			}
-
-			item = this->items.front();
-
-			file.clear();
+		
+		 for (auto & element : this->items) 
+  		{
+    		file.clear();
 			file << item;
-	
-		}
-
+  		}
+		
 		file.close();
 	}
 }
@@ -115,7 +93,7 @@ void FileSort::Load(void)
 				// don't let blank values in
 				if( newString != "" )
 				{
-					this->items.push_back( newString );
+					this->items.push_back(newString);
 				}
 			}
 		}
@@ -142,7 +120,14 @@ void FileSort::Sort(void)
 {
 	this->Load();
 
-	this->items.sort();
+	if (this->isAscending) 
+	{
+		std::sort(this->items.begin(), this->items.end());
+	} 
+	else
+	{
+		std::sort(this->items.end(),this->items.begin());
+	}
 
 	this->Save();
 

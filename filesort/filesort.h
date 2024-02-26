@@ -24,7 +24,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <list>
+#include <vector>
+#include <algorithm>
 
 class FileSort
 {
@@ -49,7 +50,7 @@ private:
 	std::string newFilename;
 	std::string oldFilename;
 
-	std::list<std::string> items;
+	std::vector<std::string> items;
 
 	void Load( void );
 	

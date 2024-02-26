@@ -227,7 +227,7 @@ bool ObjectCreator::ValidateFileExists(string fileName)
 
 	try
 	{
-		file.open( fileName.c_str() );
+		file.open( fileName );
 
 		if( file.is_open() )
 		{

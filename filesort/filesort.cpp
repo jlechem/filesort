@@ -48,7 +48,7 @@ void FileSort::Save(void)
 {
 	std::string item;
 
-	file.open( this->newFilename.c_str(), std::ios::out | std::ios::trunc );
+	file.open( this->newFilename, std::ios::out | std::ios::trunc );
 
 	if( file.is_open() )
 	{
@@ -148,7 +148,7 @@ void FileSort::Sort(void)
 
 }
 
-std::string FileSort::CleanString(std::string value)
+std::string FileSort::CleanString( std::string value)
 {
 	int index = 0;
 

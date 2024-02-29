@@ -43,9 +43,6 @@ public:
 	void Sort( void );
 
 private:
-
-	std::fstream file;
-
 	bool isNewFile;
 	bool isAscending;
 

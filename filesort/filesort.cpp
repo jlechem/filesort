@@ -45,17 +45,10 @@ FileSort::~FileSort(void)
 
 void FileSort::Save(void)
 {
-	file.open(this->newFilename, std::ios::out | std::ios::trunc);
-
-	if (file.good())
-	{
-		for (auto it = this->items->begin(); it != this->items->end(); ++it)
-		{
-			file << *it << std::endl;
-		}
-
-		file.close();
-	}
+	std::ofstream FILE(this->newFilename, std::ios::out | std::ios::trunc);
+	std::ostream_iterator<std::string> it(FILE,"\n");
+	std::copy(this->items->begin(), this->items->end(), it);
+	FILE.close();
 }
 
 void FileSort::Load(void)

@@ -66,7 +66,7 @@ void FileSort::Load(void)
 
 	file.open(this->oldFilename, std::ios::in);
 
-	if (file.is_open())
+	if (file.good())
 	{
 		if (this->readLength > 0)
 		{

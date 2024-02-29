@@ -27,6 +27,7 @@
 #include <vector>
 #include <algorithm>
 #include <execution>
+#include <string_view>
 
 class FileSort
 {
@@ -51,7 +52,7 @@ private:
 	std::string newFilename;
 	std::string oldFilename;
 
-	std::vector<std::string> items;
+	std::vector<std::string_view> items;
 
 	void Load( void );
 	

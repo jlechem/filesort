@@ -221,7 +221,7 @@ bool ObjectCreator::ValidateFileExists(std::string fileName)
 	{
 		file.open( fileName );
 
-		if( file.is_open() )
+		if( file.good() )
 		{
 			file.close();
 			return true;
@@ -288,7 +288,7 @@ int ObjectCreator::GetReadLength(std::string value)
 	{
 		std::string switchValue( value, 2, value.length() );
 
-		return std::stoi( switchValue.c_str() );
+		return std::stoi( switchValue );
 	}
 	catch( ... )
 	{
@@ -318,7 +318,7 @@ bool validateOutputfile(std::string fileName)
 	{
 		fout.open( fileName, std::ios::out );
 	
-		if( fout.is_open() )
+		if( fout.good() )
 		{
 			flag=true;
 		}
@@ -338,9 +338,9 @@ bool ObjectCreator::ValidateOutputFile(std::string fileName)
 {
 	try
 	{
-		std::fstream file( fileName, std::ios::out| std::ios::trunc );
+		std::fstream file(fileName, std::ios::out | std::ios::trunc);
 
-		if( !file )
+		if (!file)
 		{
 			return false;
 		}
@@ -350,7 +350,7 @@ bool ObjectCreator::ValidateOutputFile(std::string fileName)
 			return true;
 		}
 	}
-	catch( ... )
+	catch (...)
 	{
 		return false;
 	}

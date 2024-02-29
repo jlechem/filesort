@@ -29,6 +29,7 @@
 #include <execution>
 #include <string_view>
 #include <sstream>
+#include <iterator>
 
 class FileSort
 {

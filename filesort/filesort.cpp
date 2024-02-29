@@ -45,15 +45,15 @@ FileSort::~FileSort(void)
 
 void FileSort::Save(void)
 {
-	file.open( this->newFilename, std::ios::out | std::ios::trunc );
+	file.open(this->newFilename, std::ios::out | std::ios::trunc);
 
-	if( file.good() )
+	if (file.good())
 	{
 		for (auto it = this->items->begin(); it != this->items->end(); ++it)
 		{
 			file << *it << std::endl;
 		}
-		
+
 		file.close();
 	}
 }

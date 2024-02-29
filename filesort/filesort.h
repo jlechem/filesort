@@ -28,6 +28,7 @@
 #include <algorithm>
 #include <execution>
 #include <string_view>
+#include <sstream>
 
 class FileSort
 {
@@ -52,15 +53,13 @@ private:
 	std::string newFilename;
 	std::string oldFilename;
 
-	std::vector<std::string_view> items;
+	std::unique_ptr<std::vector<std::string>> items;
 
 	void Load( void );
 	
 	void Save( void );
 
-	void CleanString( std::string& value );
-
-	void ClearWhitespace( void );
+	std::string ReadFile( std::string_view path );
 
 };
 

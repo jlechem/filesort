@@ -90,7 +90,7 @@ int main( int argc, char* argv[] )
 			}
 			else
 			{
-				std::string* params = new std::string[argc];
+				auto params = new std::string[argc];
 
 				for( int i = 0; i < argc; i++ )
 				{

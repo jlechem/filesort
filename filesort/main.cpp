@@ -21,21 +21,19 @@
 
 
 /*
-		filesearch - Takes a file and sorts it alphabetically in ascending or descending order
+		FileSort - Takes a file and sorts it alphabetically in ascending or descending order
 		
 		Created by - Justin LeCheminant 9-1-2007
 
-		Current Version 3.0.0
+		Current Version 4.0.0
 
 */
 
-// pre-compiled headers
 #include <iostream>
 #include <string>
 #include <cstring>
 #include <memory>
 
-// custom headers
 #include "ObjectCreator.h"
 #include "FileSort.h"
 #include "DisplayMessages.h"
@@ -99,11 +97,8 @@ int main( int argc, char* argv[] )
 					params[i] = ctow( argv[i] );
 				}
 			
-				// use the class factory to create a filesort object
 				fileSort = creator.CreateFileSort( params,  argc );
 
-				// check if that object is null
-				// null means some bad juju happened
 				if( fileSort )
 				{
 					fileSort->Sort();
@@ -111,14 +106,13 @@ int main( int argc, char* argv[] )
 			}
 		}
 
-		// bail back to the OS
 		return 0;
 
 	}
 	catch( ... )
 	{
 		std::cout << std::endl << "An error has occured in the application please try running it again." << std::endl;
-		return 0;
+		return 1;
 	}
 }
 

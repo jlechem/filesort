@@ -21,7 +21,6 @@
 
 FileSort::FileSort(std::string oldFilename, std::string newFilename, bool ascending, long readLength)
 {
-	// set the internal data members
 	this->isAscending = ascending;
 	this->isNewFile = true;
 	this->newFilename = newFilename;

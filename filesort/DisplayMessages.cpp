@@ -27,7 +27,7 @@ DisplayMessages::~DisplayMessages(void)
 {
 }
 
-void DisplayMessages::PrintInvalidFileName(const std::string fileName)
+void DisplayMessages::PrintInvalidFileName(std::string_view fileName)
 {
 	std::cout << std::endl << "Unable to open file: '" << fileName << "' for sorting." << std::endl
 		 << "Please check the file exists and try again." << std::endl;
@@ -53,12 +53,12 @@ void DisplayMessages::PrintHelp(void)
 		 << "[/cX]\tSpecifies X number of characters to be read instead of whitespace." << std::endl << std::endl;
 }
 
-void DisplayMessages::PrintInvalidInputFile(const std::string fileName)
+void DisplayMessages::PrintInvalidInputFile(std::string_view fileName)
 {
 	std::cout << std::endl << "An error occurred with the input file: " << fileName << std::endl << "Please verify the filename and try running the application again." << std::endl;
 }
 
-void DisplayMessages::PrintInvalidOutputFile(const std::string fileName)
+void DisplayMessages::PrintInvalidOutputFile(std::string_view fileName)
 {
 	std::cout << std::endl << "An error occurred with the output file: " << fileName << std::endl << "Please verify the filename and try running the application again." << std::endl;
 }

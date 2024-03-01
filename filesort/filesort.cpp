@@ -53,20 +53,33 @@ void FileSort::Save(void)
 
 void FileSort::Load(void)
 {
+	auto fileContents = this->ReadFile(this->oldFilename);
+
 	if (this->readLength > 0)
 	{
+		auto numberOfSubstrings = fileContents.length() / this->readLength;
+
+		for (auto i = 0; i < numberOfSubstrings; i++)
+		{
+			this->items->push_back(fileContents.substr(i * this->readLength, this->readLength));
+		}
+
+		// If there are leftover characters, create a shorter item at the end.
+		if (fileContents.length() % this->readLength != 0)
+		{
+			this->items->push_back(fileContents.substr(this->readLength * numberOfSubstrings));
+		}
 	}
 	else
 	{
-		auto fileContents = this->ReadFile(this->oldFilename);
-
 		std::istringstream iss(fileContents);
 
 		this->items = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>{ std::istream_iterator<std::string>{iss},
-																							  std::istream_iterator<std::string>{} });
-
-		fileContents.clear();
+																							  std::istream_iterator<std::string>{}, });
 	}
+
+	fileContents.clear();
+
 } 
 
 void FileSort::Sort(void)

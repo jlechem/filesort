@@ -21,6 +21,7 @@
 #define DISPLAYMESSAGES_H
 
 #include <iostream>
+#include <string_view>
 
 class DisplayMessages
 {
@@ -28,17 +29,17 @@ public:
 	DisplayMessages(void);
 
 	~DisplayMessages(void);
-	
-	static void PrintInvalidFileName( const std::string filename );
+
+	static void PrintInvalidFileName(std::string_view filename);
 
 	static void PrintInvalidUsage(void);
 
-	static void PrintInvalidOutputFile( const std::string fileName );
-	
-	static void PrintInvalidInputFile( const std::string fileName );
+	static void PrintInvalidOutputFile(std::string_view fileName);
+
+	static void PrintInvalidInputFile(std::string_view fileName);
 
 	static void PrintHelp();
-	
+
 	static void PrintVersion();
 };
 

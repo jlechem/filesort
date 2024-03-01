@@ -48,9 +48,9 @@ void DisplayMessages::PrintHelp(void)
 	std::cout << std::endl << "Sorts a file into ascending or descending order." << std::endl
 		 << "Items are sorted using white space and ascending order by default." << std::endl
 		 << "White space and sort order can be overriden using the appropriate switches." << std::endl << std::endl
-		 << "FILESORT [source file] [output file] [/d] [/cX]" << std::endl
-		 << "[/d]\tSpecifies descending sort order." << std::endl
-		 << "[/cX]\tSpecifies X number of characters to be read instead of whitespace." << std::endl << std::endl;
+		 << "FILESORT -i [source file] -o [output file] -d  -l [X]" << std::endl
+		 << "[-d]\tSpecifies descending sort order." << std::endl
+		 << "[-c X]\tSpecifies X number of characters to be read instead of whitespace." << std::endl << std::endl;
 }
 
 void DisplayMessages::PrintInvalidInputFile(std::string_view fileName)

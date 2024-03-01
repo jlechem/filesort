@@ -73,10 +73,10 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\jlech\source\repos\filesort\filesort\includes;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\jlech\source\repos\filesort\filesort\includes;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -138,13 +138,12 @@
     <ClCompile Include="DisplayMessages.cpp" />
     <ClCompile Include="FileSort.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ObjectCreator.cpp" />
     <Text Include="test.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cxxopts.h" />
     <ClInclude Include="DisplayMessages.h" />
     <ClInclude Include="FileSort.h" />
-    <ClInclude Include="ObjectCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

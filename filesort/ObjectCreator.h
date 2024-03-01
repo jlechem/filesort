@@ -27,7 +27,7 @@
 
 #include "FileSort.h"
 #include "DisplayMessages.h"
-#include <args-parser/all.hpp>
+
 
 class ObjectCreator
 {
@@ -40,18 +40,6 @@ public:
 
 private:
 	bool ValidateFileExists(std::string fileName);
-
-	bool ValidateOutputFile(std::string fileName);
-
-	bool ValidateSwitch(std::string value);
-
-	bool ValidateDescendingSwitch(std::string value);
-
-	bool ValidateLengthSwitch(std::string value);
-
-	int GetReadLength(std::string value);
-
-	char GetSwitchValue(std::string value);
 
 };
 

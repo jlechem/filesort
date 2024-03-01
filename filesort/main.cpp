@@ -30,12 +30,11 @@
 */
 
 #include <iostream>
-#include <string>
-#include <cstring>
 
 #include "FileSort.h"
-#include "DisplayMessages.h"
 #include "cxxopts.h"
+
+constexpr auto VERSION = "4.0.0";
 
 /*
 
@@ -59,7 +58,7 @@ int main( int argc, char* argv[] )
 	{
 		if( argc == 1 )
 		{
-			DisplayMessages::PrintInvalidUsage();
+			std::cout << std::endl << "Invalid usage, please use help switch <filesort --help> for more details." << std::endl;
 		}
 		else
 		{
@@ -68,21 +67,21 @@ int main( int argc, char* argv[] )
 			options.add_options()
 				("i,input", "Source file to sort", cxxopts::value<std::string>())
 				("o,output", "Destination file to write to", cxxopts::value<std::string>())
-				("d,descending", "File name", cxxopts::value<bool>()->default_value("false"))
-				("v,version", "File name", cxxopts::value<bool>()->default_value("false"))
-				("h,help", "File name", cxxopts::value<bool>()->default_value("false"))
+				("d,descending", "Sort file in descending order", cxxopts::value<bool>()->default_value("false"))
+				("v,version", "Filesort version", cxxopts::value<bool>()->default_value("false"))
+				("h,help", "Filesort help", cxxopts::value<bool>()->default_value("false"))
 				("l,length", "Number of characters to read", cxxopts::value<int>());
 
 			auto result = options.parse(argc, argv);
 
 			if (result.count("version"))
 			{
-				DisplayMessages::PrintVersion();
+				std::cout << std::endl << "FileSort version - " << VERSION << std::endl << std::endl;
 			}
 
 			if (result.count("help"))
 			{
-				DisplayMessages::PrintHelp();
+				std::cout << options.help() << std::endl;
 			}
 
 			std::string sourceFile;

@@ -27,38 +27,12 @@ DisplayMessages::~DisplayMessages(void)
 {
 }
 
-void DisplayMessages::PrintInvalidFileName(std::string_view fileName)
-{
-	std::cout << std::endl << "Unable to open file: '" << fileName << "' for sorting." << std::endl
-		 << "Please check the file exists and try again." << std::endl;
-}
-
 void DisplayMessages::PrintInvalidUsage(void)
 {
-	std::cout << std::endl << "Invalid usage, please use help switch <filesort --help> for more details." << std::endl;
+	
 }
 
 void DisplayMessages::PrintVersion()
 {
-	std::cout << std::endl << "Current FileSort version is 4.0.0" << std::endl << std::endl;
-}
-
-void DisplayMessages::PrintHelp(void)
-{
-	std::cout << std::endl << "Sorts a file into ascending or descending order." << std::endl
-		 << "Items are sorted using white space and ascending order by default." << std::endl
-		 << "White space and sort order can be overriden using the appropriate switches." << std::endl << std::endl
-		 << "FILESORT -i [source file] -o [output file] -d  -l [X]" << std::endl
-		 << "[-d]\tSpecifies descending sort order." << std::endl
-		 << "[-c X]\tSpecifies X number of characters to be read instead of whitespace." << std::endl << std::endl;
-}
-
-void DisplayMessages::PrintInvalidInputFile(std::string_view fileName)
-{
-	std::cout << std::endl << "An error occurred with the input file: " << fileName << std::endl << "Please verify the filename and try running the application again." << std::endl;
-}
-
-void DisplayMessages::PrintInvalidOutputFile(std::string_view fileName)
-{
-	std::cout << std::endl << "An error occurred with the output file: " << fileName << std::endl << "Please verify the filename and try running the application again." << std::endl;
+	
 }

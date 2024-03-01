@@ -135,14 +135,12 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DisplayMessages.cpp" />
     <ClCompile Include="FileSort.cpp" />
     <ClCompile Include="main.cpp" />
     <Text Include="test.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cxxopts.h" />
-    <ClInclude Include="DisplayMessages.h" />
     <ClInclude Include="FileSort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

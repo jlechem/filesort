@@ -21,7 +21,6 @@
 
 FileSort::FileSort(std::string oldFilename, std::string newFilename, bool ascending, long readLength)
 {
-	// set the internal data members
 	this->isAscending = ascending;
 	this->isNewFile = true;
 	this->newFilename = newFilename;
@@ -46,64 +45,42 @@ FileSort::~FileSort(void)
 
 void FileSort::Save(void)
 {
-	file.open( this->newFilename, std::ios::out | std::ios::trunc );
-
-	if( file.is_open() )
-	{
-		for (auto & element : this->items) 
-  		{
-    		file.clear();
-			file << element << std::endl;
-  		}
-		
-		file.close();
-	}
+	std::ofstream FILE(this->newFilename, std::ios::out | std::ios::trunc);
+	std::ostream_iterator<std::string> it(FILE,"\n");
+	std::copy(this->items->begin(), this->items->end(), it);
+	FILE.close();
 }
 
 void FileSort::Load(void)
 {
-	this->items.clear();
+	auto fileContents = this->ReadFile(this->oldFilename);
 
-	file.open(this->oldFilename, std::ios::in);
-
-	if (file.good())
+	if (this->readLength > 0)
 	{
-		if (this->readLength > 0)
+		auto numberOfSubstrings = fileContents.length() / this->readLength;
+
+		for (auto i = 0; i < numberOfSubstrings; i++)
 		{
-			while (!file.eof())
-			{
-				this->ClearWhitespace();
-
-				std::string newString(this->readLength, ' ');
-				file.read(&newString[0], this->readLength);
-
-				this->CleanString(newString);
-
-				if (newString != "")
-				{
-					this->items.push_back(newString);
-				}
-			}
+			this->items->push_back(fileContents.substr(i * this->readLength, this->readLength));
 		}
-		else
+
+		// If there are leftover characters, create a shorter item at the end.
+		if (fileContents.length() % this->readLength != 0)
 		{
-			std::string item;
-
-			while (std::getline(file, item))
-			{
-				this->CleanString(item);
-
-				if (item != "")
-				{
-					this->items.push_back(item);
-				}
-			}
+			this->items->push_back(fileContents.substr(this->readLength * numberOfSubstrings));
 		}
 	}
+	else
+	{
+		std::istringstream iss(fileContents);
 
-	file.close();
+		this->items = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>{ std::istream_iterator<std::string>{iss},
+																							  std::istream_iterator<std::string>{}, });
+	}
 
-}
+	fileContents.clear();
+
+} 
 
 void FileSort::Sort(void)
 {
@@ -116,11 +93,11 @@ void FileSort::Sort(void)
 
 	if (this->isAscending) 
 	{
-		std::sort(std::execution::par_unseq, this->items.begin(), this->items.end());
+		std::sort(std::execution::par_unseq, this->items->begin(), this->items->end());
 	} 
 	else
 	{
-		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend());
+		std::sort(std::execution::par_unseq, this->items->rbegin(), this->items->rend());
 	}
 
 	std::cout << std::endl << "Done sorting data";
@@ -131,29 +108,20 @@ void FileSort::Sort(void)
 	std::cout << std::endl << "Done Writing file data";
 }
 
-void FileSort::CleanString( std::string& value)
+std::string FileSort::ReadFile(std::string_view path)
 {
-	int index = 0;
+	constexpr auto read_size = std::size_t{ 4096 };
+	auto stream = std::ifstream{ path.data() };
+	stream.exceptions(std::ios_base::badbit);
 
-	while( (index = value.find('\n') ) > 0 )
-	{
-		value[index] = ' ';
+	auto out = std::string{};
+	auto buf = std::string(read_size, '\0');
+
+	while (stream.read(&buf[0], read_size)) {
+		out.append(buf, 0, stream.gcount());
 	}
 
-	while( (index = value.find('\t') ) > 0 )
-	{
-		value[index] = ' ';
-	}
-}
+	out.append(buf, 0, stream.gcount());
 
-void FileSort::ClearWhitespace(void)
-{
-	// make sure we don't run into any newlines, spaces, or tabs
-	while(	file.peek() == '\n' || 
-			file.peek() == ' '  ||
-			file.peek() == '\t' )
-	{
-		char c[1];
-		file.read( c, 1 );
-	}
+	return out;
 }

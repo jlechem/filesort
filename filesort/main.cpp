@@ -21,21 +21,19 @@
 
 
 /*
-		filesearch - Takes a file and sorts it alphabetically in ascending or descending order
+		FileSort - Takes a file and sorts it alphabetically in ascending or descending order
 		
 		Created by - Justin LeCheminant 9-1-2007
 
-		Current Version 3.0.0
+		Current Version 4.0.0
 
 */
 
-// pre-compiled headers
 #include <iostream>
 #include <string>
 #include <cstring>
 #include <memory>
 
-// custom headers
 #include "ObjectCreator.h"
 #include "FileSort.h"
 #include "DisplayMessages.h"
@@ -60,50 +58,41 @@ An integer represeting a pass/fail to the Operating System.
 */
 int main( int argc, char* argv[] )
 {
-	std::string param1, param2, param3;
-
-	std::unique_ptr<FileSort> fileSort;
-	ObjectCreator creator;
-
 	try
 	{
-		std::string param;
-
-		// check for a valid number of parameters first
 		if( argc == 1 )
 		{
 			DisplayMessages::PrintInvalidUsage();
 		}
 		else
 		{
-			param = ctow( argv[1] );
+			auto param = ctow( argv[1] );
 		
 			if( argc < 2 && argc > 5 )
 			{
 				DisplayMessages::PrintInvalidUsage();
 			}
-			else if( argc == 2 && param == "/?" )
+			else if( argc == 2 && (param == "--help" || param == "--h"))
 			{
 				DisplayMessages::PrintHelp();
 			}
-			else if( argc == 2 && param == "/v" )
+			else if( argc == 2 && (param == "--version" || param == "--v"))
 			{
 				DisplayMessages::PrintVersion();
 			}
 			else
 			{
-				std::string* params = new std::string[argc];
+				auto params = new std::string[argc];
 
 				for( int i = 0; i < argc; i++ )
 				{
 					params[i] = ctow( argv[i] );
 				}
 			
-				// use the class factory to create a filesort object
-				fileSort = creator.CreateFileSort( params,  argc );
+				ObjectCreator creator;
 
-				// check if that object is null
-				// null means some bad juju happened
+				auto fileSort = creator.CreateFileSort( params,  argc );
+
 				if( fileSort )
 				{
 					fileSort->Sort();
@@ -111,14 +100,13 @@ int main( int argc, char* argv[] )
 			}
 		}
 
-		// bail back to the OS
 		return 0;
 
 	}
 	catch( ... )
 	{
-		std::cout << std::endl << "An error has occured in the application please try running it again." << std::endl;
-		return 0;
+		std::cerr << std::endl << "An error has occured in the application please try running it again." << std::endl;
+		return 1;
 	}
 }
 

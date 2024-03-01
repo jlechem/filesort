@@ -28,22 +28,21 @@
 #include <algorithm>
 #include <execution>
 #include <string_view>
+#include <sstream>
+#include <iterator>
 
 class FileSort
 {
 public:
-	FileSort( std::string oldFileName, std::string newFilename, bool ascending, long readLength );
+	FileSort(std::string oldFileName, std::string newFilename, bool ascending, long readLength);
 
-	FileSort( std::string oldFilename, bool ascending );
+	FileSort(std::string oldFilename, bool ascending);
 
-	~FileSort( void );
+	~FileSort(void);
 
-	void Sort( void );
+	void Sort(void);
 
 private:
-
-	std::fstream file;
-
 	bool isNewFile;
 	bool isAscending;
 
@@ -52,15 +51,13 @@ private:
 	std::string newFilename;
 	std::string oldFilename;
 
-	std::vector<std::string_view> items;
+	std::unique_ptr<std::vector<std::string>> items;
 
-	void Load( void );
-	
-	void Save( void );
+	void Load(void);
 
-	void CleanString( std::string& value );
+	void Save(void);
 
-	void ClearWhitespace( void );
+	std::string ReadFile(std::string_view path);
 
 };
 

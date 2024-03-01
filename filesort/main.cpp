@@ -38,8 +38,6 @@
 #include "FileSort.h"
 #include "DisplayMessages.h"
 
-std::string ctow( const char* src );
-
 /*
 
 Function: main 
@@ -66,32 +64,23 @@ int main( int argc, char* argv[] )
 		}
 		else
 		{
-			auto param = ctow( argv[1] );
-		
 			if( argc < 2 && argc > 5 )
 			{
 				DisplayMessages::PrintInvalidUsage();
 			}
-			else if( argc == 2 && (param == "--help" || param == "--h"))
+			else if( argc == 2 && (argv[1] == "--help" || argv[1] == "--h"))
 			{
 				DisplayMessages::PrintHelp();
 			}
-			else if( argc == 2 && (param == "--version" || param == "--v"))
+			else if( argc == 2 && (argv[1] == "--version" || argv[1] == "--v"))
 			{
 				DisplayMessages::PrintVersion();
 			}
 			else
 			{
-				auto params = new std::string[argc];
-
-				for( int i = 0; i < argc; i++ )
-				{
-					params[i] = ctow( argv[i] );
-				}
-			
 				ObjectCreator creator;
 
-				auto fileSort = creator.CreateFileSort( params,  argc );
+				auto fileSort = creator.CreateFileSort( argv,  argc );
 
 				if( fileSort )
 				{
@@ -108,10 +97,4 @@ int main( int argc, char* argv[] )
 		std::cerr << std::endl << "An error has occured in the application please try running it again." << std::endl;
 		return 1;
 	}
-}
-
-
-std::string ctow( const char* src )
-{
-    return std::string( src );
 }

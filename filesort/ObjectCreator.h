@@ -27,6 +27,7 @@
 
 #include "FileSort.h"
 #include "DisplayMessages.h"
+#include <args-parser/all.hpp>
 
 class ObjectCreator
 {
@@ -35,7 +36,7 @@ public:
 
 	~ObjectCreator(void);
 
-	std::unique_ptr<FileSort> CreateFileSort(std::string params[], int length);
+	std::unique_ptr<FileSort> CreateFileSort(char* params[], int length);
 
 private:
 	bool ValidateFileExists(std::string fileName);

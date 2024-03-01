@@ -105,7 +105,7 @@ int main( int argc, char* argv[] )
 	}
 	catch( ... )
 	{
-		std::cout << std::endl << "An error has occured in the application please try running it again." << std::endl;
+		std::cerr << std::endl << "An error has occured in the application please try running it again." << std::endl;
 		return 1;
 	}
 }

@@ -53,21 +53,20 @@ void FileSort::Save(void)
 
 void FileSort::Load(void)
 {
-	auto fileContents = this->ReadFile(this->oldFilename);
-
 	if (this->readLength > 0)
 	{
 	}
 	else
 	{
+		auto fileContents = this->ReadFile(this->oldFilename);
+
 		std::istringstream iss(fileContents);
 
 		this->items = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>{ std::istream_iterator<std::string>{iss},
-																							  std::istream_iterator<std::string>{} }); 
+																							  std::istream_iterator<std::string>{} });
+
+		fileContents.clear();
 	}
-
-	fileContents.clear();
-
 } 
 
 void FileSort::Sort(void)

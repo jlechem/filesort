@@ -60,7 +60,6 @@ int main( int argc, char* argv[] )
 {
 	try
 	{
-		// check for a valid number of parameters first
 		if( argc == 1 )
 		{
 			DisplayMessages::PrintInvalidUsage();

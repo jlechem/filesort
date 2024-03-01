@@ -35,7 +35,7 @@ void DisplayMessages::PrintInvalidFileName(std::string_view fileName)
 
 void DisplayMessages::PrintInvalidUsage(void)
 {
-	std::cout << std::endl << "Invalid usage, please use help switch <filesort /?> for more details." << std::endl;
+	std::cout << std::endl << "Invalid usage, please use help switch <filesort --help> for more details." << std::endl;
 }
 
 void DisplayMessages::PrintVersion()

@@ -58,15 +58,8 @@ An integer represeting a pass/fail to the Operating System.
 */
 int main( int argc, char* argv[] )
 {
-	std::string param1, param2, param3;
-
-	std::unique_ptr<FileSort> fileSort;
-	ObjectCreator creator;
-
 	try
 	{
-		std::string param;
-
 		// check for a valid number of parameters first
 		if( argc == 1 )
 		{
@@ -74,7 +67,7 @@ int main( int argc, char* argv[] )
 		}
 		else
 		{
-			param = ctow( argv[1] );
+			auto param = ctow( argv[1] );
 		
 			if( argc < 2 && argc > 5 )
 			{
@@ -97,7 +90,9 @@ int main( int argc, char* argv[] )
 					params[i] = ctow( argv[i] );
 				}
 			
-				fileSort = creator.CreateFileSort( params,  argc );
+				ObjectCreator creator;
+
+				auto fileSort = creator.CreateFileSort( params,  argc );
 
 				if( fileSort )
 				{

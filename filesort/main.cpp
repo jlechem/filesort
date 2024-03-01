@@ -72,11 +72,11 @@ int main( int argc, char* argv[] )
 			{
 				DisplayMessages::PrintInvalidUsage();
 			}
-			else if( argc == 2 && param == "--help" )
+			else if( argc == 2 && (param == "--help" || param == "--h"))
 			{
 				DisplayMessages::PrintHelp();
 			}
-			else if( argc == 2 && param == "--version" )
+			else if( argc == 2 && (param == "--version" || param == "--v"))
 			{
 				DisplayMessages::PrintVersion();
 			}

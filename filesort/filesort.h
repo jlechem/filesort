@@ -34,13 +34,13 @@
 class FileSort
 {
 public:
-	FileSort( std::string oldFileName, std::string newFilename, bool ascending, long readLength );
+	FileSort(std::string oldFileName, std::string newFilename, bool ascending, long readLength);
 
-	FileSort( std::string oldFilename, bool ascending );
+	FileSort(std::string oldFilename, bool ascending);
 
-	~FileSort( void );
+	~FileSort(void);
 
-	void Sort( void );
+	void Sort(void);
 
 private:
 	bool isNewFile;
@@ -53,11 +53,11 @@ private:
 
 	std::unique_ptr<std::vector<std::string>> items;
 
-	void Load( void );
-	
-	void Save( void );
+	void Load(void);
 
-	std::string ReadFile( std::string_view path );
+	void Save(void);
+
+	std::string ReadFile(std::string_view path);
 
 };
 

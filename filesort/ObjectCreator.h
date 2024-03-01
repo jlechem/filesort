@@ -31,26 +31,26 @@
 class ObjectCreator
 {
 public:
-	ObjectCreator( void );
+	ObjectCreator(void);
 
-	~ObjectCreator( void );
+	~ObjectCreator(void);
 
-	std::unique_ptr<FileSort> CreateFileSort( std::string params[], int length );
+	std::unique_ptr<FileSort> CreateFileSort(std::string params[], int length);
 
 private:
-	bool ValidateFileExists( std::string fileName );
+	bool ValidateFileExists(std::string fileName);
 
-	bool ValidateOutputFile( std::string fileName );
+	bool ValidateOutputFile(std::string fileName);
 
-	bool ValidateSwitch( std::string value );
+	bool ValidateSwitch(std::string value);
 
-	bool ValidateDescendingSwitch( std::string value );
-	
-	bool ValidateLengthSwitch( std::string value );
-	
-	int GetReadLength( std::string value );
-	
-	char GetSwitchValue( std::string value );
+	bool ValidateDescendingSwitch(std::string value);
+
+	bool ValidateLengthSwitch(std::string value);
+
+	int GetReadLength(std::string value);
+
+	char GetSwitchValue(std::string value);
 
 };
 

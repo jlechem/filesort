@@ -29,17 +29,17 @@ public:
 	DisplayMessages(void);
 
 	~DisplayMessages(void);
-	
-	static void PrintInvalidFileName( std::string_view filename );
+
+	static void PrintInvalidFileName(std::string_view filename);
 
 	static void PrintInvalidUsage(void);
 
-	static void PrintInvalidOutputFile( std::string_view fileName );
-	
-	static void PrintInvalidInputFile( std::string_view fileName );
+	static void PrintInvalidOutputFile(std::string_view fileName);
+
+	static void PrintInvalidInputFile(std::string_view fileName);
 
 	static void PrintHelp();
-	
+
 	static void PrintVersion();
 };
 

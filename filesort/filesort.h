@@ -46,10 +46,15 @@ public:
 
 	virtual void load(std::string_view fileName) = 0;
 
+	void setDelimeter(std::string delimeter);
+
 protected:
 	int readLength;
 
 	std::vector<std::string> items;
+
+private:
+	std::string delimeter;
 
 };
 

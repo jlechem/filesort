@@ -21,8 +21,8 @@
 
 FileSort::FileSort()
 {
+	this->delimeter = "\n";
 	this->readLength = 0;
-
 }
 
 FileSort::FileSort(int readLength)
@@ -37,9 +37,17 @@ FileSort::~FileSort(void)
 void FileSort::save(std::string_view fileName)
 {
 	std::ofstream FILE(fileName.data(), std::ios::out | std::ios::trunc);
-	std::ostream_iterator<std::string> it(FILE,"\n");
+
+	std::ostream_iterator<std::string> it(FILE, this->delimeter.data());
+
 	std::copy(this->items.begin(), this->items.end(), it);
+
 	FILE.close();
+}
+
+void FileSort::setDelimeter(std::string delimeter)
+{
+	this->delimeter = delimeter;
 }
 
 void FileSort::sort(bool isAscending)

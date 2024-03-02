@@ -51,3 +51,5 @@ filesort/x64/Release/filesort.Build.CppClean.log
 filesort/x64/Release/filesort.vcxproj.FileListAbsolute.txt
 /filesort/x64/Debug/filesort.vcxproj.FileListAbsolute.txt
 /filesort/x64/Debug/filesort.Build.CppClean.log
+filesort/linefilesort.o
+filesort/lengthfilesort.o

@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
 				("d,descending", "Sort file in descending order", cxxopts::value<bool>()->default_value("false"))
 				("v,version", "Filesort version", cxxopts::value<bool>()->default_value("false"))
 				("h,help", "Filesort help", cxxopts::value<bool>()->default_value("false"))
-				("l,length", "Number of characters to read, overrides any mode selection", cxxopts::value<int>())
+				("l,length", "Number of characters to read, overrides -w", cxxopts::value<int>())
 				("w,word", "Reads data in per word rather than per line", cxxopts::value<bool>()->default_value("false"));
 
 			auto result = options.parse(argc, argv);

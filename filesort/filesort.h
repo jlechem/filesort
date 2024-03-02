@@ -42,6 +42,8 @@ public:
 	void save(std::string_view fileName);
 	void load(std::string_view fileName);
 
+	void set_read_length(int length);
+
 private:
 	int readLength;
 

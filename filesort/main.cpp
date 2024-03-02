@@ -122,6 +122,7 @@ int main(int argc, char* argv[])
 
 			std::cout << std::endl << "Loading file data";
 
+			fileSort->set_read_length(readLength);
 			fileSort->load(sourceFile);
 
 			std::cout << std::endl << "Done loading file data";

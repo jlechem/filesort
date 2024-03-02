@@ -37,6 +37,11 @@ void FileSort::save(std::string_view fileName)
 	FILE.close();
 }
 
+void FileSort::set_read_length(int length)
+{
+	this->readLength = length;
+}
+
 void FileSort::load(std::string_view fileName)
 {
 	this->items.clear();

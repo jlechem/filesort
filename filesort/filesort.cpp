@@ -19,22 +19,8 @@
 
 #include "FileSort.h"
 
-FileSort::FileSort(std::string oldFilename, std::string newFilename, bool ascending, long readLength)
+FileSort::FileSort()
 {
-	this->isAscending = ascending;
-	this->isNewFile = true;
-	this->newFilename = newFilename;
-	this->oldFilename = oldFilename;
-	this->readLength = readLength;
-
-}
-
-FileSort::FileSort(std::string oldFilename, bool ascending)
-{
-	this->isAscending = ascending;
-	this->isNewFile = false;
-	this->oldFilename = oldFilename;
-	this->newFilename = oldFilename;
 	this->readLength = 0;
 
 }
@@ -43,38 +29,31 @@ FileSort::~FileSort(void)
 {
 }
 
-void FileSort::save(void)
+void FileSort::save(std::string_view fileName)
 {
-	std::ofstream FILE(this->newFilename, std::ios::out | std::ios::trunc);
+	std::ofstream FILE(fileName.data(), std::ios::out | std::ios::trunc);
 	std::ostream_iterator<std::string> it(FILE,"\n");
 	std::copy(this->items.begin(), this->items.end(), it);
 	FILE.close();
 }
 
-void FileSort::load(void)
+void FileSort::load(std::string_view fileName)
 {
 	this->items.clear();
 
 	if (this->readLength == 0 )
 	{
-		this->load_by_line();
+		this->load_by_line(fileName);
 	}
 	else
 	{
-		this->load_by_length();
+		this->load_by_length(fileName);
 	}
 } 
 
-void FileSort::sort(void)
+void FileSort::sort(bool isAscending)
 {
-	std::cout << std::endl << "Loading file data";
-
-	this->load();
-
-	std::cout << std::endl << "Done loading file data";
-	std::cout << std::endl << "Sorting data";
-
-	if (this->isAscending) 
+	if (isAscending) 
 	{
 		std::sort(std::execution::par_unseq, this->items.begin(), this->items.end());
 	} 
@@ -82,18 +61,11 @@ void FileSort::sort(void)
 	{
 		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend());
 	}
-
-	std::cout << std::endl << "Done sorting data";
-	std::cout << std::endl << "Writing file data";
-
-	this->save();
-
-	std::cout << std::endl << "Done Writing file data";
 }
 
-void FileSort::load_by_line(void)
+void FileSort::load_by_line(std::string_view fileName)
 {
-	std::ifstream file(this->oldFilename, std::ios::in);
+	std::ifstream file(fileName.data(), std::ios::in);
 
 	if (file.good())
 	{
@@ -112,9 +84,9 @@ void FileSort::load_by_line(void)
 
 }
 
-void FileSort::load_by_length(void)
+void FileSort::load_by_length(std::string_view fileName)
 {
-	std::ifstream file(this->oldFilename, std::ios::in);
+	std::ifstream file(fileName.data(), std::ios::in);
 
 	if (file.good())
 	{

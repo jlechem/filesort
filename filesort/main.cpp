@@ -21,7 +21,7 @@
 
 
 /*
-		FileSort - Takes a file and sorts it alphabetically in ascending or descending order
+		filesort - Takes a file and sorts it alphabetically in ascending or descending order
 		
 		Created by - Justin LeCheminant 9-1-2007
 
@@ -31,7 +31,7 @@
 
 #include <iostream>
 
-#include "FileSort.h"
+#include "filesort.h"
 #include "cxxopts.h"
 
 constexpr auto VERSION = "4.0.0";
@@ -58,11 +58,11 @@ int main(int argc, char* argv[])
 	{
 		if (argc == 1)
 		{
-			std::cout << std::endl << "Invalid usage, please use help switch <filesort --help> for more details.";
+			std::cout << std::endl << "error: no operation specified (use -h for help)";
 		}
 		else
 		{
-			cxxopts::Options options("FileSort", "Sorts a file in ascending/descending order");
+			cxxopts::Options options("filesort", "Sorts a file in ascending/descending order");
 
 			options.add_options()
 				("i,input", "Source file to sort", cxxopts::value<std::string>())
@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
 
 			if (result.count("version"))
 			{
-				std::cout << std::endl << "FileSort version - " << VERSION;
+				std::cout << std::endl << "filesort version - " << VERSION;
 			}
 
 			if (result.count("help"))
@@ -118,8 +118,23 @@ int main(int argc, char* argv[])
 				readLength = result["length"].as<int>();
 			}
 
-			FileSort fileSort(sourceFile, destinationFile, isAscending, readLength);
-			fileSort.sort();
+			std::unique_ptr<FileSort> fileSort = std::unique_ptr<FileSort>(new FileSort());
+
+			std::cout << std::endl << "Loading file data";
+
+			fileSort->load(sourceFile);
+
+			std::cout << std::endl << "Done loading file data";
+			std::cout << std::endl << "Sorting data";
+
+			fileSort->sort(isAscending);
+
+			std::cout << std::endl << "Done sorting data";
+			std::cout << std::endl << "Writing file data";
+
+			fileSort->save(destinationFile);
+
+			std::cout << std::endl << "Done Writing file data";
 
 		}
 

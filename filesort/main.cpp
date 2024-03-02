@@ -30,6 +30,7 @@
 */
 
 #include <iostream>
+#include <exception>
 
 #include "FileSort.h"
 #include "cxxopts.h"
@@ -52,11 +53,11 @@ Returns:
 An integer represeting a pass/fail to the Operating System.
 
 */
-int main( int argc, char* argv[] )
+int main(int argc, char* argv[])
 {
 	try
 	{
-		if( argc == 1 )
+		if (argc == 1)
 		{
 			std::cout << std::endl << "Invalid usage, please use help switch <filesort --help> for more details." << std::endl;
 		}
@@ -95,7 +96,8 @@ int main( int argc, char* argv[] )
 			}
 			else
 			{
-				throw new std::exception("No input file specified");
+				std::cout << std::endl << "No input file specified" << std::endl << std::endl;
+				return 0;
 			}
 
 			if (result.count("output"))
@@ -119,13 +121,13 @@ int main( int argc, char* argv[] )
 
 			FileSort fileSort(sourceFile, destinationFile, isAscending, readLength);
 			fileSort.Sort();
-			
+
 		}
 
 		return 0;
 
 	}
-	catch( const std::exception& ex )
+	catch (const std::exception& ex)
 	{
 		std::cerr << std::endl << ex.what();
 		return 1;

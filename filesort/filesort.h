@@ -36,21 +36,25 @@ class FileSort
 public:
 	FileSort();
 
+	FileSort(int readLength);
+
 	~FileSort(void);
 
 	void sort(bool isAscending);
+
 	void save(std::string_view fileName);
-	void load(std::string_view fileName);
 
-	void set_read_length(int length);
+	virtual void load(std::string_view fileName) = 0;
 
-private:
+	void setDelimeter(std::string delimeter);
+
+protected:
 	int readLength;
 
 	std::vector<std::string> items;
 
-	void load_by_line(std::string_view fileName);
-	void load_by_length(std::string_view fileName);
+private:
+	std::string delimeter;
 
 };
 

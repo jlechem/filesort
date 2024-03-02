@@ -21,8 +21,14 @@
 
 FileSort::FileSort()
 {
+	this->delimeter = "\n";
 	this->readLength = 0;
+}
 
+FileSort::FileSort(int readLength)
+{
+	this->delimeter = "\n";
+	this->readLength = readLength;
 }
 
 FileSort::~FileSort(void)
@@ -32,29 +38,18 @@ FileSort::~FileSort(void)
 void FileSort::save(std::string_view fileName)
 {
 	std::ofstream FILE(fileName.data(), std::ios::out | std::ios::trunc);
-	std::ostream_iterator<std::string> it(FILE,"\n");
+
+	std::ostream_iterator<std::string> it(FILE, this->delimeter.data());
+
 	std::copy(this->items.begin(), this->items.end(), it);
+
 	FILE.close();
 }
 
-void FileSort::set_read_length(int length)
+void FileSort::setDelimeter(std::string delimeter)
 {
-	this->readLength = length;
+	this->delimeter = delimeter;
 }
-
-void FileSort::load(std::string_view fileName)
-{
-	this->items.clear();
-
-	if (this->readLength == 0 )
-	{
-		this->load_by_line(fileName);
-	}
-	else
-	{
-		this->load_by_length(fileName);
-	}
-} 
 
 void FileSort::sort(bool isAscending)
 {
@@ -65,47 +60,5 @@ void FileSort::sort(bool isAscending)
 	else
 	{
 		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend());
-	}
-}
-
-void FileSort::load_by_line(std::string_view fileName)
-{
-	std::ifstream file(fileName.data(), std::ios::in);
-
-	if (file.good())
-	{
-		std::string line;
-
-		while (std::getline(file, line))
-		{
-			if (!line.empty())
-			{
-				this->items.push_back(line);
-			}
-		}
-
-		file.close();
-	}
-
-}
-
-void FileSort::load_by_length(std::string_view fileName)
-{
-	std::ifstream file(fileName.data(), std::ios::in);
-
-	if (file.good())
-	{
-		while (!file.eof())
-		{
-			std::string newString(this->readLength, ' ');
-			file.read(&newString[0], this->readLength);
-
-			if (!newString.empty())
-			{
-				this->items.push_back(newString);
-			}
-		}
-
-		file.close();
 	}
 }

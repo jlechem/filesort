@@ -32,6 +32,10 @@
 #include <iostream>
 
 #include "filesort.h"
+#include "linefilesort.h"
+#include "lengthfilesort.h"
+#include "wordfilesort.h"
+
 #include "cxxopts.h"
 
 constexpr auto VERSION = "4.0.0";
@@ -70,7 +74,8 @@ int main(int argc, char* argv[])
 				("d,descending", "Sort file in descending order", cxxopts::value<bool>()->default_value("false"))
 				("v,version", "Filesort version", cxxopts::value<bool>()->default_value("false"))
 				("h,help", "Filesort help", cxxopts::value<bool>()->default_value("false"))
-				("l,length", "Number of characters to read", cxxopts::value<int>());
+				("l,length", "Number of characters to read, overrides -w", cxxopts::value<int>())
+				("w,word", "Reads data in per word rather than per line", cxxopts::value<bool>()->default_value("false"));
 
 			auto result = options.parse(argc, argv);
 
@@ -87,6 +92,7 @@ int main(int argc, char* argv[])
 			std::string sourceFile;
 			std::string destinationFile;
 			bool isAscending = true;
+			bool isWordMode = false;
 			int readLength = 0;
 
 			if (result.count("input"))
@@ -118,11 +124,24 @@ int main(int argc, char* argv[])
 				readLength = result["length"].as<int>();
 			}
 
-			std::unique_ptr<FileSort> fileSort = std::unique_ptr<FileSort>(new FileSort());
+			if (result.count("word"))
+			{
+				isWordMode = true;
+			}
+
+			std::unique_ptr<FileSort> fileSort = nullptr;;
+
+			if (readLength == 0)
+			{
+				fileSort = isWordMode ? std::unique_ptr<FileSort>(new WordFileSort()) : std::unique_ptr<FileSort>(new LineFileSort());				
+			}
+			else
+			{
+				fileSort = std::unique_ptr<FileSort>(new LengthFileSort(readLength));
+			}
 
 			std::cout << std::endl << "Loading file data";
 
-			fileSort->set_read_length(readLength);
 			fileSort->load(sourceFile);
 
 			std::cout << std::endl << "Done loading file data";

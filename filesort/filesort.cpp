@@ -47,39 +47,20 @@ void FileSort::Save(void)
 {
 	std::ofstream FILE(this->newFilename, std::ios::out | std::ios::trunc);
 	std::ostream_iterator<std::string> it(FILE,"\n");
-	std::copy(this->items->begin(), this->items->end(), it);
+	std::copy(this->items.begin(), this->items.end(), it);
 	FILE.close();
 }
 
 void FileSort::Load(void)
 {
-	auto fileContents = this->ReadFile(this->oldFilename);
-
-	if (this->readLength > 0)
+	if (this->readLength == 0 )
 	{
-		auto numberOfSubstrings = fileContents.length() / this->readLength;
-
-		for (auto i = 0; i < numberOfSubstrings; i++)
-		{
-			this->items->push_back(fileContents.substr(i * this->readLength, this->readLength));
-		}
-
-		// If there are leftover characters, create a shorter item at the end.
-		if (fileContents.length() % this->readLength != 0)
-		{
-			this->items->push_back(fileContents.substr(this->readLength * numberOfSubstrings));
-		}
+		this->LoadByLine();
 	}
 	else
 	{
-		std::istringstream iss(fileContents);
-
-		this->items = std::unique_ptr<std::vector<std::string>>(new std::vector<std::string>{ std::istream_iterator<std::string>{iss},
-																							  std::istream_iterator<std::string>{}, });
+		this->LoadByLength();
 	}
-
-	fileContents.clear();
-
 } 
 
 void FileSort::Sort(void)
@@ -93,11 +74,11 @@ void FileSort::Sort(void)
 
 	if (this->isAscending) 
 	{
-		std::sort(std::execution::par_unseq, this->items->begin(), this->items->end());
+		std::sort(std::execution::par_unseq, this->items.begin(), this->items.end());
 	} 
 	else
 	{
-		std::sort(std::execution::par_unseq, this->items->rbegin(), this->items->rend());
+		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend());
 	}
 
 	std::cout << std::endl << "Done sorting data";
@@ -108,20 +89,25 @@ void FileSort::Sort(void)
 	std::cout << std::endl << "Done Writing file data";
 }
 
-std::string FileSort::ReadFile(std::string_view path)
+void FileSort::LoadByLine(void) 
 {
-	constexpr auto read_size = std::size_t{ 4096 };
-	auto stream = std::ifstream{ path.data() };
-	stream.exceptions(std::ios_base::badbit);
+	std::ifstream file(this->oldFilename, std::ios::in);
 
-	auto out = std::string{};
-	auto buf = std::string(read_size, '\0');
+	if (file.good())
+	{
+		std::string line;
 
-	while (stream.read(&buf[0], read_size)) {
-		out.append(buf, 0, stream.gcount());
+		while (std::getline(file, line))
+		{
+			this->items.push_back(line);
+		}
+
+		file.close();
 	}
 
-	out.append(buf, 0, stream.gcount());
+}
 
-	return out;
+void FileSort::LoadByLength(void)
+{
+
 }

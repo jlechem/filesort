@@ -45,20 +45,21 @@ public:
 private:
 	bool isNewFile;
 	bool isAscending;
-	bool isVerboseMode;
 
 	int readLength;
 
 	std::string newFilename;
 	std::string oldFilename;
 
-	std::unique_ptr<std::vector<std::string>> items;
+	std::vector<std::string> items;
 
 	void Load(void);
 
-	void Save(void);
+	void LoadByLine(void);
 
-	std::string ReadFile(std::string_view path);
+	void LoadByLength(void);
+
+	void Save(void);
 
 };
 

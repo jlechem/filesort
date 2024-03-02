@@ -119,7 +119,7 @@ int main(int argc, char* argv[])
 			}
 
 			FileSort fileSort(sourceFile, destinationFile, isAscending, readLength);
-			fileSort.Sort();
+			fileSort.sort();
 
 		}
 

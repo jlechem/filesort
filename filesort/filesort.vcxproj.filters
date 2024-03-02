@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FileSort.cpp">
+    <ClCompile Include="filesort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileSort.h">
+    <ClInclude Include="filesort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cxxopts.h">

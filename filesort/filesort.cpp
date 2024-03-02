@@ -43,7 +43,7 @@ FileSort::~FileSort(void)
 {
 }
 
-void FileSort::Save(void)
+void FileSort::save(void)
 {
 	std::ofstream FILE(this->newFilename, std::ios::out | std::ios::trunc);
 	std::ostream_iterator<std::string> it(FILE,"\n");
@@ -51,23 +51,25 @@ void FileSort::Save(void)
 	FILE.close();
 }
 
-void FileSort::Load(void)
+void FileSort::load(void)
 {
+	this->items.clear();
+
 	if (this->readLength == 0 )
 	{
-		this->LoadByLine();
+		this->load_by_line();
 	}
 	else
 	{
-		this->LoadByLength();
+		this->load_by_length();
 	}
 } 
 
-void FileSort::Sort(void)
+void FileSort::sort(void)
 {
 	std::cout << std::endl << "Loading file data";
 
-	this->Load();
+	this->load();
 
 	std::cout << std::endl << "Done loading file data";
 	std::cout << std::endl << "Sorting data";
@@ -84,12 +86,12 @@ void FileSort::Sort(void)
 	std::cout << std::endl << "Done sorting data";
 	std::cout << std::endl << "Writing file data";
 
-	this->Save();
+	this->save();
 
 	std::cout << std::endl << "Done Writing file data";
 }
 
-void FileSort::LoadByLine(void) 
+void FileSort::load_by_line(void)
 {
 	std::ifstream file(this->oldFilename, std::ios::in);
 
@@ -99,7 +101,10 @@ void FileSort::LoadByLine(void)
 
 		while (std::getline(file, line))
 		{
-			this->items.push_back(line);
+			if (!line.empty())
+			{
+				this->items.push_back(line);
+			}
 		}
 
 		file.close();
@@ -107,7 +112,23 @@ void FileSort::LoadByLine(void)
 
 }
 
-void FileSort::LoadByLength(void)
+void FileSort::load_by_length(void)
 {
+	std::ifstream file(this->oldFilename, std::ios::in);
 
+	if (file.good())
+	{
+		while (!file.eof())
+		{
+			std::string newString(this->readLength, ' ');
+			file.read(&newString[0], this->readLength);
+
+			if (!newString.empty())
+			{
+				this->items.push_back(newString);
+			}
+		}
+
+		file.close();
+	}
 }

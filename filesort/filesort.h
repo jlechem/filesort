@@ -40,7 +40,7 @@ public:
 
 	~FileSort(void);
 
-	void Sort(void);
+	void sort(void);
 
 private:
 	bool isNewFile;
@@ -53,13 +53,13 @@ private:
 
 	std::vector<std::string> items;
 
-	void Load(void);
+	void load(void);
 
-	void LoadByLine(void);
+	void load_by_line(void);
 
-	void LoadByLength(void);
+	void load_by_length(void);
 
-	void Save(void);
+	void save(void);
 
 };
 

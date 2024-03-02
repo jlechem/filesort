@@ -30,7 +30,6 @@
 */
 
 #include <iostream>
-#include <exception>
 
 #include "FileSort.h"
 #include "cxxopts.h"
@@ -59,7 +58,7 @@ int main(int argc, char* argv[])
 	{
 		if (argc == 1)
 		{
-			std::cout << std::endl << "Invalid usage, please use help switch <filesort --help> for more details." << std::endl;
+			std::cout << std::endl << "Invalid usage, please use help switch <filesort --help> for more details.";
 		}
 		else
 		{
@@ -77,12 +76,12 @@ int main(int argc, char* argv[])
 
 			if (result.count("version"))
 			{
-				std::cout << std::endl << "FileSort version - " << VERSION << std::endl << std::endl;
+				std::cout << std::endl << "FileSort version - " << VERSION;
 			}
 
 			if (result.count("help"))
 			{
-				std::cout << options.help() << std::endl;
+				std::cout << std::endl << options.help();
 			}
 
 			std::string sourceFile;
@@ -96,7 +95,7 @@ int main(int argc, char* argv[])
 			}
 			else
 			{
-				std::cout << std::endl << "No input file specified" << std::endl << std::endl;
+				std::cout << std::endl << "No input file specified";
 				return 0;
 			}
 

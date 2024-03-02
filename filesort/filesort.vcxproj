@@ -139,6 +139,7 @@
     <ClCompile Include="lengthfilesort.cpp" />
     <ClCompile Include="linefilesort.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="wordfilesort.cpp" />
     <Text Include="test.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="filesort.h" />
     <ClInclude Include="lengthfilesort.h" />
     <ClInclude Include="linefilesort.h" />
+    <ClInclude Include="wordfilesort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

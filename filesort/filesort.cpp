@@ -27,6 +27,7 @@ FileSort::FileSort()
 
 FileSort::FileSort(int readLength)
 {
+	this->delimeter = "\n";
 	this->readLength = readLength;
 }
 

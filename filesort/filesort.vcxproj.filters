@@ -27,6 +27,9 @@
     <ClCompile Include="lengthfilesort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="wordfilesort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="filesort.h">
@@ -39,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lengthfilesort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wordfilesort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

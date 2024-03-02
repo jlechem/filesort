@@ -32,6 +32,8 @@
 #include <iostream>
 
 #include "filesort.h"
+#include "linefilesort.h"
+#include "lengthfilesort.h"
 #include "cxxopts.h"
 
 constexpr auto VERSION = "4.0.0";
@@ -118,11 +120,19 @@ int main(int argc, char* argv[])
 				readLength = result["length"].as<int>();
 			}
 
-			std::unique_ptr<FileSort> fileSort = std::unique_ptr<FileSort>(new FileSort());
+			std::unique_ptr<FileSort> fileSort = nullptr;;
+
+			if (readLength == 0)
+			{
+				fileSort = std::unique_ptr<FileSort>(new LineFileSort());
+			}
+			else
+			{
+				fileSort = std::unique_ptr<FileSort>(new LengthFileSort(readLength));
+			}
 
 			std::cout << std::endl << "Loading file data";
 
-			fileSort->set_read_length(readLength);
 			fileSort->load(sourceFile);
 
 			std::cout << std::endl << "Done loading file data";

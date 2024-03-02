@@ -136,12 +136,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="filesort.cpp" />
+    <ClCompile Include="lengthfilesort.cpp" />
+    <ClCompile Include="linefilesort.cpp" />
     <ClCompile Include="main.cpp" />
     <Text Include="test.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cxxopts.h" />
     <ClInclude Include="filesort.h" />
+    <ClInclude Include="lengthfilesort.h" />
+    <ClInclude Include="linefilesort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

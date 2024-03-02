@@ -21,12 +21,24 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="linefilesort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lengthfilesort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="filesort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cxxopts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="linefilesort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lengthfilesort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

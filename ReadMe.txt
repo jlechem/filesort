@@ -1,3 +1,10 @@
+# Release versions
+
+Note that `main` is generally a work in progress, and you probably want to use a
+tagged release version.
+
+
+
 Welcome to the readme text file for filesort. Filesort is a small utility to sort files into ascending or descending order, either replacging the original file or creating a new one, you can also specify to read the entire line or chunks (characters) at a time. It is lightweight and very fast. Originally written over 10 years ago I have upgraded the source code to use newer standards. I have added code and a makefile in the repository to support GCC as well as Visual Studio.
 
 Building Instructions

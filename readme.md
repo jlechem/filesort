@@ -1,27 +1,26 @@
 # Release versions
 
-Note that `main` is generally a work in progress, and you probably want to use a
-tagged release version.
+Note that `main` is generally a work in progress, and you probably want to use a tagged release version.
 
+# Version 4 breaking changes
 
+If you have used version 3 or below, there are breaking changes coming in version 4. The entire command line arguments has been re-worked to be more in line with the unix/linux standards.
 
-Welcome to the readme text file for filesort. Filesort is a small utility to sort files into ascending or descending order, either replacging the original file or creating a new one, you can also specify to read the entire line or chunks (characters) at a time. It is lightweight and very fast. Originally written over 10 years ago I have upgraded the source code to use newer standards. I have added code and a makefile in the repository to support GCC as well as Visual Studio.
+# Quick start
+To use filesort you pass in the name of the file you want sorted along with several optionsal parameters.
 
-Building Instructions
-	Windows: Open the solution file and build your desired build configuratiin.
-	Unix/Linx: In the filesort/filesort directory run the makefile provided. The default compiler is GCC but you can modify as desired.
+filesort inputfile [outputfile] [/d] [/cX]
+* [/d] - Sorts the file in descending order
+* [/cX] - Reads every X characters as an item to sort rather than the entire line
 
+## Example
+* filesort test.txt - Sorts the file test.txt in ascending order
+* filesort test.txt output.txt /d - Reads the data from test.txt and writes it in descending order to output.txt
 
-Detailed Useage Directions
+# Requirements
 
-Items are sorted using white space and ascending order by default
+The only build requirement is a C++ compiler that supports C++17. I have tested using Visual Studio 2019 and GCC 13.2.0.
 
-White space and sort order can be overriden using the appropriate switches.
-		 FILESORT [source file] [output file] [/d] [/cX]
-		 [/d] Specifies descending sort order.
-		 [/cX] Specifies X number of characters to be read instead of whitespace.
-
-
-Best regards,
-
-Justin LeCheminant
+## Building
+* Windows - Open the solution file in Visual Studio and build accordingly.
+* Unix/Linux - In the filesort directory is a MAKEFILE, this should be used to build the project. Note it is currently set to GCC, clang etc. have not been tested,

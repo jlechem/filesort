@@ -30,13 +30,11 @@
 */
 
 #include <iostream>
-#include <string>
-#include <cstring>
-#include <memory>
 
-#include "ObjectCreator.h"
 #include "FileSort.h"
-#include "DisplayMessages.h"
+#include "cxxopts.h"
+
+constexpr auto VERSION = "4.0.0";
 
 /*
 
@@ -54,47 +52,83 @@ Returns:
 An integer represeting a pass/fail to the Operating System.
 
 */
-int main( int argc, char* argv[] )
+int main(int argc, char* argv[])
 {
 	try
 	{
-		if( argc == 1 )
+		if (argc == 1)
 		{
-			DisplayMessages::PrintInvalidUsage();
+			std::cout << std::endl << "Invalid usage, please use help switch <filesort --help> for more details.";
 		}
 		else
 		{
-			if( argc < 2 && argc > 5 )
+			cxxopts::Options options("FileSort", "Sorts a file in ascending/descending order");
+
+			options.add_options()
+				("i,input", "Source file to sort", cxxopts::value<std::string>())
+				("o,output", "Destination file to write to", cxxopts::value<std::string>())
+				("d,descending", "Sort file in descending order", cxxopts::value<bool>()->default_value("false"))
+				("v,version", "Filesort version", cxxopts::value<bool>()->default_value("false"))
+				("h,help", "Filesort help", cxxopts::value<bool>()->default_value("false"))
+				("l,length", "Number of characters to read", cxxopts::value<int>());
+
+			auto result = options.parse(argc, argv);
+
+			if (result.count("version"))
 			{
-				DisplayMessages::PrintInvalidUsage();
+				std::cout << std::endl << "FileSort version - " << VERSION;
 			}
-			else if( argc == 2 && (argv[1] == "--help" || argv[1] == "--h"))
+
+			if (result.count("help"))
 			{
-				DisplayMessages::PrintHelp();
+				std::cout << std::endl << options.help();
 			}
-			else if( argc == 2 && (argv[1] == "--version" || argv[1] == "--v"))
+
+			std::string sourceFile;
+			std::string destinationFile;
+			bool isAscending = true;
+			int readLength = 0;
+
+			if (result.count("input"))
 			{
-				DisplayMessages::PrintVersion();
+				sourceFile = result["input"].as<std::string>();
 			}
 			else
 			{
-				ObjectCreator creator;
-
-				auto fileSort = creator.CreateFileSort( argv,  argc );
-
-				if( fileSort )
-				{
-					fileSort->Sort();
-				}
+				std::cout << std::endl << "No input file specified";
+				return 0;
 			}
+
+			if (result.count("output"))
+			{
+				destinationFile = result["output"].as<std::string>();
+			}
+			else
+			{
+				destinationFile = sourceFile;
+			}
+
+			if (result.count("descending"))
+			{
+				isAscending = false;
+			}
+
+			if (result.count("length"))
+			{
+				readLength = result["length"].as<int>();
+			}
+
+			FileSort fileSort(sourceFile, destinationFile, isAscending, readLength);
+			fileSort.Sort();
+
 		}
 
 		return 0;
 
 	}
-	catch( ... )
+	catch (const std::exception& ex)
 	{
-		std::cerr << std::endl << "An error has occured in the application please try running it again." << std::endl;
+		std::cerr << std::endl << ex.what();
 		return 1;
 	}
 }

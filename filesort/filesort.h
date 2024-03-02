@@ -45,6 +45,7 @@ public:
 private:
 	bool isNewFile;
 	bool isAscending;
+	bool isVerboseMode;
 
 	int readLength;
 

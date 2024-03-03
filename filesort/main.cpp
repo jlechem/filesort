@@ -146,9 +146,7 @@ int main(int argc, char* argv[])
 			else
 			{
 				fileSort = std::unique_ptr<FileSort>(new LengthFileSort(readLength));
-			}
-
-			fileSort->set_delimeter(delimeter);
+			}	
 
 			std::cout << std::endl << "Loading file data";
 
@@ -161,7 +159,8 @@ int main(int argc, char* argv[])
 
 			std::cout << std::endl << "Done sorting data";
 			std::cout << std::endl << "Writing file data";
-
+			
+			fileSort->set_delimeter(delimeter);
 			fileSort->save(destinationFile);
 
 			std::cout << std::endl << "Done Writing file data";

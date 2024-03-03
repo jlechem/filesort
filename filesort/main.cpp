@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
 				("h,help", "Filesort help", cxxopts::value<bool>()->default_value("false"))
 				("l,length", "Number of characters to read, overrides -w", cxxopts::value<int>())
 				("w,word", "Reads data in per word rather than per line", cxxopts::value<bool>()->default_value("false"))
-				("delim,delimeter", "Value to append to end of each sorted value defaults to '\n'", cxxopts::value<std::string>()->default_value("\n"));
+				("delim,delimeter", "Value to append to end of each sorted value defaults to newline", cxxopts::value<std::string>());
 
 			auto result = options.parse(argc, argv);
 

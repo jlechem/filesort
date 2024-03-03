@@ -74,7 +74,8 @@ int main(int argc, char* argv[])
 				("v,version", "Filesort version", cxxopts::value<bool>()->default_value("false"))
 				("h,help", "Filesort help", cxxopts::value<bool>()->default_value("false"))
 				("l,length", "Number of characters to read, overrides -w", cxxopts::value<int>())
-				("w,word", "Reads data in per word rather than per line", cxxopts::value<bool>()->default_value("false"));
+				("w,word", "Reads data in per word rather than per line", cxxopts::value<bool>()->default_value("false"))
+				("delim,delimeter", "Value to append to end of each sorted value defaults to '\n'", cxxopts::value<std::string>()->default_value("\n"));
 
 			auto result = options.parse(argc, argv);
 
@@ -90,8 +91,11 @@ int main(int argc, char* argv[])
 
 			std::string sourceFile;
 			std::string destinationFile;
+			std::string delimeter = "\n";
+
 			bool isAscending = true;
 			bool isWordMode = false;
+
 			int readLength = 0;
 
 			if (result.count("input"))
@@ -128,6 +132,11 @@ int main(int argc, char* argv[])
 				isWordMode = true;
 			}
 
+			if (result.count("delimeter"))
+			{
+				delimeter = result["delimeter"].as<std::string>();
+			}
+
 			std::unique_ptr<FileSort> fileSort = nullptr;;
 
 			if (readLength == 0)
@@ -138,6 +147,8 @@ int main(int argc, char* argv[])
 			{
 				fileSort = std::unique_ptr<FileSort>(new LengthFileSort(readLength));
 			}
+
+			fileSort->setDelimeter(delimeter);
 
 			std::cout << std::endl << "Loading file data";
 

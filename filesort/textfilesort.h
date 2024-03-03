@@ -18,19 +18,23 @@
     along with filesort.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LINEFILESORT_H
-#define LINEFILESORT_H
+#ifndef TEXTFILESORT_H
+#define TEXTFILESORT_H
 
-#include "textfilesort.h"
+#include "filesort.h"
 
-class LineFileSort :
-    public TextFileSort
+class TextFileSort :
+    public FileSort
 {
 public:
-    LineFileSort() : TextFileSort() {};
+    TextFileSort() : FileSort() {};
 
-    void load(std::string_view fileName);
+	TextFileSort(int readLength) : FileSort(readLength) {};
 
+	~TextFileSort(void);
+
+protected:
+    std::vector<std::string> items;
 };
 
 #endif

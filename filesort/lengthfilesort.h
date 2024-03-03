@@ -21,13 +21,15 @@
 #ifndef LENGTHFILESORT_H
 #define LENGTHFILESORT_H
 
-#include "filesort.h"
+#include "textfilesort.h"
 
 class LengthFileSort :
-    public FileSort
+    public TextFileSort
 {
 public:
-    LengthFileSort(int length) : FileSort(length) {};
+    LengthFileSort() : TextFileSort() {};
+
+    LengthFileSort(int length) : TextFileSort(length) {};
 
     void load(std::string_view fileName);
 };

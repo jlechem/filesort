@@ -40,18 +40,16 @@ public:
 
 	~FileSort(void);
 
-	virtual void sort(bool isAscending);
+	virtual void sort(bool isAscending) {};
 
-	virtual void save(std::string_view fileName);
+	virtual void save(std::string_view fileName) {};
 
 	virtual void load(std::string_view fileName) = 0;
 
-	void set_delimeter(std::string delimeter);
+	void set_delimeter(std::string delimeter) { this->delimeter = delimeter; }
 
 protected:
 	int readLength;
-
-	std::vector<std::string> items;
 
 private:
 	std::string delimeter;

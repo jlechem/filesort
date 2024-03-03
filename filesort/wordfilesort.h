@@ -21,12 +21,14 @@
 #ifndef WORDLINEFILESORT_H
 #define WORDLINEFILESORT_H
 
-#include "filesort.h"
+#include "textfilesort.h"
 
 class WordFileSort :
-    public FileSort
+    public TextFileSort
 {
 public:
+    WordFileSort() : TextFileSort() {};
+
     void load(std::string_view fileName);
 
 };

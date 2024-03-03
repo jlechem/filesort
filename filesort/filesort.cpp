@@ -37,13 +37,13 @@ FileSort::~FileSort(void)
 
 void FileSort::save(std::string_view fileName)
 {
-	std::ofstream FILE(fileName.data(), std::ios::out | std::ios::trunc);
+	std::ofstream file(fileName.data(), std::ios::out | std::ios::trunc);
 
-	std::ostream_iterator<std::string> it(FILE, this->delimeter.data());
+	std::ostream_iterator<std::string> it(file, this->delimeter.data());
 
 	std::copy(this->items.begin(), this->items.end(), it);
-
-	FILE.close();
+	
+	file.close();
 }
 
 void FileSort::setDelimeter(std::string delimeter)

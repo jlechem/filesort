@@ -7,7 +7,7 @@ Note that `main` is generally a work in progress, and you probably want to use a
 If you have used version 3 or below, there are breaking changes coming in version 4. The entire command line arguments has been re-worked to be more in line with the unix/linux standards.
 
 # Quick start
-To use filesort you pass in the name of the file you want sorted along with several optionsal parameters.
+To use filesort you pass in the name of the file you want sorted along with several optional parameters.
 
 filesort inputfile [outputfile] [/d] [/cX]
 * [/d] - Sorts the file in descending order

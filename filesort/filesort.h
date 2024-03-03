@@ -40,9 +40,9 @@ public:
 
 	~FileSort(void);
 
-	void sort(bool isAscending);
+	virtual void sort(bool isAscending);
 
-	void save(std::string_view fileName);
+	virtual void save(std::string_view fileName);
 
 	virtual void load(std::string_view fileName) = 0;
 

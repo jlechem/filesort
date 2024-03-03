@@ -12,9 +12,6 @@ CXXFLAGS = -std=c++17 -Wall -g
 
 all: filesort
 
-filesort: main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o
-	$(CXX) $(CXXFLAGS) -o filesort main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o
-
 filesort.o: filesort.cpp filesort.h
 	$(CXX) $(CXXFLAGS) -c filesort.h filesort.cpp
 
@@ -30,6 +27,9 @@ wordfilesort.o: wordfilesort.cpp wordfilesort.h
 main.o: main.cpp cxxopts.h
 	$(CXX) $(CXXFLAGS) -c main.cpp cxxopts.h
 
+filesort: main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o
+	$(CXX) $(CXXFLAGS) -o filesort main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o
+	
 .PHONY : clean
 clean :
 	-rm *.o filesort

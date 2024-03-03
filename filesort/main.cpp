@@ -35,7 +35,6 @@
 #include "linefilesort.h"
 #include "lengthfilesort.h"
 #include "wordfilesort.h"
-
 #include "cxxopts.h"
 
 constexpr auto VERSION = "4.0.0";

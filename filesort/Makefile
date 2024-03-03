@@ -10,6 +10,8 @@ CXX = g++
 
 CXXFLAGS = -std=c++17 -Wall -Wextra -Werror -g
 
+PREFIX = /usr/local
+
 all: filesort
 
 filesort.o: filesort.cpp filesort.h
@@ -36,4 +38,8 @@ filesort: main.o filesort.o textfilesort.o lengthfilesort.o linefilesort.o wordf
 .PHONY : clean
 clean :
 	-rm *.o filesort
-	
+
+.PHONY: install  
+install: filesort
+	install -m 0755 filesort $(PREFIX)/bin
+    

@@ -39,9 +39,12 @@ void TextFileSort::save(std::string_view fileName)
 {
 	std::ofstream file(fileName.data(), std::ios::out | std::ios::trunc);
 
-	std::ostream_iterator<std::string> it(file, this->delimeter.data());
+	if (file.good())
+	{
+		std::ostream_iterator<std::string> it(file, this->delimeter.data());
 
-	std::copy(this->items.begin(), this->items.end(), it);
+		std::copy(this->items.begin(), this->items.end(), it);
 
-	file.close();
+		file.close();
+	}
 }

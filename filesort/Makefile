@@ -8,7 +8,7 @@
 # define the C++ compiler to use
 CXX = g++
 
-CXXFLAGS = -std=c++17 -Wall -g
+CXXFLAGS = -std=c++17 -Wall -Wextra -Werror -g
 
 all: filesort
 

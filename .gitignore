@@ -54,3 +54,4 @@ filesort/x64/Release/filesort.vcxproj.FileListAbsolute.txt
 /filesort/wordfilesort.o
 /filesort/linefilesort.o
 /filesort/lengthfilesort.o
+filesort/textfilesort.o

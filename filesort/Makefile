@@ -15,6 +15,9 @@ all: filesort
 filesort.o: filesort.cpp filesort.h
 	$(CXX) $(CXXFLAGS) -c filesort.h filesort.cpp
 
+textfilesort.o: textfilesort.cpp textfilesort.h
+	$(CXX) $(CXXFLAGS) -c textfilesort.h textfilesort.cpp
+
 lengthfilesort.o: lengthfilesort.cpp lengthfilesort.h
 	$(CXX) $(CXXFLAGS) -c lengthfilesort.h lengthfilesort.cpp
 
@@ -27,8 +30,8 @@ wordfilesort.o: wordfilesort.cpp wordfilesort.h
 main.o: main.cpp cxxopts.h
 	$(CXX) $(CXXFLAGS) -c main.cpp cxxopts.h
 
-filesort: main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o
-	$(CXX) $(CXXFLAGS) -o filesort main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o
+filesort: main.o filesort.o textfilesort.o lengthfilesort.o linefilesort.o wordfilesort.o 
+	$(CXX) $(CXXFLAGS) -o filesort textfilesort.o main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o
 	
 .PHONY : clean
 clean :

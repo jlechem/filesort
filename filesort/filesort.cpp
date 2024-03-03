@@ -34,3 +34,8 @@ FileSort::FileSort(int readLength)
 FileSort::~FileSort(void)
 {
 }
+
+void FileSort::set_delimeter(std::string delimeter) 
+{
+    this->delimeter = delimeter; 
+}

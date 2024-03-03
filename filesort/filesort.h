@@ -38,7 +38,7 @@ public:
 
 	FileSort(int readLength);
 
-	~FileSort(void);
+	virtual ~FileSort(void) = 0;
 
 	virtual void sort(bool isAscending) = 0;
 
@@ -46,7 +46,7 @@ public:
 
 	virtual void load(std::string_view fileName) = 0;
 
-	void set_delimeter(std::string delimeter) { this->delimeter = delimeter; }
+	void set_delimeter(std::string delimeter);
 
 protected:
 	int readLength;

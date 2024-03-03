@@ -46,7 +46,7 @@ public:
 
 	virtual void load(std::string_view fileName) = 0;
 
-	void setDelimeter(std::string delimeter);
+	void set_delimeter(std::string delimeter);
 
 protected:
 	int readLength;

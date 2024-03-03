@@ -148,7 +148,7 @@ int main(int argc, char* argv[])
 				fileSort = std::unique_ptr<FileSort>(new LengthFileSort(readLength));
 			}
 
-			fileSort->setDelimeter(delimeter);
+			fileSort->set_delimeter(delimeter);
 
 			std::cout << std::endl << "Loading file data";
 

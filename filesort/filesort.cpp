@@ -46,7 +46,7 @@ void FileSort::save(std::string_view fileName)
 	file.close();
 }
 
-void FileSort::setDelimeter(std::string delimeter)
+void FileSort::set_delimeter(std::string delimeter)
 {
 	this->delimeter = delimeter;
 }

@@ -5,8 +5,9 @@
 # 'make clean'  removes all .o and executable files
 #
 
-# define the C compiler to use
+# define the C++ compiler to use
 CXX = g++
+
 CXXFLAGS = -std=c++17 -Wall -g
 
 all: filesort

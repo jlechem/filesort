@@ -33,6 +33,10 @@ public:
 
 	~TextFileSort(void);
 
+    void sort(bool isAscending);
+
+    void save(std::string_view fileName);
+
 protected:
     std::vector<std::string> items;
 };

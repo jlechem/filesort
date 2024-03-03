@@ -40,9 +40,9 @@ public:
 
 	~FileSort(void);
 
-	virtual void sort(bool isAscending) {};
+	virtual void sort(bool isAscending) = 0;
 
-	virtual void save(std::string_view fileName) {};
+	virtual void save(std::string_view fileName) = 0;
 
 	virtual void load(std::string_view fileName) = 0;
 
@@ -50,8 +50,6 @@ public:
 
 protected:
 	int readLength;
-
-private:
 	std::string delimeter;
 
 };

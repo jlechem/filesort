@@ -17,7 +17,7 @@
     along with filesort.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "FileSort.h"
+#include "filesort.h"
 
 FileSort::FileSort()
 {

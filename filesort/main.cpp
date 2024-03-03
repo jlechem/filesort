@@ -135,6 +135,15 @@ int main(int argc, char* argv[])
 			if (result.count("delimeter"))
 			{
 				delimeter = result["delimeter"].as<std::string>();
+
+				if (delimeter == "\\t")
+				{
+					delimeter = "\t";
+				}
+				else if (delimeter == "\\n")
+				{
+					delimeter = "\n";
+				}
 			}
 
 			std::unique_ptr<FileSort> fileSort = nullptr;;

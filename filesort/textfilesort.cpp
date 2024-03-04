@@ -25,13 +25,15 @@ TextFileSort::~TextFileSort(void)
 
 void TextFileSort::sort(bool isAscending)
 {
+	// since we write the files from vector end to front
+	// we need to kind of reverse based on the ascending flag
 	if (isAscending)
 	{
-		std::sort(std::execution::par_unseq, this->items.begin(), this->items.end());
+		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend());
 	}
 	else
 	{
-		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend());
+		std::sort(std::execution::par_unseq, this->items.begin(), this->items.end());
 	}
 }
 
@@ -41,9 +43,11 @@ void TextFileSort::save(std::string_view fileName)
 
 	if (file.good())
 	{
-		std::ostream_iterator<std::string> it(file, this->delimeter.data());
-
-		std::copy(this->items.begin(), this->items.end(), it);
+		while (!this->items.empty())
+		{
+			file << this->items.back() << this->delimeter;
+			this->items.pop_back();
+		}
 
 		file.close();
 	}

@@ -4,18 +4,23 @@ Note that `main` is generally a work in progress, and you probably want to use a
 
 # Version 4 breaking changes
 
-If you have used version 3 or below, there are breaking changes coming in version 4. The entire command line arguments has been re-worked to be more in line with the unix/linux standards.
+If you have used version 3 or below, there are breaking changes in version 4. The entire command line arguments has been re-worked to be more in line with the unix/linux standards.
 
 # Quick start
 To use filesort you pass in the name of the file you want sorted along with several optional parameters.
 
-filesort inputfile [outputfile] [/d] [/cX]
-* [/d] - Sorts the file in descending order
-* [/cX] - Reads every X characters as an item to sort rather than the entire line
+* -i, --input arg,   Source file to sort
+* -o, --output arg,  Destination file to write to
+* -d, --descending,  Sort file in descending order
+* -v, --version,     Filesort version
+* -h, --help,        Filesort help
+* -l, --length arg,  Number of characters to read, overrides -w
+* -w, --word,        Reads data in per word rather than per line
+*    --delim arg,   Value to append to end of each sorted value defaults to newline
 
 ## Example
-* filesort test.txt - Sorts the file test.txt in ascending order
-* filesort test.txt output.txt /d - Reads the data from test.txt and writes it in descending order to output.txt
+* filesort -i test.txt - Sorts the file test.txt in ascending order
+* filesort -i test.txt -o output.txt /d - Reads the data from test.txt and writes it in descending order to output.txt
 
 # Requirements
 

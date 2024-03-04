@@ -19,8 +19,8 @@ To use filesort you pass in the name of the file you want sorted along with seve
 *    --delim arg,   Value to append to end of each sorted value defaults to newline
 
 ## Example
-* filesort -i test.txt, Sorts the file test.txt in ascending order
-* filesort -i test.txt -o output.txt -d, Reads the data from test.txt and writes it in descending order to output.txt
+* `filesort -i test.txt` Sorts the file test.txt in ascending order
+* `filesort -i test.txt -o output.txt -d` Reads the data from test.txt and writes it in descending order to output.txt
 
 # Requirements
 

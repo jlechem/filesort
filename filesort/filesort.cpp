@@ -18,6 +18,7 @@
 */
 
 #include "filesort.h"
+#include <typeindex>
 
 FileSort::FileSort()
 {
@@ -33,6 +34,32 @@ FileSort::FileSort(int readLength)
 
 FileSort::~FileSort(void)
 {
+}
+
+void FileSort::sort(bool isAscending)
+{
+	// since we write the files from vector end to front
+	  // we need to kind of reverse based on the ascending flag
+	if (isAscending)
+	{
+		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend(),
+			[](const std::any& leftHand, const std::any& rightHand) 
+			{ 
+				auto& leftHandType = leftHand.type();
+				auto& rightHandType = rightHand.type();
+				return std::type_index(leftHandType) < std::type_index(rightHandType); 
+			});
+	}
+	else
+	{
+		std::sort(std::execution::par_unseq, this->items.begin(), this->items.end(),
+			[](const std::any& leftHand, const std::any& rightHand)
+			{
+				auto& leftHandType = leftHand.type();
+				auto& rightHandType = rightHand.type();
+				return std::type_index(leftHandType) < std::type_index(rightHandType);
+			});
+	}
 }
 
 void FileSort::set_delimeter(std::string delimeter) 

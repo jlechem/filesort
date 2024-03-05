@@ -25,7 +25,7 @@
 		
 		Created by - Justin LeCheminant 9-1-2007
 
-		Current Version 4.0.0
+		Current Version 4.0.1
 
 */
 
@@ -37,7 +37,7 @@
 #include "wordfilesort.h"
 #include "cxxopts.h"
 
-constexpr auto VERSION = "4.0.0";
+constexpr auto VERSION = "4.0.1";
 
 /*
 

@@ -30,6 +30,7 @@
 #include <string_view>
 #include <sstream>
 #include <iterator>
+#include <any>
 
 class FileSort
 {
@@ -40,7 +41,7 @@ public:
 
 	virtual ~FileSort(void) = 0;
 
-	virtual void sort(bool isAscending) = 0;
+	virtual void sort(bool isAscending);
 
 	virtual void save(std::string_view fileName) = 0;
 
@@ -50,7 +51,10 @@ public:
 
 protected:
 	int readLength;
+
 	std::string delimeter;
+
+	std::vector<std::any> items;
 
 };
 

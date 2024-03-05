@@ -29,16 +29,12 @@ class TextFileSort :
 public:
     TextFileSort() : FileSort() {};
 
-	TextFileSort(int readLength) : FileSort(readLength) {};
+    TextFileSort(int readLength) : FileSort(readLength) {};
 
-	~TextFileSort(void);
-
-    void sort(bool isAscending);
+    ~TextFileSort(void);
 
     void save(std::string_view fileName);
 
-protected:
-    std::vector<std::string> items;
 };
 
 #endif

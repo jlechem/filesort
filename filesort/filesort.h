@@ -31,6 +31,7 @@
 #include <sstream>
 #include <iterator>
 #include <any>
+#include <typeindex>
 
 class FileSort
 {

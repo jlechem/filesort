@@ -18,7 +18,6 @@
 */
 
 #include "filesort.h"
-#include <typeindex>
 
 FileSort::FileSort()
 {

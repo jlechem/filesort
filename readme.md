@@ -23,13 +23,12 @@ To use filesort you pass in the name of the file you want sorted along with seve
 * `filesort -i test.txt -o output.txt -d` Reads the data from test.txt and writes it in descending order to output.txt
 
 # Requirements
-
 The only build requirement is a C++ compiler that supports C++17. I have tested using Visual Studio 2019, GCC 13.2.0, and Clang 17.0.6.
 
-## Building
-
-### Getting
+## Getting
 `git clone --recursive https://github.com/jlechem/filesort`
+
+### Building
 * Windows - Open the filesort.sln solution file in Visual Studio and build accordingly.
 * Unix/Linux - In the filesort directory is a MAKEFILE, this should be used to build the project. Note it is currently set to GCC (see mac OS for clang)
   The following make commands are supported

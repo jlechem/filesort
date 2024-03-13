@@ -21,6 +21,8 @@
 #ifndef TEXTFILESORT_H
 #define TEXTFILESORT_H
 
+#include <typeindex>
+
 #include "filesort.h"
 
 class TextFileSort :

@@ -18,7 +18,6 @@
 */
 
 #include "textfilesort.h"
-#include <typeindex>
 
 TextFileSort::~TextFileSort(void)
 {

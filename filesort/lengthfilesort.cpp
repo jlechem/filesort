@@ -32,7 +32,7 @@ void LengthFileSort::load(std::string_view fileName)
 
 			if (!newString.empty())
 			{
-				this->items.push_back(newString);
+				this->items.push_back(std::move(newString));
 			}
 		}
 

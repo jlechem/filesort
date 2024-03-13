@@ -29,7 +29,7 @@ void WordFileSort::load(std::string_view fileName)
 
 		while (file >> item)
 		{
-			this->items.push_back(item);
+			this->items.push_back(std::move(item));
 		}
 
 		file.close();

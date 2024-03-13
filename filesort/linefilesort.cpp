@@ -31,7 +31,7 @@ void LineFileSort::load(std::string_view fileName)
 		{
 			if (!line.empty())
 			{
-				this->items.push_back(line);
+				this->items.push_back(std::move(line));
 			}
 		}
 

@@ -104,7 +104,7 @@ int main(int argc, char* argv[])
 			}
 			else
 			{
-				std::cout << std::endl << "No input file specified";
+				std::cout << std::endl << "No input file specified" << std::endl;
 				return 0;
 			}
 

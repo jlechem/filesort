@@ -81,12 +81,12 @@ int main(int argc, char* argv[])
 
 			if (result.count("version"))
 			{
-				std::cout << std::endl << "filesort version - " << VERSION;
+				std::cout << std::endl << "filesort version - " << VERSION << std::endl;
 			}
 
 			if (result.count("help"))
 			{
-				std::cout << std::endl << options.help();
+				std::cout << std::endl << options.help() << std::endl;
 			}
 
 			std::string sourceFile;

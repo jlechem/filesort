@@ -41,5 +41,5 @@ clean :
 
 .PHONY: install  
 install: filesort
-	install -x filesort $(PREFIX)/bin
+	cp filesort $(PREFIX)/bin
     

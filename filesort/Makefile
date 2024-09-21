@@ -42,4 +42,8 @@ clean :
 .PHONY: install  
 install: filesort
 	cp filesort $(PREFIX)/bin
+
+.PHONY: uninstall  
+uninstall: filesort
+	rm -r $(PREFIX)/bin/filesort
     

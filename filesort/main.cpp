@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 	{
 		if (argc == 1)
 		{
-			std::cout << std::endl << "error: no operation specified (use -h for help)";
+			std::cout << std::endl << "error: no operation specified (use -h for help)" << std:: endl;
 		}
 		else
 		{

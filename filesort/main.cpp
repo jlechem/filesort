@@ -150,7 +150,9 @@ int main(int argc, char* argv[])
 
 			if (readLength == 0)
 			{
-				fileSort = isWordMode ? std::unique_ptr<FileSort>(new WordFileSort()) : std::unique_ptr<FileSort>(new LineFileSort());				
+				fileSort = isWordMode ? 
+					std::unique_ptr<FileSort>(new WordFileSort()) : 
+					std::unique_ptr<FileSort>(new LineFileSort());	
 			}
 			else
 			{
@@ -172,10 +174,9 @@ int main(int argc, char* argv[])
 			fileSort->set_delimeter(delimeter);
 			fileSort->save(destinationFile);
 
-			std::cout << std::endl << "Done Writing file data";
+			std::cout << std::endl << "Done Writing file data" << std::endl;
 
 		}
-
 		return 0;
 
 	}

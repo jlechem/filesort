@@ -37,8 +37,6 @@ FileSort::~FileSort(void)
 
 void FileSort::sort(bool isAscending)
 {
-	// since we write the files from vector end to front
-	  // we need to kind of reverse based on the ascending flag
 	if (isAscending)
 	{
 		std::sort(std::execution::par_unseq, this->items.rbegin(), this->items.rend(),

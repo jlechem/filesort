@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
 				("w,word", "Reads data in per word rather than per line", cxxopts::value<bool>()->default_value("false"))
 				("delim,delimeter", "Value to append to end of each sorted value defaults to newline", cxxopts::value<std::string>());
 
-			auto& const result = options.parse(argc, argv);
+			const auto& result = options.parse(argc, argv);
 
 			if (result.count("version"))
 			{
@@ -86,24 +86,26 @@ int main(int argc, char* argv[])
 				std::cout << std::endl << options.help() << std::endl;
 			}
 
-			auto& const fileSort = FileSortFactory::CreateFileSort(result);
+			const auto& filesort = FileSortFactory::CreateFileSort(result);
 
-			std::cout << std::endl << "Loading file data";
+			if (filesort)
+			{
+				std::cout << std::endl << "Loading file data";
 
-			fileSort->load();
+				filesort->load();
 
-			std::cout << std::endl << "Done loading file data";
-			std::cout << std::endl << "Sorting data";
+				std::cout << std::endl << "Done loading file data";
+				std::cout << std::endl << "Sorting data";
 
-			fileSort->sort();
+				filesort->sort();
 
-			std::cout << std::endl << "Done sorting data";
-			std::cout << std::endl << "Writing file data";
-			
-			fileSort->save();
+				std::cout << std::endl << "Done sorting data";
+				std::cout << std::endl << "Writing file data";
 
-			std::cout << std::endl << "Done Writing file data" << std::endl;
+				filesort->save();
 
+				std::cout << std::endl << "Done Writing file data" << std::endl;
+			}
 		}
 		return 0;
 

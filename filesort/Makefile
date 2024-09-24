@@ -14,6 +14,9 @@ PREFIX = /usr/local
 
 all: filesort
 
+filesort.o: filesortfactory.cpp filesortfactory.h
+	$(CXX) $(CXXFLAGS) -c filesortfactory.cpp
+	
 filesort.o: filesort.cpp filesort.h
 	$(CXX) $(CXXFLAGS) -c filesort.cpp
 
@@ -32,8 +35,8 @@ wordfilesort.o: wordfilesort.cpp wordfilesort.h
 main.o: main.cpp cxxopts.h
 	$(CXX) $(CXXFLAGS) -c main.cpp
 
-filesort: main.o filesort.o textfilesort.o lengthfilesort.o linefilesort.o wordfilesort.o 
-	$(CXX) $(CXXFLAGS) -o filesort textfilesort.o main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o
+filesort: main.o filesort.o textfilesort.o lengthfilesort.o linefilesort.o wordfilesort.o filesortfactory.o
+	$(CXX) $(CXXFLAGS) -o filesort textfilesort.o main.o filesort.o lengthfilesort.o linefilesort.o wordfilesort.o filesortfactory.o
 	
 .PHONY : clean
 clean :

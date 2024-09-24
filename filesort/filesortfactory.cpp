@@ -1,6 +1,6 @@
 #include "filesortfactory.h"
 
-std::unique_ptr<FileSort> FileSortFactory::CreateFileSort(cxxopts::ParseResult& parseResult)
+std::unique_ptr<FileSort> FileSortFactory::CreateFileSort(const cxxopts::ParseResult& parseResult)
 {
 	std::string sourceFile;
 	std::string destinationFile;
@@ -18,7 +18,7 @@ std::unique_ptr<FileSort> FileSortFactory::CreateFileSort(cxxopts::ParseResult& 
 	else
 	{
 		std::cout << std::endl << "No input file specified" << std::endl;
-		return 0;
+		return nullptr;
 	}
 
 	if (parseResult.count("output"))
@@ -59,19 +59,19 @@ std::unique_ptr<FileSort> FileSortFactory::CreateFileSort(cxxopts::ParseResult& 
 		}
 	}
 
-	std::unique_ptr<FileSort> fileSort  = nullptr;
+	std::unique_ptr<FileSort> filesort = nullptr;
 	
 	if (readLength == 0)
 	{
-		fileSort = isWordMode ?
+		filesort = isWordMode ?
 			std::unique_ptr<FileSort>(new WordFileSort(readLength, sourceFile, destinationFile, delimeter, isAscending)) :
 			std::unique_ptr<FileSort>(new LineFileSort(readLength, sourceFile, destinationFile, delimeter, isAscending));
 	}
 	else
 	{
-		fileSort = std::unique_ptr<FileSort>(new LengthFileSort(readLength, sourceFile, destinationFile, delimeter, isAscending));
+		filesort = std::unique_ptr<FileSort>(new LengthFileSort(readLength, sourceFile, destinationFile, delimeter, isAscending));
 	}
 
-	return std::move(fileSort);
+	return filesort;
 
 }

@@ -31,7 +31,7 @@
 class FileSortFactory
 {
 public:
-    static std::unique_ptr<FileSort> CreateFileSort(cxxopts::ParseResult& parseResult);
+    static std::unique_ptr<FileSort> CreateFileSort(const cxxopts::ParseResult& parseResult);
 };
 
 #endif

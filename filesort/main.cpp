@@ -25,7 +25,7 @@
 		
 		Created by - Justin LeCheminant 9-1-2007
 
-		Current Version 4.0.1
+		Current Version 4.0.2
 
 */
 

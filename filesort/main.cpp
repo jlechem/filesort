@@ -1,5 +1,5 @@
 /*
-	Copyright 2021 Justin LeCheminant
+	copyright 2024 Justin LeCheminant
 
 	This file is part of filesort.
 
@@ -31,13 +31,10 @@
 
 #include <iostream>
 
-#include "filesort.h"
-#include "linefilesort.h"
-#include "lengthfilesort.h"
-#include "wordfilesort.h"
+#include "filesortfactory.h"
 #include "cxxopts.h"
 
-constexpr auto VERSION = "4.0.1";
+constexpr auto VERSION = "4.0.2";
 
 /*
 
@@ -77,7 +74,7 @@ int main(int argc, char* argv[])
 				("w,word", "Reads data in per word rather than per line", cxxopts::value<bool>()->default_value("false"))
 				("delim,delimeter", "Value to append to end of each sorted value defaults to newline", cxxopts::value<std::string>());
 
-			auto result = options.parse(argc, argv);
+			auto& const result = options.parse(argc, argv);
 
 			if (result.count("version"))
 			{
@@ -89,90 +86,21 @@ int main(int argc, char* argv[])
 				std::cout << std::endl << options.help() << std::endl;
 			}
 
-			std::string sourceFile;
-			std::string destinationFile;
-			std::string delimeter = "\n";
-
-			bool isAscending = true;
-			bool isWordMode = false;
-
-			int readLength = 0;
-
-			if (result.count("input"))
-			{
-				sourceFile = result["input"].as<std::string>();
-			}
-			else
-			{
-				std::cout << std::endl << "No input file specified" << std::endl;
-				return 0;
-			}
-
-			if (result.count("output"))
-			{
-				destinationFile = result["output"].as<std::string>();
-			}
-			else
-			{
-				destinationFile = sourceFile;
-			}
-
-			if (result.count("descending"))
-			{
-				isAscending = false;
-			}
-
-			if (result.count("length"))
-			{
-				readLength = result["length"].as<int>();
-			}
-
-			if (result.count("word"))
-			{
-				isWordMode = true;
-			}
-
-			if (result.count("delimeter"))
-			{
-				delimeter = result["delimeter"].as<std::string>();
-
-				if (delimeter == "\\t")
-				{
-					delimeter = "\t";
-				}
-				else if (delimeter == "\\n")
-				{
-					delimeter = "\n";
-				}
-			}
-
-			std::unique_ptr<FileSort> fileSort = nullptr;;
-
-			if (readLength == 0)
-			{
-				fileSort = isWordMode ? 
-					std::unique_ptr<FileSort>(new WordFileSort()) : 
-					std::unique_ptr<FileSort>(new LineFileSort());	
-			}
-			else
-			{
-				fileSort = std::unique_ptr<FileSort>(new LengthFileSort(readLength));
-			}	
+			auto& const fileSort = FileSortFactory::CreateFileSort(result);
 
 			std::cout << std::endl << "Loading file data";
 
-			fileSort->load(sourceFile);
+			fileSort->load();
 
 			std::cout << std::endl << "Done loading file data";
 			std::cout << std::endl << "Sorting data";
 
-			fileSort->sort(isAscending);
+			fileSort->sort();
 
 			std::cout << std::endl << "Done sorting data";
 			std::cout << std::endl << "Writing file data";
 			
-			fileSort->set_delimeter(delimeter);
-			fileSort->save(destinationFile);
+			fileSort->save();
 
 			std::cout << std::endl << "Done Writing file data" << std::endl;
 

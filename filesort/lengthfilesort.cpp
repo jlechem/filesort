@@ -1,5 +1,5 @@
 /*
-	Copyright 2021 Justin LeCheminant
+	copyright 2024 Justin LeCheminant
 
 	This file is part of filesort.
 
@@ -19,9 +19,9 @@
 
 #include "lengthfilesort.h"
 
-void LengthFileSort::load(std::string_view fileName)
+void LengthFileSort::load()
 {
-	std::ifstream file(fileName.data(), std::ios::in);
+	std::ifstream file(this->outputFile, std::ios::in);
 
 	if (file.good())
 	{

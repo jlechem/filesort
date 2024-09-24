@@ -1,5 +1,5 @@
 /*
-	Copyright 2021 Justin LeCheminant
+	copyright 2024 Justin LeCheminant
 
 	This file is part of filesort.
 
@@ -23,9 +23,9 @@ TextFileSort::~TextFileSort(void)
 {
 }
 
-void TextFileSort::save(std::string_view fileName)
+void TextFileSort::save()
 {
-	std::ofstream file(fileName.data(), std::ios::out | std::ios::trunc);
+	std::ofstream file(this->outputFile, std::ios::out | std::ios::trunc);
 
 	if (file.good())
 	{

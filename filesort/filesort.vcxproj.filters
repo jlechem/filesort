@@ -33,6 +33,9 @@
     <ClCompile Include="textfilesort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="filesortfactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="filesort.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="textfilesort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filesortfactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

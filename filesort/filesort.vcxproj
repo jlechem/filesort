@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="filesort.cpp" />
+    <ClCompile Include="filesortfactory.cpp" />
     <ClCompile Include="lengthfilesort.cpp" />
     <ClCompile Include="linefilesort.cpp" />
     <ClCompile Include="main.cpp" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="cxxopts.h" />
     <ClInclude Include="filesort.h" />
+    <ClInclude Include="filesortfactory.h" />
     <ClInclude Include="lengthfilesort.h" />
     <ClInclude Include="linefilesort.h" />
     <ClInclude Include="textfilesort.h" />

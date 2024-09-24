@@ -18,20 +18,20 @@
     along with filesort.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LENGTHFILESORT_H
-#define LENGTHFILESORT_H
+#ifndef FILESORTFACTORY_H
+#define FILESORTFACTORY_H
 
-#include "textfilesort.h"
+#include "filesort.h"
+#include "cxxopts.h"
+#include "filesort.h"
+#include "linefilesort.h"
+#include "lengthfilesort.h"
+#include "wordfilesort.h"
 
-class LengthFileSort :
-    public TextFileSort
+class FileSortFactory
 {
 public:
-    LengthFileSort() : TextFileSort() {};
-
-    LengthFileSort(int readLength, std::string inputFile, std::string outputFile, std::string delimeter, bool descending) : TextFileSort(readLength, inputFile, outputFile, delimeter, descending) {};
-
-    void load();
+    static std::unique_ptr<FileSort> CreateFileSort(cxxopts::ParseResult& parseResult);
 };
 
 #endif

@@ -1,6 +1,6 @@
 /*
 
-	Copyright 2021 Justin LeCheminant
+	copyright 2024 Justin LeCheminant
 
 	This file is part of filesort.
 
@@ -38,24 +38,28 @@ class FileSort
 public:
 	FileSort();
 
-	FileSort(int readLength);
+	FileSort(int readLength, std::string inputFile, std::string outputFile, std::string delimeter, bool descending);
 
 	virtual ~FileSort(void) = 0;
 
-	virtual void sort(bool isAscending);
+	virtual void sort();
 
-	virtual void save(std::string_view fileName) = 0;
+	virtual void save() = 0;
 
-	virtual void load(std::string_view fileName) = 0;
-
-	void set_delimeter(std::string delimeter);
+	virtual void load() = 0;
 
 protected:
 	int readLength;
 
 	std::string delimeter;
 
+	std::string inputFile;
+
+	std::string outputFile;
+
 	std::vector<std::any> items;
+
+	bool descending;
 
 };
 

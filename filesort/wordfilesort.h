@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2021 Justin LeCheminant
+    copyright 2024 Justin LeCheminant
 
     This file is part of filesort.
 
@@ -27,9 +27,9 @@ class WordFileSort :
     public TextFileSort
 {
 public:
-    WordFileSort() : TextFileSort() {};
+    WordFileSort(int readLength, std::string inputFile, std::string outputFile, std::string delimeter, bool descending) : TextFileSort(readLength, inputFile, outputFile, delimeter, descending) {};
 
-    void load(std::string_view fileName);
+    void load();
 
 };
 

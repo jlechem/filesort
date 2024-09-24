@@ -1,6 +1,6 @@
 /*
 
-    Copyright 2021 Justin LeCheminant
+    copyright 2024 Justin LeCheminant
 
     This file is part of filesort.
 
@@ -31,11 +31,11 @@ class TextFileSort :
 public:
     TextFileSort() : FileSort() {};
 
-    TextFileSort(int readLength) : FileSort(readLength) {};
+    TextFileSort(int readLength, std::string inputFile, std::string outputFile, std::string delimeter, bool descending) : FileSort(readLength, inputFile, outputFile, delimeter, descending) {};
 
     ~TextFileSort(void);
 
-    void save(std::string_view fileName);
+    void save();
 
 };
 
